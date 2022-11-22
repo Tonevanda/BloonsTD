@@ -1,6 +1,6 @@
 /*
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.base.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -48,7 +48,7 @@ import java.io.IOException;
 
             assert document != null;
 
-            Element svg = document.getDocumentElement();
+            base.Element svg = document.getDocumentElement();
             this.width = Integer.parseInt(svg.getAttributes().getNamedItem("width").getNodeValue()) / X_WIDTH;
             this.height = Integer.parseInt(svg.getAttributes().getNamedItem("height").getNodeValue()) / Y_WIDTH;
 
@@ -64,7 +64,7 @@ import java.io.IOException;
                 Node node = nodeList.item(i);
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element elem = (Element) node;
+                    base.Element elem = (base.Element) node;
 
                     int x = Integer.parseInt(elem.getAttributes().getNamedItem("x").getNodeValue()) / X_WIDTH;
                     int y = Integer.parseInt(elem.getAttributes().getNamedItem("y").getNodeValue()) / Y_WIDTH;

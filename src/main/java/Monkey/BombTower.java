@@ -1,3 +1,6 @@
+package Monkey;
+
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class BombTower implements Towers{
@@ -39,11 +42,11 @@ public class BombTower implements Towers{
     public void upgradeLeft() { //mais range de impacto da bomba
         upgrades.upgradeLeft();
         if(upgrades.left == 1){
-            //range = 150; bigger boom range
+            //range = 150;
             value += 520;
         }
         else if(upgrades.left == 2){
-            //range = 200; bigger boom range
+            //range = 200;
             value += 640;
         }
     }
@@ -58,5 +61,11 @@ public class BombTower implements Towers{
             range += 100;
             value += 300;
         }
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
     }
 }

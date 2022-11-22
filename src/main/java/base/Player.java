@@ -1,3 +1,5 @@
+package base;
+
 public class Player {
     private int money;
     private int lives;

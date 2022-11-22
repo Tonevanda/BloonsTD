@@ -1,3 +1,6 @@
+package Monkey;
+
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class TackTower implements Towers {
@@ -56,5 +59,11 @@ public class TackTower implements Towers {
             range+=150;
             value+=160;
         }
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
     }
 }

@@ -1,3 +1,5 @@
+package Monkey;
+
 public class Upgrades {
     int left;
     int right;
@@ -16,4 +18,6 @@ public class Upgrades {
             right++;
         }
     }
+
+
 }

@@ -1,3 +1,7 @@
+package base;
+
+import Monkey.Towers;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +11,7 @@ public class Play {
     private Player player;
     private int round;
     private List<Bloon> bloons;
+    private List<Towers> towers;
 
 
     Play(int x, int y){
@@ -102,5 +107,22 @@ public class Play {
         return sending;
     }
 
-
+    public void startRound(){
+        //drawBloons(bloons)
+    }
+/*
+    public void popBloon(){
+        for(Bloon bloon : bloons){
+            for(Towers tower: towers) {
+                if (bloon.getCoords() <= tower.getRadius()){
+                    bloon.pop();
+                    if(bloon.getLayers()==0){
+                        bloons.remove(bloon);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+*/
 }

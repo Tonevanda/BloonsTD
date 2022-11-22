@@ -35,7 +35,7 @@ public class Sprite {
         return getCurrentImage().getWidth();
     }
 
-    public static void drawSprite(Sprite sprite, Position position, TextGraphics graphics, boolean transparency) {
+    public static void drawSprite(Sprite sprite, base.Position position, TextGraphics graphics, boolean transparency) {
         Image image = sprite.getCurrentImage();
 
         String[][] background_colors = image.getBackground_colors();
@@ -54,7 +54,7 @@ public class Sprite {
         }
     }
 
-    public static void drawSpritePortion(Sprite sprite, Position position, Rect portion, Position portionPosition, TextGraphics graphics, boolean transparency) {
+    public static void drawSpritePortion(Sprite sprite, base.Position position, Rect portion, base.Position portionPosition, TextGraphics graphics, boolean transparency) {
         Image image = sprite.getCurrentImage();
 
         String[][] background_colors = image.getBackground_colors();
@@ -74,17 +74,17 @@ public class Sprite {
     }
 
     public static void drawSprite(Sprite sprite, int x, int y, TextGraphics graphics, boolean transparency) {
-        Position position = new Position(x, y);
+        base.Position position = new base.Position(x, y);
         drawSprite(sprite, position, graphics, false);
     }
 
     public static void drawSprite(Sprite sprite, int x, int y, TextGraphics graphics) {
-        Position position = new Position(x, y);
+        base.Position position = new base.Position(x, y);
         drawSprite(sprite, position, graphics, false);
     }
 
     public static void drawSprite(Sprite sprite, TextGraphics graphics) {
-        Position position = new Position(0, 0);
+        base.Position position = new base.Position(0, 0);
         drawSprite(sprite, position, graphics, false);
     }
 }

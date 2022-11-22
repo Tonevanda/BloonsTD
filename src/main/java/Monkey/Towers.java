@@ -1,3 +1,6 @@
+package Monkey;
+
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public interface Towers {
@@ -9,4 +12,5 @@ public interface Towers {
     public int price();
     public void upgradeLeft();
     public void upgradeRight();
+    public Position getRadius();
 }

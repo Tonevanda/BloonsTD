@@ -1,3 +1,6 @@
+package Monkey;
+
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class DartMonkeyTower implements Towers{
@@ -55,5 +58,11 @@ public class DartMonkeyTower implements Towers{
             range = 200;
             value += 90;
         }
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
     }
 }

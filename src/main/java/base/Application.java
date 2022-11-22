@@ -1,4 +1,4 @@
-import com.googlecode.lanterna.graphics.TextGraphics;
+package base;
 
 import java.io.IOException;
 

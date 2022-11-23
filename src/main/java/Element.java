@@ -1,5 +1,4 @@
-package base;
-
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class Element {

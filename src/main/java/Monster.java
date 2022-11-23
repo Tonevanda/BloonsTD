@@ -1,4 +1,3 @@
-import base.Element;
 import base.Position;
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;

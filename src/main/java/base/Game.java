@@ -61,6 +61,7 @@ public class Game {
         }
     }
     private void draw() throws IOException {
+
         mainmenu.draw(screen.newTextGraphics());
         this.screen.refresh();
     }

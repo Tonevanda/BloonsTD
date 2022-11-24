@@ -174,6 +174,8 @@ public class Play {
                 throw new RuntimeException(e);
             }
             bloon.move();
+            screen.clear();
+            draw(graphics,screen);
             bloon.draw(graphics, screen);
             try {
                 screen.refresh();

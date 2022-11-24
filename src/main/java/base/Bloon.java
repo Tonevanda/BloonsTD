@@ -71,9 +71,11 @@ public class Bloon{
 
     //concept
     public void move(){
+        coords.setX(coords.getX() + 1);
+        /*
         while(coords.getX() < 100 && coords.getY() < 50){
             coords.setX(coords.getX() + 1);
-        }
+        }*/
     }
 
     public void draw(TextGraphics graphics, Screen screen) {
@@ -86,18 +88,19 @@ public class Bloon{
             throw new RuntimeException(e);
         }
 
-        for(int i = coords.getX();i<coords.getX()+49;i++){
-            for(int j = coords.getY();j<coords.getY()+63;j++){
+        for(int i = 0;i<49;i++){
+            for(int j = 0;j<63;j++){
                 color[i][j] = new Color(bloonimg.getRGB(i,j));
             }
         }
 
         TextColor pixelColor;
 
-        for(int i = coords.getX();i<coords.getX()+49;i++){
-            for(int j = coords.getY();j<coords.getY()+63;j++){
+        for(int i = 0;i<49;i++){
+            for(int j = 0;j<63;j++){
                 pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
-                screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
+                screen.setCharacter(coords.getX()+i,coords.getY()+j,new TextCharacter(' ').withBackgroundColor(pixelColor));
+
             }
         }
     }

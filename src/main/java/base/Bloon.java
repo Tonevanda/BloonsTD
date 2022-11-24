@@ -31,6 +31,7 @@ public class Bloon{
      */
 
     public Bloon(String color){
+        coords = new Position(0,0);
         switch(color){
             case "red": layers = 1; type =1; break;
             case "blue": layers = 2; type = 2; break;
@@ -65,6 +66,13 @@ public class Bloon{
             case 5: return "pinkBloon";
             case 6: return "hardBloon";
             default: return "";
+        }
+    }
+
+    //concept
+    public void move(){
+        while(coords.getX() < 100 && coords.getY() < 50){
+            coords.setX(coords.getX() + 1);
         }
     }
 

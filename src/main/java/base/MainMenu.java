@@ -27,31 +27,27 @@ public class MainMenu  {
         height = y;
     }
 
-    public void StartGame(){
-        play = new Play(width,height);
-    }
-
     public void draw(TextGraphics graphics, Screen screen) {
         //Reader reader = new Reader("/monkey/16", 16, 16);
-
         URL resourcemancaco = getClass().getResource("/monkey/logo.png");
         BufferedImage mancaco;
+
         try {
             mancaco = ImageIO.read(resourcemancaco);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        for(int i = 0;i<256;i++){
-            for(int j = 0;j<144;j++){
+        for(int i = 0;i<width;i++){
+            for(int j = 0;j<height;j++){
                 macaco[i][j] = new Color(mancaco.getRGB(i,j));
             }
         }
 
         TextColor pixelColor;
 
-        for (int i=0;i<256;i++){
-            for(int j=0;j<144;j++){
+        for (int i=0;i<width;i++){
+            for(int j=0;j<height;j++){
                 pixelColor = new TextColor.RGB(macaco[i][j].getRed(),macaco[i][j].getGreen(),macaco[i][j].getBlue());
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }

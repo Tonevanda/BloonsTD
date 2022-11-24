@@ -23,6 +23,7 @@ import java.net.URL;
 public class Game {
     private Screen screen;
     private MainMenu mainmenu;
+    private boolean isPlaying = false;
     //private Arena arena;
 
     public Game(){
@@ -58,9 +59,16 @@ public class Game {
                     System.out.println(e.getX());
                     TextGraphics graphics=screen.newTextGraphics();
                     if(e.getX()>128*4 && e.getX()<178*4 && e.getY()>72*4 && e.getY()<102*4){
-                        Play play =new Play(256,144);
-                        play.bloonSender(1);
-                        play.draw(graphics,screen);
+                        Play play = new Play(256,144);
+                        isPlaying = true;
+                        screen.clear();
+                        play.draw(graphics, screen);
+                        try {
+                            screen.refresh();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        play.startGame();
                     }
                     //System.out.println("deez");
                     //repaint();
@@ -96,7 +104,7 @@ public class Game {
 
     private void draw() throws IOException {
         this.screen.clear();
-        mainmenu.draw(screen.newTextGraphics(),screen);
+        if(!isPlaying)mainmenu.draw(screen.newTextGraphics(),screen);
         this.screen.refresh();
     }
 

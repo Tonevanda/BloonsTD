@@ -22,13 +22,13 @@ public class Play {
     private List<Bloon> bloons;
     private List<Towers> towers;
     private Color[][] color = new Color[256][144];
+    private TextGraphics graphics;
+    private Screen screen;
 
     Play(int x, int y){
         width = x;
         height = y;
-        player = new Player();
-        round = 1;
-        bloons = bloonSender(round);
+
     }
 
     public List<Bloon> bloonSender(int round){
@@ -116,6 +116,10 @@ public class Play {
         return sending;
     }
     public void draw(TextGraphics graphics, Screen screen) {
+        this.graphics = graphics;
+        this.screen = screen;
+        System.out.println("fodase");
+
         URL resourceMap = getClass().getResource("/map.png");
         BufferedImage map;
         try {
@@ -124,8 +128,8 @@ public class Play {
             throw new RuntimeException(e);
         }
 
-        for(int i = 0;i<16;i++){
-            for(int j = 0;j<16;j++){
+        for(int i = 0;i<256;i++){
+            for(int j = 0;j<144;j++){
                 color[i][j] = new Color(map.getRGB(i,j));
             }
         }
@@ -137,6 +141,14 @@ public class Play {
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
+
+    }
+    public void startGame(){
+        player = new Player();
+        round = 1;
+        bloons = bloonSender(round);
+        //if click start round
+        //startRound();
     }
 
     public boolean isAlive(){
@@ -153,7 +165,11 @@ public class Play {
     }
 
     public void startRound(){
-        //drawBloons(bloons)
+        for(Bloon bloon : bloons){
+            bloon.draw(graphics, screen);
+            bloon.move();
+            //need observer
+        }
     }
 /*
     public void popBloon(){

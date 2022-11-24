@@ -6,12 +6,8 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 
 ### IMPLEMENTED FEATURES
 
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-
-**Examples**:
-
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
+- **Image loading** - Now, upon loading the game, the game loads the title-screen image.
+- **Mouse press** - When the mouse is pressed and an action is valid (such as clicking the start game button), the game will now perform said action.
 
 ### PLANNED FEATURES
 

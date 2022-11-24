@@ -1,7 +1,16 @@
 package base;
 
 import Monkey.Towers;
+import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.screen.Screen;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +21,14 @@ public class Play {
     private int round;
     private List<Bloon> bloons;
     private List<Towers> towers;
+    private Color[][] color = new Color[256][144];
 
     Play(int x, int y){
         width = x;
         height = y;
         player = new Player();
         round = 1;
-        bloonSender(round);
+        bloons = bloonSender(round);
     }
 
     public List<Bloon> bloonSender(int round){
@@ -104,6 +114,42 @@ public class Play {
             }
         }
         return sending;
+    }
+    public void draw(TextGraphics graphics, Screen screen) {
+        URL resourceMap = getClass().getResource("/map.png");
+        BufferedImage map;
+        try {
+            map = ImageIO.read(resourceMap);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        for(int i = 0;i<16;i++){
+            for(int j = 0;j<16;j++){
+                color[i][j] = new Color(map.getRGB(i,j));
+            }
+        }
+
+        TextColor pixelColor;
+        for (int i=0;i<256;i++){
+            for(int j=0;j<144;j++){
+                pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
+                screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
+            }
+        }
+    }
+
+    public boolean isAlive(){
+        if(player.getLives()>0) return true;
+        return false;
+    }
+
+    public boolean hasRoundEnded(){
+        if(bloons.isEmpty()){
+            round++;
+            return true;
+        }
+        return false;
     }
 
     public void startRound(){

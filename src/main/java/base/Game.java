@@ -8,11 +8,17 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class Game {
     private Screen screen;
@@ -21,24 +27,40 @@ public class Game {
 
     public Game(){
         try {
-            TerminalSize terminalSize = new TerminalSize(190, 50);
-            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize).setForceAWTOverSwing(true);;
-            Terminal terminal = terminalFactory.createTerminal();
-            MouseAdapter mouseAdapter=new MouseAdapter() {
-                private Color background;
+            URL resource = getClass().getClassLoader().getResource("square.ttf");
+            File fontFile = new File(resource.toURI());
+            Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+
+            DefaultTerminalFactory factory = new DefaultTerminalFactory();
+
+            Font loadedFont = font.deriveFont(Font.PLAIN, 4);
+            AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+            factory.setTerminalEmulatorFontConfiguration(fontConfig);
+            factory.setForceAWTOverSwing(true);
+            factory.setInitialTerminalSize(new TerminalSize(256, 144));
+
+            Terminal terminal = factory.createTerminal();
+            ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
                 @Override
-                public void mousePressed(MouseEvent e) {
+                public void windowClosing(WindowEvent e) {
+                    e.getWindow().dispose();
+                }
+            });
+            MouseAdapter mouseAdapter = new MouseAdapter(){
+
+                private Color background;
+                @Override
+                public void mousePressed(MouseEvent e){
                     //System.out.println(e.getXOnScreen());
                     System.out.println(e.getX());
                     TextGraphics graphics=screen.newTextGraphics();
-                    try {
-                        screen.clear();
-                        graphics.setBackgroundColor(TextColor.Factory.fromString("#330000"));
-                        graphics.fillRectangle(new TerminalPosition(e.getX(), e.getY()), new TerminalSize(30,30), ' ');
-                        screen.refresh();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
+                    if(e.getX()>128*4 && e.getX()<178*4 && e.getY()>72*4 && e.getY()<102*4){
+                        Play play =new Play(256,144);
+                        play.bloonSender(1);
+                        play.draw(graphics,screen);
                     }
                     //System.out.println("deez");
                     //repaint();
@@ -47,28 +69,40 @@ public class Game {
                 @Override
                 public void mouseReleased(MouseEvent e) {
                     //background = Color.black;
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e){
+
                 }
             };
+
             ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(mouseAdapter);
             //((AWTTerminalFrame)terminal).getComponent(0).addMouseMotionListener(mouseAdapter);
             this.screen = new TerminalScreen(terminal);
             this.screen.setCursorPosition(null);
             this.screen.startScreen();
             this.screen.doResizeIfNecessary();
-            mainmenu = new MainMenu(190, 50);
+            mainmenu = new MainMenu(256, 144);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
         }
     }
-    private void draw() throws IOException {
 
-        mainmenu.draw(screen.newTextGraphics());
+    private void draw() throws IOException {
+        this.screen.clear();
+        mainmenu.draw(screen.newTextGraphics(),screen);
         this.screen.refresh();
     }
+
     public void run() throws IOException {
-        this.screen.clear();
+        draw();
         while(true) {
-            draw();
             /*
             KeyStroke key = screen.readInput();
             processKey(key);

@@ -12,6 +12,7 @@ public class Player {
     public int getMoney(){
         return money;
     }
+    public int getLives(){return lives;}
 
     public void addMoney(int value){
         money += value;

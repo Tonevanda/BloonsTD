@@ -148,7 +148,7 @@ public class Play {
         round = 1;
         bloons = bloonSender(round);
         //if click start round
-        //startRound();
+        startRound();
     }
 
     public boolean isAlive(){
@@ -166,8 +166,20 @@ public class Play {
 
     public void startRound(){
         for(Bloon bloon : bloons){
+            System.out.println("drawing bloon");
             bloon.draw(graphics, screen);
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             bloon.move();
+            bloon.draw(graphics, screen);
+            try {
+                screen.refresh();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             //need observer
         }
     }

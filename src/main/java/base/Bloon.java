@@ -18,8 +18,8 @@ public class Bloon{
     private Position coords;
     private int layers;
     private int type;
-    private boolean hard;
-    private Color[][] color = new Color[16][16];
+    private boolean hard = false;
+    private Color[][] color = new Color[49][63];
 
     /*
      * 1: red
@@ -78,23 +78,24 @@ public class Bloon{
 
     public void draw(TextGraphics graphics, Screen screen) {
         URL resourceBloon = getClass().getResource("/bloons/" + getColorFile(layers) + ".png");
-        BufferedImage bloon;
+        BufferedImage bloonimg;
         try {
-            bloon = ImageIO.read(resourceBloon);
+            bloonimg = ImageIO.read(resourceBloon);
         } catch (IOException e) {
+
             throw new RuntimeException(e);
         }
 
-        for(int i = 0;i<16;i++){
-            for(int j = 0;j<16;j++){
-                color[i][j] = new Color(bloon.getRGB(i,j));
+        for(int i = coords.getX();i<coords.getX()+49;i++){
+            for(int j = coords.getY();j<coords.getY()+63;j++){
+                color[i][j] = new Color(bloonimg.getRGB(i,j));
             }
         }
 
         TextColor pixelColor;
 
-        for (int i=0;i<256;i++){
-            for(int j=0;j<144;j++){
+        for(int i = coords.getX();i<coords.getX()+49;i++){
+            for(int j = coords.getY();j<coords.getY()+63;j++){
                 pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }

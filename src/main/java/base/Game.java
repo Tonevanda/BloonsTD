@@ -1,8 +1,6 @@
 package base;
 
-import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -15,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+//import javax.swing.event.MouseInputAdapter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -55,7 +54,6 @@ public class Game {
                 private Color background;
                 @Override
                 public void mousePressed(MouseEvent e){
-                    //System.out.println(e.getXOnScreen());
                     System.out.println(e.getX());
                     TextGraphics graphics=screen.newTextGraphics();
                     if(e.getX()>128*4 && e.getX()<178*4 && e.getY()>72*4 && e.getY()<102*4){
@@ -71,19 +69,25 @@ public class Game {
                         play.startGame();
                     }
                     //System.out.println("deez");
-                    //repaint();
+
                 }
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    //background = Color.black;
+                    System.out.println("nuts");
 
                 }
 
                 @Override
                 public void mouseEntered(MouseEvent e){
-
+                    System.out.println("idk");
                 }
+                @Override
+                public void mouseDragged(MouseEvent e){
+                    System.out.println("deez");
+                }
+
+                //MouseEvent test=new MouseEvent("mouseonbutton", {"clientX":10, "clientY":10}); Teste que não funcionou DO NOT DELETE
             };
 
             ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(mouseAdapter);

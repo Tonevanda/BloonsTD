@@ -10,7 +10,6 @@ public class Panel implements ComponentListener {
         JWindow f = new JWindow();
         JPanel panel = new JPanel();
         panel.setBounds(10, 10, 100, 90);
-
         JButton b1 = new JButton("Button 1");
         b1.setBounds(11, 11, 80, 30);
         b1.setBackground(Color.yellow);

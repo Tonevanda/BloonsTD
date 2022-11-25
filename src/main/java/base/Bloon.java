@@ -13,13 +13,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class Bloon{
     private Position coords;
     private int layers;
     private int type;
     private boolean hard = false;
-    private Color[][] color = new Color[49][63];
+    private Color[][] color = new Color[16][16];
 
     /*
      * 1: red
@@ -71,15 +72,15 @@ public class Bloon{
 
     //concept
     public void move(){
-        coords.setX(coords.getX() + 1);
-        /*
-        while(coords.getX() < 100 && coords.getY() < 50){
+        //concept
+        while(coords.getX() < 100 && coords.getY() < 50) {
             coords.setX(coords.getX() + 1);
-        }*/
+        }
     }
 
     public void draw(TextGraphics graphics, Screen screen) {
-        URL resourceBloon = getClass().getResource("/bloons/" + getColorFile(layers) + ".png");
+        //URL resourceBloon = getClass().getResource("/bloons/" + getColorFile(layers) + ".png");
+        URL resourceBloon = getClass().getResource("/bloons/redBloonPixel.png");
         BufferedImage bloonimg;
         try {
             bloonimg = ImageIO.read(resourceBloon);
@@ -88,17 +89,18 @@ public class Bloon{
             throw new RuntimeException(e);
         }
 
-        for(int i = 0;i<49;i++){
-            for(int j = 0;j<63;j++){
+        for(int i = 0;i<16;i++){
+            for(int j = 0;j<16;j++){
                 color[i][j] = new Color(bloonimg.getRGB(i,j));
             }
         }
 
         TextColor pixelColor;
 
-        for(int i = 0;i<49;i++){
-            for(int j = 0;j<63;j++){
+        for(int i = 0;i<16;i++){
+            for(int j = 0;j<16;j++){
                 pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
+                if (pixelColor.getRed()==200 && pixelColor.getGreen()==191 && pixelColor.getBlue()==231) continue;
                 screen.setCharacter(coords.getX()+i,coords.getY()+j,new TextCharacter(' ').withBackgroundColor(pixelColor));
 
             }

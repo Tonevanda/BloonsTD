@@ -118,7 +118,7 @@ public class Play {
     public void draw(TextGraphics graphics, Screen screen) {
         this.graphics = graphics;
         this.screen = screen;
-        /*
+
         URL resourceMap = getClass().getResource("/map.png");
         BufferedImage map;
         try {
@@ -140,7 +140,7 @@ public class Play {
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
-        */
+
     }
     public void startGame(){
         player = new Player();
@@ -175,13 +175,10 @@ public class Play {
             screen.refresh();
             //need observer
         }
-        for(int i=0;i<100;i++){
-            screen.clear();
-            //draw(graphics,screen);
             bloons.get(0).move();
             bloons.get(0).draw(graphics,screen);
             screen.refresh();
-        }
+
     }
 /*
     public void popBloon(){

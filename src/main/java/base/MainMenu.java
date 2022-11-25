@@ -20,7 +20,7 @@ public class MainMenu  {
     private int width;
     private int height;
     private Play play;
-    private Color[][] macaco = new Color[256][144];
+    private Color[][] color = new Color[256][144];
 
     public MainMenu(int x, int y) {
         width = x;
@@ -29,18 +29,18 @@ public class MainMenu  {
 
     public void draw(TextGraphics graphics, Screen screen) {
         //Reader reader = new Reader("/monkey/16", 16, 16);
-        URL resourcemancaco = getClass().getResource("/monkey/logo.png");
-        BufferedImage mancaco;
+        URL resourceLogo = getClass().getResource("/monkey/logo.png");
+        BufferedImage logo;
 
         try {
-            mancaco = ImageIO.read(resourcemancaco);
+            logo = ImageIO.read(resourceLogo);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         for(int i = 0;i<width;i++){
             for(int j = 0;j<height;j++){
-                macaco[i][j] = new Color(mancaco.getRGB(i,j));
+                color[i][j] = new Color(logo.getRGB(i,j));
             }
         }
 
@@ -48,12 +48,12 @@ public class MainMenu  {
 
         for (int i=0;i<width;i++){
             for(int j=0;j<height;j++){
-                pixelColor = new TextColor.RGB(macaco[i][j].getRed(),macaco[i][j].getGreen(),macaco[i][j].getBlue());
+                pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
         graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));
-        graphics.fillRectangle(new TerminalPosition(128, 72), new TerminalSize(50,30), ' ');
+        graphics.fillRectangle(new TerminalPosition(103, 72), new TerminalSize(50,30), ' ');
 
         //new Panel();
         /*

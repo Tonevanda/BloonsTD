@@ -43,11 +43,13 @@ public class DartMonkeyTowerTest {
 
         upgrade.upgradeLeft();
         assertNotEquals(upgrade, monkey.getUpgrades());
+
         assertTrue(monkey.upgradeLeft());
         assertEquals(upgrade, monkey.getUpgrades());
         assertEquals(268, monkey.getValue());
 
         assertTrue(monkey.upgradeLeft());
+        upgrade.upgradeLeft();
         assertEquals(upgrade, monkey.getUpgrades());
         assertEquals(472, monkey.getValue());
 
@@ -66,15 +68,16 @@ public class DartMonkeyTowerTest {
         assertNotEquals(upgrade, monkey.getUpgrades());
         assertTrue(monkey.upgradeRight());
         assertEquals(upgrade, monkey.getUpgrades());
-        assertEquals(268, monkey.getValue());
+        assertEquals(180, monkey.getValue());
 
         assertTrue(monkey.upgradeRight());
+        upgrade.upgradeRight();
         assertEquals(upgrade, monkey.getUpgrades());
-        assertEquals(472, monkey.getValue());
+        assertEquals(270, monkey.getValue());
 
         assertFalse(monkey.upgradeRight());
         assertEquals(upgrade, monkey.getUpgrades());
-        assertEquals(472, monkey.getValue());
+        assertEquals(270, monkey.getValue());
     }
 
 }

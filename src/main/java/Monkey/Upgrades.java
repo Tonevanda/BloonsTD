@@ -1,5 +1,7 @@
 package Monkey;
 
+import base.Position;
+
 public class Upgrades {
     int left;
     int right;
@@ -29,6 +31,15 @@ public class Upgrades {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (this.getClass() != o.getClass()) return false;
+        Upgrades p = (Upgrades) o;
+        return this.left == p.getLeft() && this.right == p.getRight();
     }
 
 

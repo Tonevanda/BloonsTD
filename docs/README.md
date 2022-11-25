@@ -2,7 +2,7 @@
 
 In this project, you will be able to relive your long-lost joy in life by playing the good ol' Bloons TD. Here, you can fortify your defenses through the help of towers(some in the form of cute little monkeys) which will help you pop the balloons that are coming to get you!
 
-This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz (up202108810@fe.up.pt) and Tomás Xavier (up2021xxxxx@fe.up.pt)for LDTS 2022⁄23.
+This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz (up202108810@fe.up.pt) and Tomás Xavier (up202108759@fe.up.pt)for LDTS 2022⁄23.
 
 ### IMPLEMENTED FEATURES
 
@@ -20,7 +20,7 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
 
-- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
+- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When referring to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
 - **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
 - **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
 - **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
@@ -63,17 +63,13 @@ The use of the State Pattern in the current design allows the following benefits
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation, and suggest ways in which the code could be refactored to eliminate them. Each smell and refactoring suggestions should be described in its own subsection.
-
-**Example of such a subsection**:
-
 ------
 
-#### DATA CLASS
+#### DEAD CODE
 
-The `PlatformSegment` class is a **Data Class**, as it contains only fields, and no behavior. This is problematic because […].
+Currently, the `Reader` class's methods are not being used anywhere in the code, therefore its absence would make the code cleaner, more efficient and easier to understand.
 
-A way to improve the code would be to move the `isPlatformSegmentSolid()` method to the `PlatformSegment` class, as this logic is purely concerned with the `PlatformSegment` class.
+A way to improve the code is simply to delete the class, since that would reduce the number of classes in the project which makes it a bit easier to understand.
 
 ### TESTING
 
@@ -81,10 +77,6 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 - Link to mutation testing report.
 
 ### SELF-EVALUATION
-
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-**Example**:
 
 - João Lourenço: 33,3%
 - Tiago Cruz: 33,3%

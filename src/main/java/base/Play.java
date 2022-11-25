@@ -119,8 +119,6 @@ public class Play {
         this.graphics = graphics;
         this.screen = screen;
         /*
-        System.out.println("fodase");
-
         URL resourceMap = getClass().getResource("/map.png");
         BufferedImage map;
         try {
@@ -153,7 +151,6 @@ public class Play {
             startRound();
         }
         catch (java.io.IOException ex){
-            System.out.println("obamna");
         }
     }
 

@@ -75,17 +75,14 @@ public class Game {
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    System.out.println("nuts");
-
                 }
 
                 @Override
                 public void mouseEntered(MouseEvent e){
-                    System.out.println("idk");
+                    //System.out.println("idk");
                 }
                 @Override
                 public void mouseDragged(MouseEvent e){
-                    System.out.println("deez");
                 }
 
                 //MouseEvent test=new MouseEvent("mouseonbutton", {"clientX":10, "clientY":10}); Teste que não funcionou DO NOT DELETE

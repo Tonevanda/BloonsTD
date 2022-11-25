@@ -27,7 +27,7 @@ public class Panel implements ComponentListener {
 
     @Override
     public void componentResized(ComponentEvent e) {
-        System.out.println("resised");
+        System.out.println("resized");
     }
 
     @Override

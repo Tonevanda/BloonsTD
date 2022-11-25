@@ -16,6 +16,7 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 - **Radius** - When selecting a tower to buy from the shop, while moving the mouse around to figure out where to place the tower, the game should not only show the tower where the cursor is, but also its range as well.
 - **Left upgrade** - While the right upgrade of every tower simply increases its range, the left upgrade should either improve one of the key defining moves that makes that tower special or add a new one, specific to that tower.
 
+
 ### DESIGN
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
@@ -73,7 +74,8 @@ A way to improve the code is simply to delete the class, since that would reduce
 
 ### TESTING
 
-- Screenshot of coverage report.
+- Screenshot of coverage report:
+![img.png](img.png)
 - Link to mutation testing report.
 
 ### SELF-EVALUATION

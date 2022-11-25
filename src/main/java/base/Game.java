@@ -60,6 +60,7 @@ public class Game {
                         Play play = new Play(256,144);
                         isPlaying = true;
                         screen.clear();
+
                         play.draw(graphics, screen);
                         try {
                             screen.refresh();

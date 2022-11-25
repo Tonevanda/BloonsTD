@@ -38,19 +38,23 @@ public class IceTower implements Towers{
     public int price() {
         return 850;
     }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
 
-    public void upgradeLeft() { //mais quantidade de slow//
-        upgrades.upgradeLeft();
+    public boolean upgradeLeft() { //mais quantidade de slow//
+        if(!upgrades.upgradeLeft()) return false;
         if(upgrades.left == 1){
             value += 360;
         }
         else if(upgrades.left == 2){
             value += 400;
         }
+        return true;
     }
 
-    public void upgradeRight() { //mais range de slow//
-        upgrades.upgradeRight();
+    public boolean upgradeRight() { //mais range de slow//
+        if(!upgrades.upgradeRight()) return false;
         if(upgrades.right == 1){
             range+=100;
             value+=240;
@@ -59,6 +63,7 @@ public class IceTower implements Towers{
             range+=150;
             value+=280;
         }
+        return true;
     }
     public Position getRadius(){
         Position newPos = coords;

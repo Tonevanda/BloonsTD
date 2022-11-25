@@ -10,7 +10,8 @@ public interface Towers {
     public int getRange();
     public int getValue();
     public int price();
-    public void upgradeLeft();
-    public void upgradeRight();
+    public Upgrades getUpgrades();
+    public boolean upgradeLeft();
+    public boolean upgradeRight();
     public Position getRadius();
 }

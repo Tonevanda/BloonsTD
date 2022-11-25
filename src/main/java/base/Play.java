@@ -118,6 +118,7 @@ public class Play {
     public void draw(TextGraphics graphics, Screen screen) {
         this.graphics = graphics;
         this.screen = screen;
+        /*
         System.out.println("fodase");
 
         URL resourceMap = getClass().getResource("/map.png");
@@ -141,14 +142,19 @@ public class Play {
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
-
+        */
     }
     public void startGame(){
         player = new Player();
         round = 1;
         bloons = bloonSender(round);
         //if click start round
-        startRound();
+        try {
+            startRound();
+        }
+        catch (java.io.IOException ex){
+            System.out.println("obamna");
+        }
     }
 
     public boolean isAlive(){
@@ -164,25 +170,20 @@ public class Play {
         return false;
     }
 
-    public void startRound(){
+    public void startRound() throws IOException{
         for(Bloon bloon : bloons){
             System.out.println("drawing bloon");
+            //screen.clear();
             bloon.draw(graphics, screen);
-            try {
-                screen.refresh();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            bloon.move();
-            screen.clear();
-            draw(graphics,screen);
-            bloon.draw(graphics, screen);
-            try {
-                screen.refresh();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            screen.refresh();
             //need observer
+        }
+        for(int i=0;i<100;i++){
+            screen.clear();
+            //draw(graphics,screen);
+            bloons.get(0).move();
+            bloons.get(0).draw(graphics,screen);
+            screen.refresh();
         }
     }
 /*

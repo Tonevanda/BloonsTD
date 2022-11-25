@@ -39,18 +39,22 @@ public class DartMonkeyTower implements Towers{
     public int price() {
         return 250;
     }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
 
-    public void upgradeLeft(){ //mais attack speed //
-        upgrades.upgradeLeft();
+    public boolean upgradeLeft(){ //mais attack speed //
+        if(!upgrades.upgradeLeft()) return false;
         if(upgrades.left == 1){
             value += 168;
         }
         else if(upgrades.left == 2){
             value += 204;
         }
+        return true;
     }
-    public void upgradeRight() { //mais range//
-        upgrades.upgradeRight();
+    public boolean upgradeRight() { //mais range//
+        if(!upgrades.upgradeRight()) return false;
         if (upgrades.right == 1) {
             range = 150;
             value += 80;
@@ -58,6 +62,7 @@ public class DartMonkeyTower implements Towers{
             range = 200;
             value += 90;
         }
+        return true;
     }
     public Position getRadius(){
         Position newPos = coords;

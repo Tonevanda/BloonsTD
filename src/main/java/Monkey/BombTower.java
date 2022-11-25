@@ -38,9 +38,12 @@ public class BombTower implements Towers{
     public int price() {
         return 900;
     }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
 
-    public void upgradeLeft() { //mais range de impacto da bomba
-        upgrades.upgradeLeft();
+    public boolean upgradeLeft() { //mais range de impacto da bomba
+        if(!upgrades.upgradeLeft()) return false;
         if(upgrades.left == 1){
             //range = 150;
             value += 520;
@@ -49,10 +52,11 @@ public class BombTower implements Towers{
             //range = 200;
             value += 640;
         }
+        return true;
     }
 
-    public void upgradeRight() { //mais range
-        upgrades.upgradeRight();
+    public boolean upgradeRight() { //mais range
+        if(!upgrades.upgradeRight()) return false;
         if(upgrades.right == 1){
             range += 100;
             value += 200;
@@ -61,6 +65,7 @@ public class BombTower implements Towers{
             range += 100;
             value += 300;
         }
+        return true;
     }
     public Position getRadius(){
         Position newPos = coords;

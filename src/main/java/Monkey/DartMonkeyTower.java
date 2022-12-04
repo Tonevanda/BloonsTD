@@ -1,9 +1,10 @@
 package Monkey;
 
 import base.Position;
+import com.Tiago27Cruz.hero.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class DartMonkeyTower implements Towers{
+public class DartMonkeyTower extends Towers {
 
     private Position coords;
     private Upgrades upgrades;
@@ -16,18 +17,17 @@ public class DartMonkeyTower implements Towers{
         upgrades = new Upgrades();
     }
 
-    public void setPosition(Position pos) {
-        coords = pos;
-    }
-
-    public Position getPosition(){
-        return coords;
-    }
 
     public void draw(TextGraphics graphics) {
 
     }
+    public void setPosition(Position pos) {
+        coords = pos;
+    }
 
+    public Position getPosition() {
+        return coords;
+    }
     public int getRange(){
         return range;
     }
@@ -35,12 +35,19 @@ public class DartMonkeyTower implements Towers{
     public int getValue(){
         return value;
     }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
+    }
+
 
     public int price() {
         return 250;
-    }
-    public Upgrades getUpgrades(){
-        return upgrades;
     }
 
     public boolean upgradeLeft(){ //mais attack speed //
@@ -63,11 +70,5 @@ public class DartMonkeyTower implements Towers{
             value += 90;
         }
         return true;
-    }
-    public Position getRadius(){
-        Position newPos = coords;
-        newPos.setX(coords.getX()+range);
-        newPos.setY(coords.getY()+range);
-        return newPos;
     }
 }

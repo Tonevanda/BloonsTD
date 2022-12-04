@@ -19,7 +19,6 @@ import java.net.URL;
 public class MainMenu  {
     private int width;
     private int height;
-    private Play play;
     private Color[][] color = new Color[256][144];
 
     public MainMenu(int x, int y) {

@@ -2,6 +2,8 @@ package base;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -22,6 +24,7 @@ import java.net.URL;
 public class Game {
     private Screen screen;
     private MainMenu mainmenu;
+    private Play play;
     private boolean isPlaying = false;
     //private Arena arena;
 
@@ -57,7 +60,7 @@ public class Game {
                     System.out.println(e.getX());
                     TextGraphics graphics=screen.newTextGraphics();
                     if(e.getX()>103*4 && e.getX()<153*4 && e.getY()>72*4 && e.getY()<102*4){
-                        Play play = new Play(256,144);
+                        play = new Play(256,144);
                         isPlaying = true;
                         screen.clear();
 
@@ -112,6 +115,13 @@ public class Game {
     public void run() throws IOException {
         draw();
         while(true) {
+            KeyStroke key = screen.readInput();
+            if (key.getKeyType() == KeyType.EOF)
+                break;
+            if (!play.isAlive()){
+                isPlaying=false;
+                draw();
+            }
             /*
             KeyStroke key = screen.readInput();
             processKey(key);

@@ -19,6 +19,7 @@ public class Bloon{
     private Position coords;
     private int layers;
     private int type;
+    private Screen screen;
     private boolean hard = false;
     private Color[][] color = new Color[16][16];
 
@@ -72,13 +73,11 @@ public class Bloon{
 
     //concept
     public void move(){
-        //concept
-        while(coords.getX() < 100 && coords.getY() < 50) {
-            coords.setX(coords.getX() + 1);
-        }
+        coords.setX(coords.getX() + 1);
     }
 
-    public void draw(TextGraphics graphics, Screen screen) {
+    public void draw(Screen screen) {
+        this.screen = screen;
         //URL resourceBloon = getClass().getResource("/bloons/" + getColorFile(layers) + ".png");
         URL resourceBloon = getClass().getResource("/bloons/redBloonPixel.png");
         BufferedImage bloonimg;

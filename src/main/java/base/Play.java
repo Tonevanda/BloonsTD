@@ -28,7 +28,6 @@ public class Play {
     Play(int x, int y){
         width = x;
         height = y;
-
     }
 
     public List<Bloon> bloonSender(int round){
@@ -167,23 +166,32 @@ public class Play {
         return false;
     }
 
-    public void startRound() throws IOException{
+    public void drawBloons() throws IOException {
         for(Bloon bloon : bloons){
             System.out.println("drawing bloon");
-            //screen.clear();
-            bloon.draw(graphics, screen);
+            screen.clear();
+            draw(graphics,screen);
+            bloon.draw(screen);
             screen.refresh();
-            //need observer
         }
-            bloons.get(0).move();
-            bloons.get(0).draw(graphics,screen);
-            screen.refresh();
+    }
 
+    public void startRound() throws IOException{
+        for(Bloon bloon : bloons){
+            drawBloons();
+            bloon.move();
+        }
+    }
+
+    public void moveBloons(Bloon b){
+        while(b.getCoords().getX() < 100){
+            b.move();
+        }
     }
 /*
     public void popBloon(){
         for(Bloon bloon : bloons){
-            for(Towers tower: towers) {
+            for(Monkey.Towers tower: towers) {
                 if (bloon.getCoords() <= tower.getRadius()){
                     bloon.pop();
                     if(bloon.getLayers()==0){

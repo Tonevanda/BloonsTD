@@ -1,20 +1,23 @@
 package Monkey;
 
 import base.Position;
+import com.Tiago27Cruz.hero.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class BombTower implements Towers{
+public class BombTower extends Towers {
     private Position coords;
     private Upgrades upgrades;
     private int range;
-    private int value; // valor de venda
+    private int value;
 
     BombTower(){
         range = 200;
         value = 720;
         upgrades = new Upgrades();
     }
+    public void draw(TextGraphics graphics) {
 
+    }
     public void setPosition(Position pos) {
         coords = pos;
     }
@@ -22,11 +25,6 @@ public class BombTower implements Towers{
     public Position getPosition() {
         return coords;
     }
-
-    public void draw(TextGraphics graphics) {
-
-    }
-
     public int getRange(){
         return range;
     }
@@ -34,12 +32,18 @@ public class BombTower implements Towers{
     public int getValue(){
         return value;
     }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
+    }
 
     public int price() {
         return 900;
-    }
-    public Upgrades getUpgrades(){
-        return upgrades;
     }
 
     public boolean upgradeLeft() { //mais range de impacto da bomba
@@ -66,11 +70,5 @@ public class BombTower implements Towers{
             value += 300;
         }
         return true;
-    }
-    public Position getRadius(){
-        Position newPos = coords;
-        newPos.setX(coords.getX()+range);
-        newPos.setY(coords.getY()+range);
-        return newPos;
     }
 }

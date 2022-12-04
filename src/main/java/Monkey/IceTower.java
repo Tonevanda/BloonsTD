@@ -1,9 +1,10 @@
 package Monkey;
 
 import base.Position;
+import com.Tiago27Cruz.hero.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class IceTower implements Towers{
+public class IceTower extends Towers {
     private Position coords;
     private Upgrades upgrades;
     private int range;
@@ -15,6 +16,9 @@ public class IceTower implements Towers{
         upgrades = new Upgrades();
     }
 
+    public void draw(TextGraphics graphics) {
+
+    }
     public void setPosition(Position pos) {
         coords = pos;
     }
@@ -22,11 +26,6 @@ public class IceTower implements Towers{
     public Position getPosition() {
         return coords;
     }
-
-    public void draw(TextGraphics graphics) {
-
-    }
-
     public int getRange(){
         return range;
     }
@@ -34,12 +33,19 @@ public class IceTower implements Towers{
     public int getValue(){
         return value;
     }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
+    }
+
 
     public int price() {
         return 850;
-    }
-    public Upgrades getUpgrades(){
-        return upgrades;
     }
 
     public boolean upgradeLeft() { //mais quantidade de slow//
@@ -64,11 +70,5 @@ public class IceTower implements Towers{
             value+=280;
         }
         return true;
-    }
-    public Position getRadius(){
-        Position newPos = coords;
-        newPos.setX(coords.getX()+range);
-        newPos.setY(coords.getY()+range);
-        return newPos;
     }
 }

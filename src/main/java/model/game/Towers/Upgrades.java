@@ -1,6 +1,4 @@
-package Monkey;
-
-import base.Position;
+package model.game.Towers;
 
 public class Upgrades {
     int left;

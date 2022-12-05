@@ -1,6 +1,7 @@
-package Monkey;
+package Towers;
 
 import base.Position;
+import model.game.Towers.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

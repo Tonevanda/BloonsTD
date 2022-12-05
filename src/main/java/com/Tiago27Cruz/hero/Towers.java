@@ -1,6 +1,6 @@
-package drawer.menu.hero;
+package com.Tiago27Cruz.hero;
 
-import Monkey.Upgrades;
+import model.game.Towers.Upgrades;
 import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 

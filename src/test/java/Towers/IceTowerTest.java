@@ -1,5 +1,8 @@
-package Monkey;
+package Towers;
 
+import model.game.Towers.IceTower;
+import model.game.Towers.Towers;
+import model.game.Towers.Upgrades;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

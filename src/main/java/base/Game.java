@@ -58,7 +58,7 @@ public class Game {
                 public void mousePressed(MouseEvent e){
                     System.out.println(e.getX());
                     TextGraphics graphics=screen.newTextGraphics();
-                    if(e.getX()>103*4 && e.getX()<153*4 && e.getY()>72*4 && e.getY()<102*4){
+                    if(e.getX()>69*4 && e.getX()<186*4 && e.getY()>73*4 && e.getY()<107*4){
                         play = new Play(256,144);
                         isPlaying = true;
                         screen.clear();

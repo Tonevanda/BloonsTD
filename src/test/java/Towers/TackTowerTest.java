@@ -1,6 +1,9 @@
-package Monkey;
+package Towers;
 
 import base.Position;
+import model.game.Towers.TackTower;
+import model.game.Towers.Towers;
+import model.game.Towers.Upgrades;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,6 +1,8 @@
 package ScreenLoader;
 
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -8,9 +10,11 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -66,5 +70,44 @@ public class ScreenLoader {
         Font loadedFont = font.deriveFont(Font.PLAIN, 4);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
+    }
+
+    public void drawMenu(int width, int height){
+        URL resourceLogo = getClass().getResource("/monkey/logoStartButton.png");
+        BufferedImage logo;
+        Color[][] color = new Color[width][height];
+
+        try {
+            logo = ImageIO.read(resourceLogo);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        for(int i = 0; i<width; i++){
+            for(int j = 0;j<height;j++){
+                color[i][j] = new Color(logo.getRGB(i,j));
+            }
+        }
+
+        TextColor pixelColor;
+
+        for (int i=0;i<width;i++){
+            for(int j=0;j<height;j++){
+                pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
+                screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
+            }
+        }
+    }
+
+    public void clear() {
+        screen.clear();
+    }
+
+    public void refresh() throws IOException {
+        screen.refresh();
+    }
+
+    public void close() throws IOException {
+        screen.close();
     }
 }

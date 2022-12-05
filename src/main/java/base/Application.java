@@ -1,5 +1,6 @@
 package base;
 
+import ScreenLoader.ScreenLoader;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -8,6 +9,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import menu.Menu;
 import states.MainMenuState;
 import states.State;
 
@@ -22,11 +24,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class Application {
-    private Screen screen;
+    private ScreenLoader screen;
     private State state;
 
-    public Application() {
-        try {
+    public Application() throws IOException, URISyntaxException, FontFormatException {
+        /*try {
+
             URL resource = getClass().getClassLoader().getResource("square.ttf");
             File fontFile = new File(resource.toURI());
             Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -64,19 +67,18 @@ public class Application {
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         }
-        this.state = new MainMenuState();
+        */
+        this.screen = new ScreenLoader(256,144);
+        this.state = new MainMenuState(new Menu());
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
         Game game = new Game();
         game.run();
-
-        new Application().start();
+        new Application().start() ;
     }
 
-    public void setState(State state) {
-        this.state = state;
-    }
+    public void setState(State state) {this.state = state;}
 
     public void start() {
         int FPS = 10;
@@ -85,7 +87,7 @@ public class Application {
         while (this.state != null) {
             long startTime = System.currentTimeMillis();
 
-            state.step(this, screen, startTime);
+            //state.step(this, screen, startTime);
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;

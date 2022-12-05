@@ -1,4 +1,4 @@
-package Monkey;
+package model.game.Towers;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 

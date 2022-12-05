@@ -1,6 +1,5 @@
-package Monkey;
+package model.game.Towers;
 
-import Monkey.Upgrades;
 import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 

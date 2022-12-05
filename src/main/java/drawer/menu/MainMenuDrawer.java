@@ -1,4 +1,14 @@
 package drawer.menu;
 
-public class MainMenuDrawer {
+import ScreenLoader.ScreenLoader;
+import drawer.Drawer;
+import menu.Menu;
+
+public class MainMenuDrawer extends Drawer {
+    public MainMenuDrawer(Menu menu) {
+        super(menu);
+    }
+    protected void drawElements(ScreenLoader screen){
+        screen.drawMenu(256,144);
+    }
 }

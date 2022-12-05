@@ -1,5 +1,25 @@
 package drawer;
 
-public abstract class Drawer {
-    private final model;
+import ScreenLoader.ScreenLoader;
+
+import java.awt.*;
+import java.io.IOException;
+
+public abstract class Drawer<T> {
+    private final T model;
+
+    public Drawer(T model){
+        this.model = model;
+    }
+
+    public T getModel(){
+        return model;
+    }
+
+    public void draw(ScreenLoader screen) throws IOException{
+        screen.clear();
+        drawElements(screen);
+        screen.refresh();
+    }
+    protected abstract void drawElements(ScreenLoader screen);
 }

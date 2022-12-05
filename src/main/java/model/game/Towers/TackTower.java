@@ -1,41 +1,42 @@
-package Monkey;
+package model.game.Towers;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class IceTower extends Towers {
-    IceTower(){
-        range = 100;
-        value = 680;
+public class TackTower extends Towers {
+    TackTower(){
+        range = 80;
+        value = 320;
         upgrades = new Upgrades();
     }
 
     public void draw(TextGraphics graphics) {
+
     }
 
     public int price() {
-        return 850;
+        return 400;
     }
 
-    public boolean upgradeLeft() { //mais quantidade de slow//
+    public boolean upgradeLeft() { //mais attack speed
         if(!upgrades.upgradeLeft()) return false;
         if(upgrades.left == 1){
-            value += 360;
+           value += 200;
         }
         else if(upgrades.left == 2){
-            value += 400;
+            value += 270;
         }
         return true;
     }
 
-    public boolean upgradeRight() { //mais range de slow//
+    public boolean upgradeRight() { // mais range
         if(!upgrades.upgradeRight()) return false;
         if(upgrades.right == 1){
             range+=100;
-            value+=240;
+            value+=120;
         }
         if(upgrades.right == 2){
             range+=150;
-            value+=280;
+            value+=160;
         }
         return true;
     }

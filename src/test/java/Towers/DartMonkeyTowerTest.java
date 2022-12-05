@@ -1,6 +1,8 @@
-package Monkey;
+package Towers;
 
 import base.Position;
+import model.game.Towers.DartMonkeyTower;
+import model.game.Towers.Upgrades;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

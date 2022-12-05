@@ -4,18 +4,37 @@ import Monkey.Upgrades;
 import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-// antiga interface em vez de abstract class Towers -> se não for para usar podemos eliminar
-// backup basicamente
+public abstract class Towers {
+    protected Position coords;
+    protected Upgrades upgrades;
+    protected int range;
+    protected int value;
 
-public interface Towers {
-    public void setPosition(Position pos);
-    public Position getPosition();
-    public void draw(TextGraphics graphics);
-    public int getRange();
-    public int getValue();
-    public int price();
-    public Upgrades getUpgrades();
-    public boolean upgradeLeft();
-    public boolean upgradeRight();
-    public Position getRadius();
+    public void setPosition(Position pos) {
+        coords = pos;
+    }
+
+    public Position getPosition() {
+        return coords;
+    }
+    public int getRange(){
+        return range;
+    }
+
+    public int getValue(){
+        return value;
+    }
+    public Upgrades getUpgrades(){
+        return upgrades;
+    }
+    public Position getRadius(){
+        Position newPos = coords;
+        newPos.setX(coords.getX()+range);
+        newPos.setY(coords.getY()+range);
+        return newPos;
+    }
+    public abstract int price();
+    public abstract boolean upgradeLeft();
+    public abstract boolean upgradeRight();
+    public abstract void draw(TextGraphics graphics);
 }

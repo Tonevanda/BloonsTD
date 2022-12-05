@@ -33,7 +33,6 @@ public class Game {
             URL resource = getClass().getClassLoader().getResource("square.ttf");
             File fontFile = new File(resource.toURI());
             Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(font);
 

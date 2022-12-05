@@ -4,21 +4,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BombTowerTest {
+public class IceTowerTest {
     @Test
-    public void BombTower(){
-        Towers bomb = new BombTower();
-        assertEquals(200, bomb.getRange());
-        assertEquals(720, bomb.getValue());
+    public void IceTower(){
+        Towers bomb = new IceTower();
+        assertEquals(100, bomb.getRange());
+        assertEquals(680, bomb.getValue());
     }
     @Test
     public void Price(){
-        Towers bomb = new BombTower();
-        assertEquals(900, bomb.price());
+        Towers bomb = new IceTower();
+        assertEquals(850, bomb.price());
     }
     @Test
     public void upgradeLeft(){
-        Towers bomb = new BombTower();
+        Towers bomb = new IceTower();
         Upgrades upgrade = new Upgrades();
         assertEquals(upgrade, bomb.getUpgrades());
 
@@ -26,20 +26,20 @@ public class BombTowerTest {
         assertNotEquals(upgrade, bomb.getUpgrades());
         assertTrue(bomb.upgradeLeft());
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+520, bomb.getValue());
+        assertEquals(680+360, bomb.getValue());
 
         assertTrue(bomb.upgradeLeft());
         upgrade.upgradeLeft();
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+520+640, bomb.getValue());
+        assertEquals(680+360+400, bomb.getValue());
 
         assertFalse(bomb.upgradeLeft());
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+520+640, bomb.getValue());
+        assertEquals(680+360+400, bomb.getValue());
     }
     @Test
     public void upgradeRight(){
-        Towers bomb = new BombTower();
+        Towers bomb = new IceTower();
         Upgrades upgrade = new Upgrades();
         assertEquals(upgrade, bomb.getUpgrades());
 
@@ -47,15 +47,15 @@ public class BombTowerTest {
         assertNotEquals(upgrade, bomb.getUpgrades());
         assertTrue(bomb.upgradeRight());
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+200, bomb.getValue());
+        assertEquals(680+240, bomb.getValue());
 
         assertTrue(bomb.upgradeRight());
         upgrade.upgradeRight();
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+200+300, bomb.getValue());
+        assertEquals(680+240+280, bomb.getValue());
 
         assertFalse(bomb.upgradeRight());
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+200+300, bomb.getValue());
+        assertEquals(680+240+280, bomb.getValue());
     }
 }

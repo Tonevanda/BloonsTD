@@ -1,16 +1,11 @@
 package base;
 
-import Monkey.Towers;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
+import drawer.menu.hero.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,7 +113,7 @@ public class Play {
         this.graphics = graphics;
         this.screen = screen;
 
-        URL resourceMap = getClass().getResource("/map.png");
+        /*URL resourceMap = getClass().getResource("/map.png");
         BufferedImage map;
         try {
             map = ImageIO.read(resourceMap);
@@ -140,7 +135,7 @@ public class Play {
             }
         }
 
-    }
+    */}
     public void startGame(){
         player = new Player();
         round = 1;
@@ -169,7 +164,7 @@ public class Play {
     public void drawBloons() throws IOException {
         for(Bloon bloon : bloons){
             System.out.println("drawing bloon");
-            screen.clear();
+            //screen.clear();
             draw(graphics,screen);
             bloon.draw(screen);
             screen.refresh();
@@ -177,21 +172,26 @@ public class Play {
     }
 
     public void startRound() throws IOException{
+        drawBloons();
         for(Bloon bloon : bloons){
-            drawBloons();
-            bloon.move();
+            moveBloons(bloon);
         }
+        screen.clear();
+        draw(graphics, screen);
+        drawBloons();
+        screen.refresh();
     }
 
-    public void moveBloons(Bloon b){
-        while(b.getCoords().getX() < 100){
+    public void moveBloons(Bloon b) throws IOException {
+        //while(b.getCoords().getX() < 10){
+            System.out.println("movendo");
             b.move();
-        }
+        //}
     }
 /*
     public void popBloon(){
         for(Bloon bloon : bloons){
-            for(Monkey.Towers tower: towers) {
+            for(com.Tiago27Cruz.hero.Towers tower: towers) {
                 if (bloon.getCoords() <= tower.getRadius()){
                     bloon.pop();
                     if(bloon.getLayers()==0){

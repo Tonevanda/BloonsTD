@@ -53,7 +53,7 @@ public class MainMenu  {
         }
         graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));
         graphics.fillRectangle(new TerminalPosition(103, 72), new TerminalSize(50,30), ' ');
-
+*/
         //new Panel();
         /*
         graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));

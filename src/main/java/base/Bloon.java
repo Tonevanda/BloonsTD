@@ -73,7 +73,7 @@ public class Bloon{
 
     //concept
     public void move(){
-        coords.setX(coords.getX() + 1);
+        coords.setX(coords.getX() + 10);
     }
 
     public void draw(Screen screen) {

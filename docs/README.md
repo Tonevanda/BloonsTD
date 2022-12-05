@@ -6,7 +6,7 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 
 ### IMPLEMENTED FEATURES
 
-- **Image loading** - Now, upon loading the game, the game loads the title-screen image.
+- **Image loading** - Now, upon loading the game, the game loads the title-ScreenLoader image.
 - **Mouse press** - When the mouse is pressed and an action is valid (such as clicking the start game button), the game will now perform said action.
 
 ### PLANNED FEATURES

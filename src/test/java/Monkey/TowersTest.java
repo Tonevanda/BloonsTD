@@ -1,7 +1,6 @@
 package Monkey;
 
 import base.Position;
-import com.Tiago27Cruz.hero.Towers;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

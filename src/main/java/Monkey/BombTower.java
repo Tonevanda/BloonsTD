@@ -1,46 +1,14 @@
 package Monkey;
 
-import base.Position;
-import com.Tiago27Cruz.hero.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class BombTower extends Towers {
-    private Position coords;
-    private Upgrades upgrades;
-    private int range;
-    private int value;
-
     BombTower(){
         range = 200;
         value = 720;
         upgrades = new Upgrades();
     }
-    public void draw(TextGraphics graphics) {
-
-    }
-    public void setPosition(Position pos) {
-        coords = pos;
-    }
-
-    public Position getPosition() {
-        return coords;
-    }
-    public int getRange(){
-        return range;
-    }
-
-    public int getValue(){
-        return value;
-    }
-    public Upgrades getUpgrades(){
-        return upgrades;
-    }
-    public Position getRadius(){
-        Position newPos = coords;
-        newPos.setX(coords.getX()+range);
-        newPos.setY(coords.getY()+range);
-        return newPos;
-    }
+    public void draw(TextGraphics graphics) {}
 
     public int price() {
         return 900;

@@ -28,7 +28,7 @@ public class MainMenu  {
 
     public void draw(TextGraphics graphics, Screen screen) {
         //Reader reader = new Reader("/monkey/16", 16, 16);
-        URL resourceLogo = getClass().getResource("/monkey/logo.png");
+        URL resourceLogo = getClass().getResource("/monkey/logoStartButton.png");
         BufferedImage logo;
 
         try {
@@ -53,7 +53,7 @@ public class MainMenu  {
         }
         graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));
         graphics.fillRectangle(new TerminalPosition(103, 72), new TerminalSize(50,30), ' ');
-*/
+
         //new Panel();
         /*
         graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));

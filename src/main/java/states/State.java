@@ -24,13 +24,10 @@ public abstract class State<T> {
     public abstract Controller<T> getController();
     public abstract Drawer<T> getDrawer();
 
-    public void step(Application application, ScreenLoader screen, long time) {
+    public void step(Application application, ScreenLoader screen, long time) throws IOException {
         Position mousePressed = screen.getMousePressed();
         controller.step(application, mousePressed, time);
-        try {
-            drawer.draw(screen);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        drawer.draw(screen);
+
     }
 }

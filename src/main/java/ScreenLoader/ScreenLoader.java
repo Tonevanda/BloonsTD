@@ -26,7 +26,7 @@ import java.net.URL;
 
 public class ScreenLoader {
     private Screen screen;
-    Position mousePressed;
+    Position mousePressed = new Position(-1,-1);
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -57,6 +57,7 @@ public class ScreenLoader {
             @Override
             public void mousePressed(MouseEvent e) {
                 if(e.getX() > 0) mousePressed = new Position(e.getX(), e.getY());
+                else mousePressed = new Position(-1,-1);
                 System.out.println(e.getX());
             }
         });

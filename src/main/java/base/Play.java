@@ -18,7 +18,7 @@ public class Play {
     private Color[][] color = new Color[256][144];
     private Screen screen;
 
-    Play(){
+    public Play(){
     }
 
     public List<Bloon> bloonSender(int round){

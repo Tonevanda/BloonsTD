@@ -56,7 +56,7 @@ public class ScreenLoader {
         ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                mousePressed = new Position(e.getX(), e.getY());
+                if(e.getX() > 0) mousePressed = new Position(e.getX(), e.getY());
                 System.out.println(e.getX());
             }
         });

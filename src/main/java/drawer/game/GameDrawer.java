@@ -1,9 +1,8 @@
-package drawer.menu;
+package drawer.game;
 
 import ScreenLoader.ScreenLoader;
 import base.Play;
 import drawer.Drawer;
-import menu.Menu;
 
 public class GameDrawer extends Drawer {
     public GameDrawer(Play play) {

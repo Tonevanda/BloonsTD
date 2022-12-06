@@ -2,7 +2,7 @@ package drawer.menu;
 
 import ScreenLoader.ScreenLoader;
 import drawer.Drawer;
-import menu.Menu;
+import model.menu.Menu;
 
 public class MainMenuDrawer extends Drawer {
     public MainMenuDrawer(Menu menu) {

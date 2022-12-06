@@ -26,7 +26,7 @@ import java.net.URL;
 
 public class ScreenLoader {
     private Screen screen;
-    Position mousePressed = new Position(-1,-1);
+    private Position mousePressed = new Position(-1,-1);
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -56,16 +56,17 @@ public class ScreenLoader {
         ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getX() > 0) mousePressed = new Position(e.getX(), e.getY());
-                else mousePressed = new Position(-1,-1);
-                System.out.println(e.getX());
+                mousePressed = new Position(e.getX(), e.getY());
+                System.out.println("ScreenLoader: " + mousePressed.getX() + ", " + mousePressed.getY());
             }
         });
         return terminal;
     }
 
     public Position getMousePressed(){
-        return mousePressed;
+        Position pos = mousePressed;
+        mousePressed = new Position(-1,-1);
+        return pos;
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {

@@ -28,6 +28,5 @@ public abstract class State<T> {
         Position mousePressed = screen.getMousePressed();
         controller.step(application, mousePressed, time);
         drawer.draw(screen);
-
     }
 }

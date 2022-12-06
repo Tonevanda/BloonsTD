@@ -6,6 +6,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 // antiga interface em vez de abstract class Towers -> se não for para usar podemos eliminar
 // backup basicamente
+// can be deleted
 
 public interface Towers {
     public void setPosition(Position pos);
@@ -17,5 +18,5 @@ public interface Towers {
     public Upgrades getUpgrades();
     public boolean upgradeLeft();
     public boolean upgradeRight();
-    public Position getRadius();
+    public int getRadius();
 }

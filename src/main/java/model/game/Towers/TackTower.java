@@ -4,9 +4,13 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class TackTower extends Towers {
     TackTower(){
-        range = 80;
+        radius = 80;
         value = 320;
         upgrades = new Upgrades();
+    }
+
+    public String getFileName(){
+        return "monkey/tackTower";
     }
 
     public void draw(TextGraphics graphics) {
@@ -31,11 +35,11 @@ public class TackTower extends Towers {
     public boolean upgradeRight() { // mais range
         if(!upgrades.upgradeRight()) return false;
         if(upgrades.right == 1){
-            range+=100;
+            radius+=100;
             value+=120;
         }
         if(upgrades.right == 2){
-            range+=150;
+            radius+=150;
             value+=160;
         }
         return true;

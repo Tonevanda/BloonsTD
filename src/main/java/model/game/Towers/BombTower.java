@@ -4,10 +4,15 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class BombTower extends Towers {
     BombTower(){
-        range = 200;
+        radius = 200;
         value = 720;
         upgrades = new Upgrades();
     }
+
+    public String getFileName(){
+        return "monkey/bombTower";
+    }
+
     public void draw(TextGraphics graphics) {}
 
     public int price() {
@@ -30,11 +35,11 @@ public class BombTower extends Towers {
     public boolean upgradeRight() { //mais range
         if(!upgrades.upgradeRight()) return false;
         if(upgrades.right == 1){
-            range += 100;
+            radius += 100;
             value += 200;
         }
         else if(upgrades.right == 2){
-            range += 100;
+            radius += 100;
             value += 300;
         }
         return true;

@@ -4,15 +4,19 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class DartMonkeyTower extends Towers {
     DartMonkeyTower() {
-        range = 120;
+        radius = 120;
         value = 100;
         upgrades = new Upgrades();
     }
 
+    public String getFileName(){
+        return "monkey/dartMonkeyTower";
+    }
 
     public void draw(TextGraphics graphics) {
 
     }
+
     public int price() {
         return 250;
     }
@@ -30,10 +34,10 @@ public class DartMonkeyTower extends Towers {
     public boolean upgradeRight() { //mais range//
         if(!upgrades.upgradeRight()) return false;
         if (upgrades.right == 1) {
-            range = 150;
+            radius = 150;
             value += 80;
         } else if (upgrades.right == 2) {
-            range = 200;
+            radius = 200;
             value += 90;
         }
         return true;

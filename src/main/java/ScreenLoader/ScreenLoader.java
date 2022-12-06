@@ -1,5 +1,8 @@
 package ScreenLoader;
 
+import base.Bloon;
+import base.Position;
+import base.Reader;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
@@ -9,6 +12,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import model.game.Towers.Towers;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -22,6 +26,7 @@ import java.net.URL;
 
 public class ScreenLoader {
     private Screen screen;
+    Position mousePressed;
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -51,11 +56,15 @@ public class ScreenLoader {
         ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                mousePressed = new Position(e.getX(), e.getY());
                 System.out.println(e.getX());
             }
         });
-
         return terminal;
+    }
+
+    public Position getMousePressed(){
+        return mousePressed;
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {
@@ -72,31 +81,35 @@ public class ScreenLoader {
         return fontConfig;
     }
 
-    public void drawMenu(int width, int height){
-        URL resourceLogo = getClass().getResource("/monkey/logoStartButton.png");
-        BufferedImage logo;
-        Color[][] color = new Color[width][height];
-
-        try {
-            logo = ImageIO.read(resourceLogo);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        for(int i = 0; i<width; i++){
-            for(int j = 0;j<height;j++){
-                color[i][j] = new Color(logo.getRGB(i,j));
-            }
-        }
-
+    public void draw(int width, int height, Position pos, Color[][] color){
         TextColor pixelColor;
-
         for (int i=0;i<width;i++){
             for(int j=0;j<height;j++){
                 pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
-                screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
+                screen.setCharacter(i+pos.getX(),j+pos.getY(),new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
+    }
+
+    public void drawTower(Position pos, Towers tower){
+        String file = tower.getFileName();
+        Reader towerImg = new Reader(file, 69, 69); // alterar para actual size qnd tivermos os macaquitos
+        Color[][] color = towerImg.getColor();
+        draw(69,69,pos, color);
+    }
+
+    public void drawBloon(Position pos, Bloon bloon){
+        String file = bloon.getColorFile();
+        Reader bloonImg = new Reader(file, 16, 16);
+        Color[][] color = bloonImg.getColor();
+        draw(16, 16, pos, color);
+    }
+
+    public void drawMenu(int width, int height){
+        Reader menuImg = new Reader("monkey/logoStartButton", width, height);
+        Color[][] color = menuImg.getColor();
+        Position pos = new Position(0,0);
+        draw(width, height, pos, color);
     }
 
     public void clear() {
@@ -109,5 +122,9 @@ public class ScreenLoader {
 
     public void close() throws IOException {
         screen.close();
+    }
+
+    public Screen getScreen() {
+        return screen;
     }
 }

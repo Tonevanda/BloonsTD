@@ -1,5 +1,6 @@
 package base;
 
+/*
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -29,6 +30,7 @@ public class Game {
     //private Arena arena;
 
     public Game(){
+        /*
         try {
             URL resource = getClass().getClassLoader().getResource("square.ttf");
             File fontFile = new File(resource.toURI());
@@ -47,9 +49,7 @@ public class Game {
             Terminal terminal = factory.createTerminal();
             ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
                 @Override
-                public void windowClosing(WindowEvent e) {
-                    e.getWindow().dispose();
-                }
+                public void windowClosing(WindowEvent e) {e.getWindow().dispose();}
             });
             MouseAdapter mouseAdapter = new MouseAdapter(){
 
@@ -131,12 +131,14 @@ public class Game {
             if(arena.verifyMonsterCollisions()){
                 System.out.println("May you REST IN (ONE) PIECE");
                 screen.close();
-            }*/
+            }
         }
     }
-    /*
+
     private void processKey(KeyStroke key) throws IOException{
         arena.processKey(key);
     }
-    */
+
+
 }
+*/

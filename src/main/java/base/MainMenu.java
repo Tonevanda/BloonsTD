@@ -26,7 +26,7 @@ public class MainMenu  {
         height = y;
     }
 
-    public void draw(TextGraphics graphics, Screen screen) {
+    public void draw(Screen screen) {
         //Reader reader = new Reader("/monkey/16", 16, 16);
         URL resourceLogo = getClass().getResource("/monkey/logoStartButton.png");
         BufferedImage logo;
@@ -51,8 +51,8 @@ public class MainMenu  {
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));
-        graphics.fillRectangle(new TerminalPosition(103, 72), new TerminalSize(50,30), ' ');
+        //graphics.setBackgroundColor(TextColor.Factory.fromString("#0000FF"));
+        //graphics.fillRectangle(new TerminalPosition(103, 72), new TerminalSize(50,30), ' ');
 
         //new Panel();
         /*

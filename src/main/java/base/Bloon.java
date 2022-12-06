@@ -59,8 +59,8 @@ public class Bloon{
         layers--;
     }
 
-    public String getColorFile(int layer){
-        switch(layer){
+    public String getColorFile(){
+        switch(layers){
             case 1: return "redBloon";
             case 2: return "blueBloon";
             case 3: return "greenBloon";

@@ -1,20 +1,27 @@
 package states;
 
+import ScreenLoader.ScreenLoader;
+import base.MainMenu;
+import controller.Controller;
+import controller.menu.MenuController;
 import drawer.Drawer;
 import drawer.menu.MainMenuDrawer;
 import menu.Menu;
 
-public class MainMenuState extends State<Menu>{
+import java.io.IOException;
 
-    public MainMenuState(Menu model) {
-        super(model);
+public class MainMenuState extends State{
+    Menu menu;
+
+    public MainMenuState(Menu menu){
+        super("MainMenu");
+        this.menu= menu;
     }
-/*
-    @Override
-    public void drawImage() {Drawer draw = new MainMenuDrawer(getModel());}
- */
-    @Override
-    protected Drawer<Menu> getDrawer(){
-        return new MainMenuDrawer(getModel());
+
+    public Controller getController(){
+        return new MenuController();
+    }
+    public Drawer getDrawer() {
+        return new MainMenuDrawer(menu);
     }
 }

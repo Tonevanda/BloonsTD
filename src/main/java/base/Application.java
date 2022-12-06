@@ -28,53 +28,13 @@ public class Application {
     private State state;
 
     public Application() throws IOException, URISyntaxException, FontFormatException {
-        /*try {
-
-            URL resource = getClass().getClassLoader().getResource("square.ttf");
-            File fontFile = new File(resource.toURI());
-            Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(font);
-
-            DefaultTerminalFactory factory = new DefaultTerminalFactory();
-
-            Font loadedFont = font.deriveFont(Font.PLAIN, 4);
-            AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-
-            factory.setTerminalEmulatorFontConfiguration(fontConfig);
-            factory.setForceAWTOverSwing(true);
-            factory.setInitialTerminalSize(new TerminalSize(256, 144));
-
-            Terminal terminal = factory.createTerminal();
-            ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    e.getWindow().dispose();
-                }
-            });
-            MouseAdapter mouseAdapter = new MouseAdapter(){
-                private Color background;
-            };
-            ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(mouseAdapter);
-            this.screen = new TerminalScreen(terminal);
-            this.screen.setCursorPosition(null);
-            this.screen.startScreen();
-            this.screen.doResizeIfNecessary();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (FontFormatException e) {
-            throw new RuntimeException(e);
-        }
-        */
         this.screen = new ScreenLoader(256,144);
-        this.state = new MainMenuState(new Menu());
+        this.state = new MainMenuState(new Menu(),screen);
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
-        Game game = new Game();
-        game.run();
+        //Game game = new Game();
+        //game.run();
         new Application().start() ;
     }
 
@@ -83,15 +43,13 @@ public class Application {
     public void start() {
         int FPS = 10;
         int frameTime = 1000 / FPS;
+        state.draw();
 
         while (this.state != null) {
             long startTime = System.currentTimeMillis();
-
-            //state.step(this, screen, startTime);
-
+            state.step(this, screen, startTime);
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
-
             try {
                 if (sleepTime > 0) Thread.sleep(sleepTime);
             } catch (InterruptedException e) {

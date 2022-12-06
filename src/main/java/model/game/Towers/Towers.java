@@ -6,8 +6,9 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 public abstract class Towers {
     protected Position coords;
     protected Upgrades upgrades;
-    protected int range;
+    protected int radius;
     protected int value;
+
 
     public void setPosition(Position pos) {
         coords = pos;
@@ -16,8 +17,8 @@ public abstract class Towers {
     public Position getPosition() {
         return coords;
     }
-    public int getRange(){
-        return range;
+    public int getRadius(){
+        return radius;
     }
 
     public int getValue(){
@@ -26,12 +27,16 @@ public abstract class Towers {
     public Upgrades getUpgrades(){
         return upgrades;
     }
-    public Position getRadius(){
+
+    /*
+    public Position getRange(){
         Position newPos = coords;
         newPos.setX(coords.getX()+range);
         newPos.setY(coords.getY()+range);
         return newPos;
-    }
+    }*/
+
+    public abstract String getFileName();
     public abstract int price();
     public abstract boolean upgradeLeft();
     public abstract boolean upgradeRight();

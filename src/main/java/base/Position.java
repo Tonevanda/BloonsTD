@@ -24,6 +24,14 @@ public class Position {
     public void setX(int x) {
         this.x = x;
     }
+
+    public boolean isInRange(Position pos, int radius){
+        if((pos.getX()-radius < x && x < pos.getX()+radius) && (pos.getY()-radius < y && y < pos.getY()+radius)){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

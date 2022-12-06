@@ -1,8 +1,9 @@
 package base;
 
-import com.Tiago27Cruz.hero.Towers;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
+import model.game.Towers.Towers;
 
 import java.awt.*;
 import java.io.IOException;
@@ -10,19 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Play {
-    private int width;
-    private int height;
     private Player player;
     private int round;
     private List<Bloon> bloons;
     private List<Towers> towers;
     private Color[][] color = new Color[256][144];
-    private TextGraphics graphics;
     private Screen screen;
 
-    Play(int x, int y){
-        width = x;
-        height = y;
+    Play(){
     }
 
     public List<Bloon> bloonSender(int round){
@@ -109,9 +105,7 @@ public class Play {
         }
         return sending;
     }
-    public void draw(TextGraphics graphics, Screen screen) {
-        this.graphics = graphics;
-        this.screen = screen;
+    public void draw(Screen screen) {
 
         /*URL resourceMap = getClass().getResource("/map.png");
         BufferedImage map;
@@ -134,13 +128,11 @@ public class Play {
                 screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
-
     */}
     public void startGame(){
         player = new Player();
         round = 1;
         bloons = bloonSender(round);
-        //if click start round
         try {
             startRound();
         }
@@ -164,8 +156,7 @@ public class Play {
     public void drawBloons() throws IOException {
         for(Bloon bloon : bloons){
             System.out.println("drawing bloon");
-            //screen.clear();
-            draw(graphics,screen);
+            draw(screen);
             bloon.draw(screen);
             screen.refresh();
         }
@@ -177,7 +168,7 @@ public class Play {
             moveBloons(bloon);
         }
         screen.clear();
-        draw(graphics, screen);
+        draw(screen);
         drawBloons();
         screen.refresh();
     }
@@ -188,13 +179,13 @@ public class Play {
             b.move();
         //}
     }
-/*
-    public void popBloon(){
-        for(Bloon bloon : bloons){
-            for(com.Tiago27Cruz.hero.Towers tower: towers) {
-                if (bloon.getCoords() <= tower.getRadius()){
+
+    public void popBloon() {
+        for (Bloon bloon : bloons) {
+            for (Towers tower : towers) {
+                if (bloon.getCoords().isInRange(tower.getPosition(),tower.getRadius())) {
                     bloon.pop();
-                    if(bloon.getLayers()==0){
+                    if (bloon.getLayers() == 0) {
                         bloons.remove(bloon);
                         break;
                     }
@@ -202,5 +193,5 @@ public class Play {
             }
         }
     }
-*/
+
 }

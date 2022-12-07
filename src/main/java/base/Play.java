@@ -137,20 +137,10 @@ public class Play {
 
 
     public void startRound() throws IOException{
-        //drawBloons();
         for(Bloon bloon : bloons){
-            moveBloons(bloon);
+            //moveBloons(bloon);
         }
-        //screen.clear();
-        //draw(screen);
-        //drawBloons();
-        //screen.refresh();
-    }
 
-    public void moveBloons(Bloon b) throws IOException {
-        //while(b.getCoords().getX() < 10){
-            System.out.println("movendo");
-        //}
     }
 
     public void popBloon() {

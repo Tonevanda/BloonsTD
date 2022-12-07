@@ -19,6 +19,8 @@ public class Bloon{
     private Position position;
     private int layers;
     private int type;
+    private int waitBeforeMove;
+    private long lastMovement;
     private boolean hard = false;
     /*
      * 1: red
@@ -32,15 +34,25 @@ public class Bloon{
     public Bloon(String color){
         position = new Position(0,0);
         switch(color){
-            case "red": layers = 1; type =1; break;
-            case "blue": layers = 2; type = 2; break;
-            case "green": layers = 3; type = 3; break;
-            case "yellow": layers = 4; type = 4; break;
-            case "pink": layers = 5; type = 5; break;
-            case "hard": layers = 6; type = 6; hard = true; break;
+            case "red": layers = 1; type =1; waitBeforeMove = 1000; break;
+            case "blue": layers = 2; type = 2; waitBeforeMove = 1000;break;
+            case "green": layers = 3; type = 3; waitBeforeMove = 1000;break;
+            case "yellow": layers = 4; type = 4; waitBeforeMove = 1000;break;
+            case "pink": layers = 5; type = 5; waitBeforeMove = 1000;break;
+            case "hard": layers = 6; type = 6; hard = true; waitBeforeMove = 1000;break;
         }
     }
 
+    public int getWaitBeforeMove(){
+        return waitBeforeMove;
+    }
+    public boolean canMove(long time){
+        if(time - lastMovement > waitBeforeMove){
+            lastMovement=time;
+            return true;
+        }
+        return false;
+    }
     public void setPosition(Position newPos){
         position = newPos;
     }
@@ -62,11 +74,11 @@ public class Bloon{
     public String getColorFile(){
         switch(layers){
             case 1: return "bloons/redBloonPixel";
-            case 2: return "blueBloon";
-            case 3: return "greenBloon";
-            case 4: return "yellowBloon";
-            case 5: return "pinkBloon";
-            case 6: return "hardBloon";
+            case 2: return "bloons/blueBloonPixel";
+            case 3: return "bloons/greenBloon";
+            case 4: return "bloons/yellowBloon";
+            case 5: return "bloons/pinkBloon";
+            case 6: return "bloons/hardBloon";
             default: return "";
         }
     }

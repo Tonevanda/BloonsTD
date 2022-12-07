@@ -94,7 +94,6 @@ public class ScreenLoader {
     }
 
     public void drawArena(){
-        System.out.println("drawArena");
         Reader arenaImg = new Reader("map", 256,144);
         Color[][] color = arenaImg.getColor();
         Position pos = new Position(0,0);

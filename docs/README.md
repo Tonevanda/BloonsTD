@@ -1,5 +1,7 @@
 ## LDTS_<6><7> - <BLOONS TD>
 
+![img.png](imageMainMenu.png)
+
 In this project, you will be able to relive your long-lost joy in life by playing the good ol' Bloons TD. Here, you can fortify your defenses through the help of towers(some in the form of cute little monkeys) which will help you pop the balloons that are coming to get you!
 
 This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz (up202108810@fe.up.pt) and Tomás Xavier (up202108759@fe.up.pt)for LDTS 2022⁄23.
@@ -15,7 +17,6 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 
 - **Radius** - When selecting a tower to buy from the shop, while moving the mouse around to figure out where to place the tower, the game should not only show the tower where the cursor is, but also its range as well.
 - **Left upgrade** - While the right upgrade of every tower simply increases its range, the left upgrade should either improve one of the key defining moves that makes that tower special or add a new one, specific to that tower.
-
 
 ### DESIGN
 
@@ -34,11 +35,11 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 
 **Problem in Context**
 
-There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game (an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.). This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.
+Due to the nature of this project, one thing we had to do was implement the functions needed for the mouse to work properly (such as MousePressed and MouseHover), however, because we have two different menus, the main menu, with the Start and Quit buttons, and the game menu, when you are actually playing the game, there was a problem since we would have to test different mouse inputs for each type of menu because there were different buttons with different purposes from one menu to another. 
 
 **The Pattern**
 
-We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation (i.e., another subclass). This pattern allowed to address the identified problems because […].
+We decided to apply the **State** pattern.
 
 **Implementation**
 

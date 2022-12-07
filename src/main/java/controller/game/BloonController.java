@@ -12,17 +12,16 @@ public class BloonController extends GameController {
     }
 
     public void step(Application application, Position mousePressed, long time){
-        int i = 0;
+
         for(Bloon bloon : getModel().getBloons()){
             if(bloon.canMove(time)){
                 moveBloon(bloon, bloon.getPosition().getNextPosition());
-                this.lastMovement = time;
             }
         }
     }
 
     private void moveBloon(Bloon bloon, Position position){
-        System.out.println("Cur Pos: " + bloon.getPosition().getX() + ", " + bloon.getPosition().getY() + " New Pos: " + position.getX() + ", " + position.getY());
+        System.out.println("Current Position: " + bloon.getPosition().getX() + ", " + bloon.getPosition().getY() + " New Position: " + position.getX() + ", " + position.getY());
         bloon.setPosition(position);
     }
 }

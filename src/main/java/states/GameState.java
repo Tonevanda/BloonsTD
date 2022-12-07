@@ -11,11 +11,9 @@ import drawer.game.GameDrawer;
 
 public class GameState extends State<Play>{
 
-
     public GameState(Play play){
         super(play);
     }
-
 
     public Controller getController(){
         return new PlayController(getContext());

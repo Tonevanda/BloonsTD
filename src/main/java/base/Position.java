@@ -11,7 +11,6 @@ public class Position {
     public Position(int x, int y){
         this.x = x;
         this.y = y;
-
     }
 
     public void createPath(){
@@ -37,7 +36,7 @@ public class Position {
     }
 
     public boolean isInRange(Position pos, int radius){
-        if((pos.getX()-radius < x && x < pos.getX()+radius) && (pos.getY()-radius < y && y < pos.getY()+radius)){
+        if(Math.pow(x - pos.getX(),2) + Math.pow(y - pos.getY(),2) < Math.pow(radius,2)){
             return true;
         }
         return false;

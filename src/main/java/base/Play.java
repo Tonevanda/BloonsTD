@@ -32,7 +32,9 @@ public class Play {
 
         switch(round){
             case 1:{
-                for(int i = 0; i < 14; i++) sending.add(new Bloon("red"));
+                for(int i = 0; i < 10; i++) {
+                    sending.add(new Bloon("red"));
+                }
                 break;
             }
             case 2:{
@@ -137,9 +139,6 @@ public class Play {
 
 
     public void startRound() throws IOException{
-        for(Bloon bloon : bloons){
-            //moveBloons(bloon);
-        }
 
     }
 

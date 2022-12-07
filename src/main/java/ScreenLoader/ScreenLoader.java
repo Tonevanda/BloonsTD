@@ -62,7 +62,6 @@ public class ScreenLoader {
         });
         return terminal;
     }
-
     public Position getMousePressed(){
         Position pos = mousePressed;
         mousePressed = new Position(-1,-1);
@@ -91,6 +90,13 @@ public class ScreenLoader {
                 screen.setCharacter(i+pos.getX(),j+pos.getY(),new TextCharacter(' ').withBackgroundColor(pixelColor));
             }
         }
+    }
+
+    public void drawArena(){
+        Reader arenaImg = new Reader("map", 0,0);
+        Color[][] color = arenaImg.getColor();
+        Position pos = new Position(0,0);
+        draw(0,0,pos, color);
     }
 
     public void drawTower(Position pos, Towers tower){

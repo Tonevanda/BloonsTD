@@ -17,5 +17,8 @@ public class PlayController extends GameController {
         if(!getModel().isAlive()){
             application.setState(new MainMenuState(new Menu()));
         }
+        else if(getModel().hasRoundEnded()){
+
+        }
     }
 }

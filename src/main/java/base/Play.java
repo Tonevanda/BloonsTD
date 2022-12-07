@@ -19,7 +19,14 @@ public class Play {
     private Screen screen;
 
     public Play(){
+        player = new Player();
+        startGame();
     }
+    public int getRound(){
+
+    }
+
+    public List<Bloon> getBloons(){return bloons;}
 
     public List<Bloon> bloonSender(int round){
         List<Bloon> sending = new ArrayList<>();
@@ -105,32 +112,7 @@ public class Play {
         }
         return sending;
     }
-    public void draw(Screen screen) {
-
-        /*URL resourceMap = getClass().getResource("/map.png");
-        BufferedImage map;
-        try {
-            map = ImageIO.read(resourceMap);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        for(int i = 0;i<256;i++){
-            for(int j = 0;j<144;j++){
-                color[i][j] = new Color(map.getRGB(i,j));
-            }
-        }
-
-        TextColor pixelColor;
-        for (int i=0;i<256;i++){
-            for(int j=0;j<144;j++){
-                pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
-                screen.setCharacter(i,j,new TextCharacter(' ').withBackgroundColor(pixelColor));
-            }
-        }
-    */}
     public void startGame(){
-        player = new Player();
         round = 1;
         bloons = bloonSender(round);
         try {
@@ -156,21 +138,21 @@ public class Play {
     public void drawBloons() throws IOException {
         for(Bloon bloon : bloons){
             System.out.println("drawing bloon");
-            draw(screen);
-            bloon.draw(screen);
+            //draw(screen);
+            //bloon.draw(screen);
             screen.refresh();
         }
     }
 
     public void startRound() throws IOException{
-        drawBloons();
+        //drawBloons();
         for(Bloon bloon : bloons){
             moveBloons(bloon);
         }
-        screen.clear();
-        draw(screen);
-        drawBloons();
-        screen.refresh();
+        //screen.clear();
+        //draw(screen);
+        //drawBloons();
+        //screen.refresh();
     }
 
     public void moveBloons(Bloon b) throws IOException {

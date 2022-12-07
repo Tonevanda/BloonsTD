@@ -75,7 +75,7 @@ public class Bloon{
     public void move(){
         coords.setX(coords.getX() + 10);
     }
-
+/*
     public void draw(Screen screen) {
         this.screen = screen;
         //URL resourceBloon = getClass().getResource("/bloons/" + getColorFile(layers) + ".png");
@@ -104,5 +104,5 @@ public class Bloon{
 
             }
         }
-    }
+    }*/
 }

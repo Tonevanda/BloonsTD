@@ -1,6 +1,6 @@
 package ScreenLoader;
 
-import base.Bloon;
+import model.game.Elements.Bloon;
 import base.Position;
 import base.Reader;
 import com.googlecode.lanterna.TerminalSize;
@@ -12,13 +12,11 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import model.game.Towers.Towers;
+import model.game.Elements.Towers.Towers;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -87,16 +85,20 @@ public class ScreenLoader {
         for (int i=0;i<width;i++){
             for(int j=0;j<height;j++){
                 pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
-                screen.setCharacter(i+pos.getX(),j+pos.getY(),new TextCharacter(' ').withBackgroundColor(pixelColor));
+
+                if(!(pixelColor.getRed()==200 && pixelColor.getGreen()==191 && pixelColor.getBlue()==231)) {
+                    screen.setCharacter(i + pos.getX(), j + pos.getY(), new TextCharacter(' ').withBackgroundColor(pixelColor));
+                }
             }
         }
     }
 
     public void drawArena(){
-        Reader arenaImg = new Reader("map", 0,0);
+        System.out.println("drawArena");
+        Reader arenaImg = new Reader("map", 256,144);
         Color[][] color = arenaImg.getColor();
         Position pos = new Position(0,0);
-        draw(0,0,pos, color);
+        draw(256,144,pos, color);
     }
 
     public void drawTower(Position pos, Towers tower){

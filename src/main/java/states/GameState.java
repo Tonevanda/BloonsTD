@@ -5,7 +5,6 @@ import base.Play;
 import controller.Controller;
 import controller.game.PlayController;
 import drawer.Drawer;
-import drawer.game.ArenaDrawer;
 import drawer.game.GameDrawer;
 
 //é o play
@@ -22,7 +21,7 @@ public class GameState extends State<Play>{
         return new PlayController(getContext());
     }
     public Drawer getDrawer() {
-        return new ArenaDrawer(getContext());
+        return new GameDrawer(getContext());
     }
 }
 

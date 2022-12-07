@@ -1,4 +1,4 @@
-package model.game.Towers;
+package model.game.Elements.Towers;
 
 import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;

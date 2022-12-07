@@ -9,16 +9,19 @@ import states.MainMenuState;
 import java.util.List;
 
 public class PlayController extends GameController {
+    private final BloonController bloonController;
     public PlayController(Play play){
         super(play);
+
+        this.bloonController = new BloonController(play);
     }
 
     public void step(Application application, Position mousePressed, long time){
         if(!getModel().isAlive()){
             application.setState(new MainMenuState(new Menu()));
         }
-        else if(getModel().hasRoundEnded()){
-
+        else{
+            bloonController.step(application,mousePressed,time);
         }
     }
 }

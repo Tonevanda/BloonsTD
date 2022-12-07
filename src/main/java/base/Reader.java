@@ -21,14 +21,6 @@ public class Reader {
         this.y = y;
         this.color=new Color[x][y];
         this.color = imgGetter(file);
-        /* pixelColor;
-        for (int i=0;i<x;i++){
-            for(int j=0;j<y;j++){
-                pixelColor = new TextColor.RGB(color[i][j].getRed(),color[i][j].getGreen(),color[i][j].getBlue());
-                //screen.setCharacter(i+x,j+y,new TextCharacter(' ').withBackgroundColor(pixelColor));
-            }
-        }
-        //this.color = pixelColor;*/
     }
 
     public Color[][] imgGetter(String file){

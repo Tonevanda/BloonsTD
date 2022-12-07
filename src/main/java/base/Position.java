@@ -1,12 +1,22 @@
 package base;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Position {
     private int y;
     private int x;
+    private List<Position> path = new ArrayList<>();
 
     public Position(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public void createPath(){
+        for(int i = 0; i < 10; i++){
+            path.add(new Position(i, 0));
+        }
     }
 
     public int getY() {
@@ -30,6 +40,17 @@ public class Position {
             return true;
         }
         return false;
+    }
+
+    public Position getNextPosition(){
+        createPath();
+        Position pos = new Position(x,y);
+        for(int i = 0; i < path.size()-1;i++){
+            if(path.get(i).equals(pos)){
+                return(path.get(i+1));
+            }
+        }
+        return pos;
     }
 
     @Override

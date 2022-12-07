@@ -1,6 +1,7 @@
 package Towers;
 
 import base.Position;
+import model.game.Elements.Towers.*;
 import model.game.Towers.*;
 import org.junit.jupiter.api.Test;
 

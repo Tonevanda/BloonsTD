@@ -1,19 +1,13 @@
 package drawer.game;
 
 import ScreenLoader.ScreenLoader;
-import base.Bloon;
 import base.Play;
+import model.game.Elements.Bloon;
 
 import java.util.List;
 
-public class BloonDrawer extends GameDrawer{
-    public BloonDrawer(Play play){
-        super(play);
-    }
-    protected void drawElements(ScreenLoader screen){
-        List<Bloon> bloons = getModel().getBloons();
-        for(Bloon bloon : bloons){
-            screen.drawBloon(bloon.getCoords(), bloon);
-        }
+public class BloonDrawer implements ElementDrawer<Bloon>{
+    public void draw(Bloon bloon, ScreenLoader screen){
+        screen.drawBloon(bloon.getPosition(), bloon);
     }
 }

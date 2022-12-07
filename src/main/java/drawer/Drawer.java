@@ -2,7 +2,6 @@ package drawer;
 
 import ScreenLoader.ScreenLoader;
 
-import java.awt.*;
 import java.io.IOException;
 
 public abstract class Drawer<T> {

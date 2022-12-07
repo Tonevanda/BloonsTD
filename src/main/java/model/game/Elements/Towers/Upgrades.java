@@ -1,4 +1,4 @@
-package model.game.Towers;
+package model.game.Elements.Towers;
 
 public class Upgrades {
     int left;

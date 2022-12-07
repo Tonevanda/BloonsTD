@@ -1,8 +1,8 @@
 package Towers;
 
-import model.game.Towers.BombTower;
-import model.game.Towers.Towers;
-import model.game.Towers.Upgrades;
+import model.game.Elements.Towers.BombTower;
+import model.game.Elements.Towers.Towers;
+import model.game.Elements.Towers.Upgrades;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

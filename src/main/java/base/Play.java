@@ -1,9 +1,9 @@
 package base;
 
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import model.game.Towers.Towers;
+import model.game.Elements.Bloon;
+import model.game.Elements.Towers.Towers;
 
 import java.awt.*;
 import java.io.IOException;
@@ -15,18 +15,17 @@ public class Play {
     private int round;
     private List<Bloon> bloons;
     private List<Towers> towers;
-    private Color[][] color = new Color[256][144];
-    private Screen screen;
 
     public Play(){
         player = new Player();
         startGame();
     }
     public int getRound(){
-
+        return round;
     }
 
     public List<Bloon> getBloons(){return bloons;}
+    public List<Towers> getTowers(){return towers;}
 
     public List<Bloon> bloonSender(int round){
         List<Bloon> sending = new ArrayList<>();
@@ -115,6 +114,7 @@ public class Play {
     public void startGame(){
         round = 1;
         bloons = bloonSender(round);
+        System.out.println("Game Started");
         try {
             startRound();
         }
@@ -135,14 +135,6 @@ public class Play {
         return false;
     }
 
-    public void drawBloons() throws IOException {
-        for(Bloon bloon : bloons){
-            System.out.println("drawing bloon");
-            //draw(screen);
-            //bloon.draw(screen);
-            screen.refresh();
-        }
-    }
 
     public void startRound() throws IOException{
         //drawBloons();
@@ -158,14 +150,13 @@ public class Play {
     public void moveBloons(Bloon b) throws IOException {
         //while(b.getCoords().getX() < 10){
             System.out.println("movendo");
-            b.move();
         //}
     }
 
     public void popBloon() {
         for (Bloon bloon : bloons) {
             for (Towers tower : towers) {
-                if (bloon.getCoords().isInRange(tower.getPosition(),tower.getRadius())) {
+                if (bloon.getPosition().isInRange(tower.getPosition(),tower.getRadius())) {
                     bloon.pop();
                     if (bloon.getLayers() == 0) {
                         bloons.remove(bloon);

@@ -3,7 +3,6 @@ package controller;
 import base.Application;
 import base.Position;
 
-import javax.naming.ldap.Control;
 
 public abstract class Controller<T> {
     private final T model;

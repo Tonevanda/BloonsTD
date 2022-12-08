@@ -1,12 +1,8 @@
 package base;
 
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -14,7 +10,6 @@ public class Reader {
     private int x;
     private int y;
     private Color[][] color;
-    private BufferedImage image;
 
     public Reader(String file,int x, int y){
         this.x = x;
@@ -25,6 +20,7 @@ public class Reader {
 
     public Color[][] imgGetter(String file){
         URL resource = getClass().getResource("/" + file + ".png");
+        BufferedImage image;
         try {
             image = ImageIO.read(resource);
         } catch (IOException e) {

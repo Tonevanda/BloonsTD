@@ -4,7 +4,7 @@ public class Upgrades {
     int left;
     int right;
 
-    Upgrades(){
+    public Upgrades(){
         left = 0;
         right = 0;
     }

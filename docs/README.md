@@ -4,7 +4,7 @@
 
 In this project, you will be able to relive your long-lost joy in life by playing the good ol' Bloons TD. Here, you can fortify your defenses through the help of towers(some in the form of cute little monkeys) which will help you pop the balloons that are coming to get you!
 
-This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz (up202108810@fe.up.pt) and Tomás Xavier (up202108759@fe.up.pt)for LDTS 2022⁄23.
+This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz (up202108810@fe.up.pt) and Tomás Xavier (up202108759@fe.up.pt) for LDTS 2022⁄23.
 
 ### IMPLEMENTED FEATURES
 
@@ -39,7 +39,7 @@ Due to the nature of this project, one thing we had to do was implement the func
 
 **The Pattern**
 
-We decided to apply the **State** pattern.
+We decided to apply the **State** pattern. With this implementation of the **State** pattern, instead of constantly checking where the player is in the game (either in the Main Menu or the Game Menu) and then using that inform to process the mouse input in different ways, the game changes the **state** of the menu and, depending on the **state** the game will behave differently to the mouse inputs it receives.
 
 **Implementation**
 

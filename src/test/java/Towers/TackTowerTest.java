@@ -12,7 +12,7 @@ public class TackTowerTest {
     @Test
     public void TackTower(){
         Towers tack = new TackTower();
-        assertEquals(80, tack.getRange());
+        assertEquals(80, tack.getRadius());
         assertEquals(320, tack.getValue());
     }
     @Test

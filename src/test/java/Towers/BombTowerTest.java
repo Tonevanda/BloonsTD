@@ -11,7 +11,7 @@ public class BombTowerTest {
     @Test
     public void BombTower(){
         Towers bomb = new BombTower();
-        assertEquals(200, bomb.getRange());
+        assertEquals(200, bomb.getRadius());
         assertEquals(720, bomb.getValue());
     }
     @Test

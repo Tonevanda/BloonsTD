@@ -11,7 +11,7 @@ public class IceTowerTest {
     @Test
     public void IceTower(){
         Towers bomb = new IceTower();
-        assertEquals(100, bomb.getRange());
+        assertEquals(100, bomb.getRadius());
         assertEquals(680, bomb.getValue());
     }
     @Test

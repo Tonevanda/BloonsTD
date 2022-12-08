@@ -3,7 +3,7 @@ package model.game.Elements.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class IceTower extends Towers {
-    IceTower(){
+    public IceTower(){
         radius = 100;
         value = 680;
         upgrades = new Upgrades();

@@ -12,7 +12,7 @@ public class DartMonkeyTowerTest {
 
         DartMonkeyTower monkey = new DartMonkeyTower();
 
-        assertEquals(120, monkey.getRange());
+        assertEquals(120, monkey.getRadius());
         assertEquals(100, monkey.getValue());
     }
 

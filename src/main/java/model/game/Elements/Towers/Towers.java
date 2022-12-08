@@ -29,12 +29,13 @@ public abstract class Towers {
     }
 
     /*
-    public Position getRange(){
+    public Position getRange() {
         Position newPos = coords;
-        newPos.setX(coords.getX()+range);
-        newPos.setY(coords.getY()+range);
+        newPos.setX(coords.getX() + range);
+        newPos.setY(coords.getY() + range);
         return newPos;
-    }*/
+    }
+    */
 
     public abstract String getFileName();
     public abstract int price();

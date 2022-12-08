@@ -3,7 +3,7 @@ package model.game.Elements.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class DartMonkeyTower extends Towers {
-    DartMonkeyTower() {
+    public DartMonkeyTower() {
         radius = 120;
         value = 100;
         upgrades = new Upgrades();

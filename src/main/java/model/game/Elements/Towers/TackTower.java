@@ -3,7 +3,7 @@ package model.game.Elements.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class TackTower extends Towers {
-    TackTower(){
+    public TackTower(){
         radius = 80;
         value = 320;
         upgrades = new Upgrades();

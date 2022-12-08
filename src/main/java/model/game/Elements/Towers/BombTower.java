@@ -3,7 +3,7 @@ package model.game.Elements.Towers;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class BombTower extends Towers {
-    BombTower(){
+    public BombTower(){
         radius = 200;
         value = 720;
         upgrades = new Upgrades();

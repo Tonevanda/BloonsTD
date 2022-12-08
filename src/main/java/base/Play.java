@@ -1,11 +1,8 @@
 package base;
 
 
-import com.googlecode.lanterna.screen.Screen;
 import model.game.Elements.Bloon;
 import model.game.Elements.Towers.Towers;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,12 +118,12 @@ public class Play {
             startRound();
         }
         catch (java.io.IOException ex){
+            System.out.println("IOException caught");
         }
     }
 
     public boolean isAlive(){
-        if(player.getLives()>0) return true;
-        return false;
+        return player.getLives() > 0;
     }
 
     public boolean hasRoundEnded(){

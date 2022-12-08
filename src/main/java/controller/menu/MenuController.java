@@ -3,7 +3,6 @@ package controller.menu;
 import base.Application;
 import base.Play;
 import base.Position;
-import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 import controller.Controller;
 import model.menu.Menu;
 import states.GameState;

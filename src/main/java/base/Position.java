@@ -36,10 +36,7 @@ public class Position {
     }
 
     public boolean isInRange(Position pos, int radius){
-        if(Math.pow(x - pos.getX(),2) + Math.pow(y - pos.getY(),2) < Math.pow(radius,2)){
-            return true;
-        }
-        return false;
+        return Math.pow(x - pos.getX(), 2) + Math.pow(y - pos.getY(), 2) < Math.pow(radius, 2);
     }
 
     public Position getNextPosition(){

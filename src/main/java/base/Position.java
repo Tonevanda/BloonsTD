@@ -14,8 +14,41 @@ public class Position {
     }
 
     public void createPath(){
-        for(int i = 0; i < 10; i++){
-            path.add(new Position(i, 0));
+        for(int i = -30; i < 49; i++){
+            path.add(new Position(i, 48));
+        }
+        for(int i = 48; i > 15; i--){
+            path.add(new Position(49, i));
+        }
+        for(int i = 50; i < 98; i++){
+            path.add(new Position(i, 16));
+        }
+        for(int i = 17; i < 81; i++){
+            path.add(new Position(97, i));
+        }
+        for(int i = 96; i > 16; i--){
+            path.add(new Position(i, 80));
+        }
+        for(int i = 81; i < 113; i++){
+            path.add(new Position(17, i));
+        }
+        for(int i = 18; i < 162; i++){
+            path.add(new Position(i, 112));
+        }
+        for(int i = 111; i > 63; i--){
+            path.add(new Position(161, i));
+        }
+        for(int i = 160; i > 128; i--){
+            path.add(new Position(i, 64));
+        }
+        for(int i = 63; i > 31; i--){
+            path.add(new Position(129, i));
+        }
+        for(int i = 130; i < 162; i++){
+            path.add(new Position(i, 32));
+        }
+        for(int i = 31; i > -30; i--){
+            path.add(new Position(161, i));
         }
     }
 

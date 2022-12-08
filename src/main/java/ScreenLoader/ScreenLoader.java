@@ -55,7 +55,7 @@ public class ScreenLoader {
             @Override
             public void mousePressed(MouseEvent e) {
                 mousePressed = new Position(e.getX(), e.getY());
-                System.out.println("ScreenLoader: " + mousePressed.getX() + ", " + mousePressed.getY());
+                System.out.println("ScreenLoader: " + mousePressed.getX() + ", " + e.getY());
             }
         });
         return terminal;
@@ -68,16 +68,16 @@ public class ScreenLoader {
 
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {
         URL resource = getClass().getClassLoader().getResource("square.ttf");
+        assert resource != null;
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        DefaultTerminalFactory factory = new DefaultTerminalFactory();
+        //DefaultTerminalFactory factory = new DefaultTerminalFactory();
 
         Font loadedFont = font.deriveFont(Font.PLAIN, 4);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        return fontConfig;
+        return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 
     public void draw(int width, int height, Position pos, Color[][] color){
@@ -94,7 +94,7 @@ public class ScreenLoader {
     }
 
     public void drawArena(){
-        Reader arenaImg = new Reader("map", 256,144);
+        Reader arenaImg = new Reader("newMap", 256,144);
         Color[][] color = arenaImg.getColor();
         Position pos = new Position(0,0);
         draw(256,144,pos, color);

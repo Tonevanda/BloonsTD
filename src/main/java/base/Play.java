@@ -15,6 +15,7 @@ public class Play {
 
     public Play(){
         player = new Player();
+        bloons = new ArrayList<>();
         startGame();
     }
     public int getRound(){
@@ -24,13 +25,14 @@ public class Play {
     public List<Bloon> getBloons(){return bloons;}
     public List<Towers> getTowers(){return towers;}
 
-    public List<Bloon> bloonSender(int round){
+    public List<Bloon> bloonSender(){
         List<Bloon> sending = new ArrayList<>();
 
         switch(round){
             case 1:{
-                for(int i = 0; i < 10; i++) {
-                    sending.add(new Bloon("red"));
+                bloons.add(new Bloon("red"));
+                for(int i = 1; i < 10; i++) {
+                    bloons.add(new Bloon("red"));
                 }
                 break;
             }
@@ -112,31 +114,23 @@ public class Play {
     }
     public void startGame(){
         round = 1;
-        bloons = bloonSender(round);
+        bloonSender();
         System.out.println("Game Started");
-        try {
-            startRound();
-        }
-        catch (java.io.IOException ex){
-            System.out.println("IOException caught");
-        }
     }
 
     public boolean isAlive(){
         return player.getLives() > 0;
     }
-
-    public boolean hasRoundEnded(){
-        if(bloons.isEmpty()){
-            round++;
-            return true;
-        }
-        return false;
+    public Player getPlayer(){
+        return player;
     }
 
+    public boolean hasRoundEnded() {
+        return bloons.isEmpty();
+    }
 
-    public void startRound() throws IOException{
-
+    public void removeBloon(Bloon bloon){
+        bloons.remove(bloon);
     }
 
     public void popBloon() {

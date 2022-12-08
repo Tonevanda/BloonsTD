@@ -1,6 +1,5 @@
 package states;
 
-//import base.Game;
 import base.Play;
 import controller.Controller;
 import controller.game.PlayController;
@@ -14,7 +13,6 @@ public class GameState extends State<Play>{
     public GameState(Play play){
         super(play);
     }
-
     public Controller getController(){
         return new PlayController(getContext());
     }

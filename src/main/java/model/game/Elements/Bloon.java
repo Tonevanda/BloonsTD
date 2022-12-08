@@ -1,19 +1,6 @@
 package model.game.Elements;
 
 import base.Position;
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 public class Bloon{
     private Position position;
@@ -32,9 +19,9 @@ public class Bloon{
      */
 
     public Bloon(String color){
-        position = new Position(0,0);
+        position = new Position(-30,48);
         switch(color){
-            case "red": layers = 1; type =1; waitBeforeMove = 1000; break;
+            case "red": layers = 1; type =1; waitBeforeMove = 0; break;
             case "blue": layers = 2; type = 2; waitBeforeMove = 1000;break;
             case "green": layers = 3; type = 3; waitBeforeMove = 1000;break;
             case "yellow": layers = 4; type = 4; waitBeforeMove = 1000;break;
@@ -46,6 +33,7 @@ public class Bloon{
     public int getWaitBeforeMove(){
         return waitBeforeMove;
     }
+
     public boolean canMove(long time){
         if(time - lastMovement > waitBeforeMove){
             lastMovement=time;

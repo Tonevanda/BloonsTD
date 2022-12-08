@@ -1,9 +1,7 @@
 package drawer.game;
 
 import ScreenLoader.ScreenLoader;
-import base.Play;
 import model.game.Elements.Bloon;
-import java.util.List;
 
 
 public class BloonDrawer implements ElementDrawer<Bloon>{

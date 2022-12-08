@@ -22,11 +22,11 @@ public class Bloon{
         position = new Position(-30,48);
         switch(color){
             case "red": layers = 1; type =1; waitBeforeMove = 0; break;
-            case "blue": layers = 2; type = 2; waitBeforeMove = 1000;break;
-            case "green": layers = 3; type = 3; waitBeforeMove = 1000;break;
-            case "yellow": layers = 4; type = 4; waitBeforeMove = 1000;break;
-            case "pink": layers = 5; type = 5; waitBeforeMove = 1000;break;
-            case "hard": layers = 6; type = 6; hard = true; waitBeforeMove = 1000;break;
+            case "blue": layers = 2; type = 2; waitBeforeMove = 0;break;
+            case "green": layers = 3; type = 3; waitBeforeMove = 0;break;
+            case "yellow": layers = 4; type = 4; waitBeforeMove = 0;break;
+            case "pink": layers = 5; type = 5; waitBeforeMove = 0;break;
+            case "hard": layers = 6; type = 6; hard = true; waitBeforeMove = 100;break;
         }
     }
 

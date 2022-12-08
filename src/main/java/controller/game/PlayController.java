@@ -20,7 +20,6 @@ public class PlayController extends GameController {
             application.setState(new MainMenuState(new Menu()));
         }
         else{
-
             bloonController.step(application,mousePressed,time);
         }
     }

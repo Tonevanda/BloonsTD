@@ -32,6 +32,10 @@ public class BloonController extends GameController {
                 System.out.println("Player Hearts: " + getModel().getPlayer().getLives());
             }
         }
+        if(bloonsToSend==0 && getModel().hasRoundEnded()){
+            getModel().nextRound();
+            bloonsToSend=1;
+        }
     }
 
     private void moveBloon(Bloon bloon, Position position){

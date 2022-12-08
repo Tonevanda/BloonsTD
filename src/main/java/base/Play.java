@@ -16,7 +16,9 @@ public class Play {
     public Play(){
         player = new Player();
         bloons = new ArrayList<>();
-        startGame();
+        towers = new ArrayList<>();
+        round = 1;
+        startRound();
     }
     public int getRound(){
         return round;
@@ -25,97 +27,92 @@ public class Play {
     public List<Bloon> getBloons(){return bloons;}
     public List<Towers> getTowers(){return towers;}
 
-    public List<Bloon> bloonSender(){
-        List<Bloon> sending = new ArrayList<>();
-
+    public void bloonSender(){
         switch(round){
             case 1:{
-                bloons.add(new Bloon("red"));
-                for(int i = 1; i < 10; i++) {
+                for(int i = 0; i < 10; i++) {
                     bloons.add(new Bloon("red"));
                 }
                 break;
             }
             case 2:{
-                for(int i = 0; i<30; i++) sending.add(new Bloon("red"));
+                for(int i = 0; i<30; i++) bloons.add(new Bloon("red"));
                 break;
             }
             case 3:{
-                for(int i = 0; i<20; i++) sending.add(new Bloon("red"));
-                for(int i= 0; i<5;i++) sending.add(new Bloon("blue"));
+                for(int i = 0; i<20; i++) bloons.add(new Bloon("red"));
+                for(int i= 0; i<5;i++) bloons.add(new Bloon("blue"));
                 break;
             }
             case 4:{
-                for(int i = 0; i<25;i++)sending.add(new Bloon("blue"));
+                for(int i = 0; i<25;i++)bloons.add(new Bloon("blue"));
                 break;
             }
             case 5:{
-                for(int i = 0; i<20; i++)sending.add(new Bloon("blue"));
-                for(int i = 0; i<5; i++)sending.add(new Bloon("green"));
+                for(int i = 0; i<20; i++)bloons.add(new Bloon("blue"));
+                for(int i = 0; i<5; i++)bloons.add(new Bloon("green"));
                 break;
             }
             case 6:{
-                for(int i = 0; i < 20; i++) sending.add(new Bloon("green"));
+                for(int i = 0; i < 20; i++) bloons.add(new Bloon("green"));
                 break;
             }
             case 7:{
-                for(int i = 0; i < 10; i++) sending.add(new Bloon("green"));
-                for(int i = 0; i < 15; i++) sending.add(new Bloon("yellow"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 8:{
-                for(int i = 0; i < 5; i++) sending.add(new Bloon("blue"));
-                for(int i = 0; i < 10; i++) sending.add(new Bloon("green"));
-                for(int i = 0; i < 30; i++) sending.add(new Bloon("yellow"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("blue"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 30; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 9:{
-                for(int i = 0; i < 40; i++) sending.add(new Bloon("blue"));
-                for(int i = 0; i < 10; i++) sending.add(new Bloon("yellow"));
-                for(int i = 0; i < 5; i++) sending.add(new Bloon("pink"));
+                for(int i = 0; i < 40; i++) bloons.add(new Bloon("blue"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 10:{
-                for(int i = 0; i < 30; i++) sending.add(new Bloon("green"));
-                for(int i = 0; i < 15; i++) sending.add(new Bloon("yellow"));
-                for(int i = 0; i < 15; i++) sending.add(new Bloon("pink"));
+                for(int i = 0; i < 30; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 11:{
-                for(int i = 0; i < 50; i++) sending.add(new Bloon("yellow"));
+                for(int i = 0; i < 50; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 12:{
-                for(int i = 0; i < 25; i++) sending.add(new Bloon("yellow"));
-                for(int i = 0; i < 25; i++) sending.add(new Bloon("pink"));
+                for(int i = 0; i < 25; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 25; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 13:{
-                for(int i = 0; i < 50; i++) sending.add(new Bloon("pink"));
+                for(int i = 0; i < 50; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 14:{
-                for(int i = 0; i < 50; i++) sending.add(new Bloon("green"));
-                for(int i = 0; i < 50; i++) sending.add(new Bloon("yellow"));
-                for(int i = 0; i < 5; i++) sending.add(new Bloon("hard"));
+                for(int i = 0; i < 50; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 50; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("hard"));
                 break;
             }
             case 15:{
-                for(int i = 0; i<10; i++) sending.add(new Bloon("red"));
-                for(int i= 0; i<10;i++) sending.add(new Bloon("blue"));
-                for(int i = 0; i < 10; i++) sending.add(new Bloon("green"));
-                for(int i = 0; i < 15; i++) sending.add(new Bloon("yellow"));
-                for(int i = 0; i < 15; i++) sending.add(new Bloon("pink"));
-                for(int i = 0; i < 20; i++) sending.add(new Bloon("hard"));
+                for(int i = 0; i<10; i++) bloons.add(new Bloon("red"));
+                for(int i= 0; i<10;i++) bloons.add(new Bloon("blue"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("pink"));
+                for(int i = 0; i < 20; i++) bloons.add(new Bloon("hard"));
                 break;
             }
         }
-        return sending;
     }
-    public void startGame(){
-        round = 1;
+    public void startRound(){
         bloonSender();
-        System.out.println("Game Started");
+        popBloon();
     }
 
     public boolean isAlive(){
@@ -131,6 +128,10 @@ public class Play {
 
     public void removeBloon(Bloon bloon){
         bloons.remove(bloon);
+    }
+    public void nextRound(){
+        round++;
+        startRound();
     }
 
     public void popBloon() {

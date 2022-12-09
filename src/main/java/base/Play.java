@@ -133,6 +133,9 @@ public class Play {
         round++;
         startRound();
     }
+    public void addTower(Towers tower){
+        towers.add(tower);
+    }
 
     public void popBloon() {
         for (Bloon bloon : bloons) {

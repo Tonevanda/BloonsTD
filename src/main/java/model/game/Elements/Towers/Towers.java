@@ -8,12 +8,13 @@ public abstract class Towers {
     protected Upgrades upgrades;
     protected int radius;
     protected int value;
+    protected long lastShot;
+    protected int shootingWaitTime;
 
 
     public void setPosition(Position pos) {
         coords = pos;
     }
-
     public Position getPosition() {
         return coords;
     }
@@ -26,6 +27,9 @@ public abstract class Towers {
     }
     public Upgrades getUpgrades(){
         return upgrades;
+    }
+    public boolean canShoot(long time){
+        return time - lastShot > shootingWaitTime;
     }
 
     /*

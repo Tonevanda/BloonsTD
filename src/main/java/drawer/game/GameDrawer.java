@@ -2,6 +2,7 @@ package drawer.game;
 
 import ScreenLoader.ScreenLoader;
 import base.Play;
+import base.Position;
 import drawer.Drawer;
 
 import java.util.List;
@@ -14,7 +15,9 @@ public class GameDrawer extends Drawer<Play> {
     public void drawElements(ScreenLoader screen) {
         drawArena(screen);
         drawElements(screen, getModel().getBloons(), new BloonDrawer());
-        //drawElements(screen, getModel().getTowers(), new TowersDrawer());
+        drawElements(screen, getModel().getTowers(), new TowersDrawer());
+
+        screen.drawText(new Position(0, 0), "Round: " + getModel().getRound(), "#FFD700");
     }
 
     private <T> void drawElements(ScreenLoader screen, List<T> elements, ElementDrawer<T> viewer) {

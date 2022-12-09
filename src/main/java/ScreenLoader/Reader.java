@@ -1,4 +1,4 @@
-package base;
+package ScreenLoader;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

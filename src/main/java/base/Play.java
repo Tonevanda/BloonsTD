@@ -17,7 +17,7 @@ public class Play {
         player = new Player();
         bloons = new ArrayList<>();
         towers = new ArrayList<>();
-        round = 1;
+        round = 3;
         startRound();
     }
     public int getRound(){
@@ -40,7 +40,7 @@ public class Play {
                 break;
             }
             case 3:{
-                for(int i = 0; i<20; i++) bloons.add(new Bloon("red"));
+                for(int i = 0; i<1; i++) bloons.add(new Bloon("red"));
                 for(int i= 0; i<5;i++) bloons.add(new Bloon("blue"));
                 break;
             }

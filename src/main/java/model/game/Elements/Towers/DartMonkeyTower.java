@@ -10,7 +10,7 @@ public class DartMonkeyTower extends Towers {
     }
 
     public String getFileName(){
-        return "monkey/dartMonkeyTower";
+        return "monkey/16";
     }
 
     public void draw(TextGraphics graphics) {

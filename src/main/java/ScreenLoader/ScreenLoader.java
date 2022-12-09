@@ -1,8 +1,8 @@
 package ScreenLoader;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
 import model.game.Elements.Bloon;
 import base.Position;
-import base.Reader;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Enumeration;
 
 public class ScreenLoader {
     private Screen screen;
@@ -102,9 +103,9 @@ public class ScreenLoader {
 
     public void drawTower(Position pos, Towers tower){
         String file = tower.getFileName();
-        Reader towerImg = new Reader(file, 69, 69); // alterar para actual size qnd tivermos os macaquitos
+        Reader towerImg = new Reader(file, 16, 16);
         Color[][] color = towerImg.getColor();
-        draw(69,69,pos, color);
+        draw(16,16,pos, color);
     }
 
     public void drawBloon(Position pos, Bloon bloon){
@@ -119,6 +120,45 @@ public class ScreenLoader {
         Color[][] color = menuImg.getColor();
         Position pos = new Position(0,0);
         draw(width, height, pos, color);
+    }
+
+    //conceptual
+    public void drawRound(int round){
+        Reader roundTxt = new Reader("roundTxt", 50,16); // a mudar ig
+        Color[][] color = roundTxt.getColor();
+        Position pos = new Position(200,10);
+        draw(50,16,pos,color);
+        Position numberPosition = new Position(260,10);
+        drawNumber(numberPosition, round);
+    }
+
+    public void drawLives(int lives){
+        Reader livesTxt = new Reader("livesTxt", 50,16); // a mudar ig
+        Color[][] color = livesTxt.getColor();
+        Position pos = new Position(200,20);
+        draw(50,16,pos,color);
+
+        int n1 = lives/100;
+        int n2 = (lives/10)%10;
+        int n3 = lives%10;
+        Position numberPosition1 = new Position(260,20);
+        Position numberPosition2 = new Position(260,30);
+        Position numberPosition3 = new Position(260,40);
+        drawNumber(numberPosition1, n1);
+        drawNumber(numberPosition2, n2);
+        drawNumber(numberPosition3, n3);
+    }
+
+    public void drawNumber(Position position, int number){
+        Reader numberImg = new Reader("number"+number, 16,16);
+        Color[][] color = numberImg.getColor();
+        draw(16,16,position,color);
+    }
+
+    public void drawText(Position position, String text, String color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(position.getX(), position.getY(), text);
     }
 
     public void clear() {

@@ -57,6 +57,15 @@ public class Position {
                 && (y <= Math.max(positionA.getY(), positionB.getY()) && y >= Math.min(positionA.getY(), positionB.getY())));
     }
 
+    public boolean legalPosition(){
+        createPath();
+        Position curPos = new Position(x,y);
+        for(Position pos : path){
+            if(curPos.equals(pos)) return false;
+        }
+        return true;
+    }
+
     public int getY() {
         return y;
     }

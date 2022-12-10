@@ -11,11 +11,13 @@ public class Play {
     private int round;
     private List<Bloon> bloons;
     private List<Towers> towers;
+    private List<Towers> placingTower;
 
     public Play(){
         player = new Player();
         bloons = new ArrayList<>();
         towers = new ArrayList<>();
+        placingTower = new ArrayList<>();
         round = 1;
         startRound();
     }
@@ -25,6 +27,15 @@ public class Play {
 
     public List<Bloon> getBloons(){return bloons;}
     public List<Towers> getTowers(){return towers;}
+    public List<Towers> getPlacingTower(){
+        return placingTower;
+    }
+    public void setPlacingTower(Towers tower){
+        placingTower.add(tower);
+    }
+    public void stopPlacingTower(){
+        placingTower.remove(0);
+    }
 
     public void bloonSender(){
         switch(round){

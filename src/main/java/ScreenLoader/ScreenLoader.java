@@ -124,35 +124,36 @@ public class ScreenLoader {
 
     //conceptual
     public void drawRound(int round){
-        Reader roundTxt = new Reader("roundTxt", 50,16); // a mudar ig
+        /*Reader roundTxt = new Reader("roundTxt", 50,16); // a mudar ig
         Color[][] color = roundTxt.getColor();
         Position pos = new Position(200,10);
-        draw(50,16,pos,color);
-        Position numberPosition = new Position(260,10);
+        draw(50,16,pos,color);*/
+
+        Position numberPosition = new Position(200,10);
         drawNumber(numberPosition, round);
     }
 
     public void drawLives(int lives){
-        Reader livesTxt = new Reader("livesTxt", 50,16); // a mudar ig
+        /*Reader livesTxt = new Reader("livesTxt", 50,16); // a mudar ig
         Color[][] color = livesTxt.getColor();
         Position pos = new Position(200,20);
-        draw(50,16,pos,color);
+        draw(50,16,pos,color);*/
 
         int n1 = lives/100;
         int n2 = (lives/10)%10;
         int n3 = lives%10;
-        Position numberPosition1 = new Position(260,20);
-        Position numberPosition2 = new Position(260,30);
-        Position numberPosition3 = new Position(260,40);
+        Position numberPosition1 = new Position(200,20);
+        Position numberPosition2 = new Position(209,20);
+        Position numberPosition3 = new Position(218,20);
         drawNumber(numberPosition1, n1);
         drawNumber(numberPosition2, n2);
         drawNumber(numberPosition3, n3);
     }
 
     public void drawNumber(Position position, int number){
-        Reader numberImg = new Reader("number"+number, 16,16);
+        Reader numberImg = new Reader("numbers/number"+number, 8,8);
         Color[][] color = numberImg.getColor();
-        draw(16,16,position,color);
+        draw(8,8,position,color);
     }
 
     public void drawText(Position position, String text, String color) {

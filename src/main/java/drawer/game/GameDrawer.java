@@ -16,7 +16,8 @@ public class GameDrawer extends Drawer<Play> {
         drawArena(screen);
         drawElements(screen, getModel().getBloons(), new BloonDrawer());
         drawElements(screen, getModel().getTowers(), new TowersDrawer());
-
+        screen.drawRound(getModel().getRound());
+        screen.drawLives(getModel().getPlayer().getLives());
         screen.drawText(new Position(0, 0), "Round: " + getModel().getRound(), "#FFD700");
     }
 

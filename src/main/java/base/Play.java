@@ -3,7 +3,6 @@ package base;
 
 import model.game.Elements.Bloon;
 import model.game.Elements.Towers.Towers;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Play {
         player = new Player();
         bloons = new ArrayList<>();
         towers = new ArrayList<>();
-        round = 3;
+        round = 1;
         startRound();
     }
     public int getRound(){
@@ -112,7 +111,6 @@ public class Play {
     }
     public void startRound(){
         bloonSender();
-        popBloon();
     }
 
     public boolean isAlive(){
@@ -135,15 +133,19 @@ public class Play {
     }
     public void addTower(Towers tower){
         towers.add(tower);
+        System.out.println("Tower added");
     }
 
-    public void popBloon() {
-        for (Bloon bloon : bloons) {
-            for (Towers tower : towers) {
-                if (bloon.getPosition().isInRange(tower.getPosition(),tower.getRadius())) {
+    public void popBloon(long time) {
+        for (Towers tower : towers) {
+            for (Bloon bloon : bloons) {
+                if (bloon.getPosition().isInRange(tower.getPosition(),tower.getRadius()) && tower.canShoot(time)) {
+                    System.out.println("bloon popped");
                     bloon.pop();
                     if (bloon.getLayers() == 0) {
+                        player.addMoney(bloon.getType()*100 + 50);
                         bloons.remove(bloon);
+                        System.out.println("bloon removed");
                         break;
                     }
                 }

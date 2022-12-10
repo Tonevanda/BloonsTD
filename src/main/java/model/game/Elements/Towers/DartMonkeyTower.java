@@ -4,17 +4,14 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class DartMonkeyTower extends Towers {
     public DartMonkeyTower() {
-        radius = 120;
+        radius = 50;
         value = 100;
+        shootingWaitTime = 5000;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
         return "monkey/16";
-    }
-
-    public void draw(TextGraphics graphics) {
-
     }
 
     public int price() {

@@ -6,6 +6,7 @@ public class TackTower extends Towers {
     public TackTower(){
         radius = 80;
         value = 320;
+        shootingWaitTime = 500;
         upgrades = new Upgrades();
     }
 
@@ -13,9 +14,6 @@ public class TackTower extends Towers {
         return "monkey/tackTower";
     }
 
-    public void draw(TextGraphics graphics) {
-
-    }
 
     public int price() {
         return 400;

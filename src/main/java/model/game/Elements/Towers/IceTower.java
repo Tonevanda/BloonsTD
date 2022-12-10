@@ -6,6 +6,7 @@ public class IceTower extends Towers {
     public IceTower(){
         radius = 100;
         value = 680;
+        shootingWaitTime = 500;
         upgrades = new Upgrades();
     }
 
@@ -13,8 +14,6 @@ public class IceTower extends Towers {
         return "monkey/iceTower";
     }
 
-    public void draw(TextGraphics graphics) {
-    }
 
     public int price() {
         return 850;

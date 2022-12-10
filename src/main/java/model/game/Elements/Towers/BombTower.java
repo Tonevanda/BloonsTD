@@ -6,14 +6,13 @@ public class BombTower extends Towers {
     public BombTower(){
         radius = 200;
         value = 720;
+        shootingWaitTime = 500;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
         return "monkey/bombTower";
     }
-
-    public void draw(TextGraphics graphics) {}
 
     public int price() {
         return 900;

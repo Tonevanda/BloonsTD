@@ -18,7 +18,7 @@ public class TowerController extends GameController{
             if(getModel().getPlayer().getMoney() > dartMonkey.price()){
                 getModel().getPlayer().spendMoney(dartMonkey.price());
                 getModel().addTower(dartMonkey);
-                Position testPos = new Position(10,10);
+                Position testPos = new Position(100,95);
                 dartMonkey.setPosition(testPos);
             }
         }

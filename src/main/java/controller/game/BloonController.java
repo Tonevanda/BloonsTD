@@ -17,21 +17,36 @@ public class BloonController extends GameController {
         Position farEnough = new Position(5,48);
         Position atEnd = new Position(161,-29);
 
+
         for(int i = 0; i < bloonsToSend; i++){
+            int numberOfBloons = getModel().getBloons().size();
             Bloon bloon = getModel().getBloons().get(i);
+            getModel().popBloon(time);
+
+
             if(bloon.canMove(time)){
                 moveBloon(bloon, bloon.getPosition().getNextPosition());
             }
+
             if(bloon.getPosition().equals(farEnough) && i < getModel().getBloons().size()-1){
                 bloonsToSend++;
             }
+
             if(bloon.getPosition().equals(atEnd)){
                 getModel().getPlayer().loseHearts(bloon.getLayers());
                 getModel().removeBloon(bloon);
                 bloonsToSend--;
                 System.out.println("Player Hearts: " + getModel().getPlayer().getLives());
+                System.out.println("AtEnd - bloonsToSend: "+ bloonsToSend);
+            }
+            else if(getModel().getBloons().size() < numberOfBloons){
+                bloonsToSend--;
+                System.out.println("Range - bloonsToSend: "+ bloonsToSend);
+                System.out.println("Range - getBloons Size: "+ getModel().getBloons().size());
             }
         }
+
+
         if(bloonsToSend==0 && getModel().hasRoundEnded()){
             getModel().nextRound();
             bloonsToSend=1;

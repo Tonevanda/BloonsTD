@@ -1,7 +1,6 @@
 package model.game.Elements.Towers;
 
 import base.Position;
-import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class Towers {
     protected Position coords;
@@ -29,7 +28,11 @@ public abstract class Towers {
         return upgrades;
     }
     public boolean canShoot(long time){
-        return time - lastShot > shootingWaitTime;
+        if(time - lastShot > shootingWaitTime){
+            lastShot = time;
+            return true;
+        }
+        return false;
     }
 
     /*
@@ -45,5 +48,4 @@ public abstract class Towers {
     public abstract int price();
     public abstract boolean upgradeLeft();
     public abstract boolean upgradeRight();
-    public abstract void draw(TextGraphics graphics);
 }

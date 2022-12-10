@@ -13,7 +13,7 @@ public class BloonController extends GameController {
         bloonsToSend = 1;
     }
 
-    public void step(Application application, Position mousePressed, long time){
+    public void step(Application application, Position mousePressed, Position mouseLocation, long time){
         Position farEnough = new Position(5,48);
         Position atEnd = new Position(161,-29);
 
@@ -50,6 +50,9 @@ public class BloonController extends GameController {
         if(bloonsToSend==0 && getModel().hasRoundEnded()){
             getModel().nextRound();
             bloonsToSend=1;
+        }
+        else if(bloonsToSend == 0){
+            bloonsToSend = 1;
         }
     }
 

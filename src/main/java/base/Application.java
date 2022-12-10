@@ -39,10 +39,8 @@ public class Application {
             try {
                 if (sleepTime > 0) {
                     Thread.sleep(sleepTime);
-                    //System.out.println("Thread is slept");
                 }
             } catch (InterruptedException e) {
-                //System.out.println("Interrupted Exception??whatever that is");
             }
         }
         screen.close();

@@ -7,11 +7,12 @@ public class TackTower extends Towers {
         radius = 80;
         value = 320;
         shootingWaitTime = 500;
+        isPlaced = false;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
-        return "monkey/tackTower";
+        return "monkey/TackTowerSprite";
     }
 
 

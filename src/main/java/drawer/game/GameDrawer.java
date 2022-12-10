@@ -17,8 +17,8 @@ public class GameDrawer extends Drawer<Play> {
         drawElements(screen, getModel().getBloons(), new BloonDrawer());
         drawElements(screen, getModel().getTowers(), new TowersDrawer());
         screen.drawRound(getModel().getRound());
+        screen.drawMoney(getModel().getPlayer().getMoney());
         screen.drawLives(getModel().getPlayer().getLives());
-        screen.drawText(new Position(0, 0), "Round: " + getModel().getRound(), "#FFD700");
     }
 
     private <T> void drawElements(ScreenLoader screen, List<T> elements, ElementDrawer<T> viewer) {

@@ -17,13 +17,13 @@ public class PlayController extends GameController {
         this.towerController = new TowerController(play);
     }
 
-    public void step(Application application, Position mousePressed, long time){
+    public void step(Application application, Position mousePressed, Position mouseLocation, long time){
         if(!getModel().isAlive() || mousePressed.isBetween(new Position(944,22), new Position(1001,72))){
             application.setState(new MainMenuState(new Menu()));
         }
         else{
-            bloonController.step(application,mousePressed,time);
-            towerController.step(application,mousePressed,time);
+            bloonController.step(application,mousePressed,mouseLocation, time);
+            towerController.step(application,mousePressed,mouseLocation, time);
         }
     }
 }

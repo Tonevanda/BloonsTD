@@ -7,11 +7,12 @@ public class BombTower extends Towers {
         radius = 200;
         value = 720;
         shootingWaitTime = 500;
+        isPlaced = false;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
-        return "monkey/bombTower";
+        return "monkey/BombTowerSprite";
     }
 
     public int price() {

@@ -26,7 +26,6 @@ public class ScreenLoader{
     private Screen screen;
     private Position mousePressed = new Position(-1,-1);
     private Position mouseLocation = new Position(-1,-1);
-    private Position mouseDragged = new Position(-1,-1);
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -62,6 +61,7 @@ public class ScreenLoader{
             @Override
             public void mousePressed(MouseEvent e) {
                 mousePressed = new Position(e.getX(), e.getY());
+                System.out.println("mousePressed: " + mousePressed.getX() + ", " + mousePressed.getY());
             }
 
             @Override
@@ -120,11 +120,11 @@ public class ScreenLoader{
         draw(256,144,pos, color);
     }
 
-    public void drawTower(Position pos, Towers tower){
+    public void drawTower(Towers tower){
         String file = tower.getFileName();
         Reader towerImg = new Reader(file, 16, 16);
         Color[][] color = towerImg.getColor();
-        draw(16,16,pos, color);
+        draw(16,16,tower.getPosition(), color);
     }
 
     public void drawBloon(Position pos, Bloon bloon){
@@ -143,42 +143,37 @@ public class ScreenLoader{
 
     //conceptual
     public void drawRound(int round){
-        /*Reader roundTxt = new Reader("roundTxt", 50,16); // a mudar ig
-        Color[][] color = roundTxt.getColor();
-        Position pos = new Position(200,10);
-        draw(50,16,pos,color);*/
-
-        Position numberPosition = new Position(200,10);
-        drawNumber(numberPosition, round);
+        for(int i = 0; i < 6; i++){
+            int n = round%10;
+            round /= 10;
+            Position numberPosition = new Position(247 - 4*i, 21);
+            drawNumber(numberPosition, n);
+        }
+    }
+    public void drawMoney(int money){
+        for(int i = 0; i < 6; i++){
+            int n = money%10;
+            money /= 10;
+            Position numberPosition = new Position(247 - 4*i, 27);
+            drawNumber(numberPosition, n);
+        }
     }
 
     public void drawLives(int lives){
-        /*Reader livesTxt = new Reader("livesTxt", 50,16); // a mudar ig
-        Color[][] color = livesTxt.getColor();
-        Position pos = new Position(200,20);
-        draw(50,16,pos,color);*/
-
-        int n1 = lives/100;
-        int n2 = (lives/10)%10;
-        int n3 = lives%10;
-        Position numberPosition1 = new Position(200,20);
-        Position numberPosition2 = new Position(209,20);
-        Position numberPosition3 = new Position(218,20);
-        drawNumber(numberPosition1, n1);
-        drawNumber(numberPosition2, n2);
-        drawNumber(numberPosition3, n3);
+        for(int i = 0; i < 6; i++){
+            int n = lives%10;
+            lives /= 10;
+            Position numberPosition = new Position(247 - 4*i, 33);
+            drawNumber(numberPosition, n);
+        }
     }
+
+
 
     public void drawNumber(Position position, int number){
-        Reader numberImg = new Reader("numbers/number"+number, 8,8);
+        Reader numberImg = new Reader("numbers/"+number, 5,7);
         Color[][] color = numberImg.getColor();
-        draw(8,8,position,color);
-    }
-
-    public void drawText(Position position, String text, String color) {
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(position.getX(), position.getY(), text);
+        draw(5,7,position,color);
     }
 
     public void clear() {

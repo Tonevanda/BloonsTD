@@ -7,20 +7,42 @@ import model.game.Elements.Towers.DartMonkeyTower;
 import model.game.Elements.Towers.Towers;
 
 public class TowerController extends GameController{
+    private boolean buying;
+    private Towers placingTower;
     public TowerController(Play play){
         super(play);
+        buying = false;
     }
 
-    public void step(Application application, Position mousePressed, long time) {
-        Position monkeyPositionTest = new Position(10,10);
-        if(mousePressed.equals(monkeyPositionTest)){
-            Towers dartMonkey = new DartMonkeyTower();
-            if(getModel().getPlayer().getMoney() > dartMonkey.price()){
-                getModel().getPlayer().spendMoney(dartMonkey.price());
-                getModel().addTower(dartMonkey);
-                Position testPos = new Position(100,95);
-                dartMonkey.setPosition(testPos);
+    public void step(Application application, Position mousePressed, Position mouseLocation, long time) {
+        if(mousePressed.isBetween(new Position(10,10), new Position(50,50)) && !buying){
+            buying = true;
+            placingTower = new DartMonkeyTower();
+        }
+        else if(buying){
+            if(getModel().getPlayer().getMoney()>placingTower.price()){
+                place(placingTower, mousePressed, mouseLocation);
+            }
+            else{
+                buying = false;
             }
         }
     }
+
+    public void place(Towers tower, Position mousePressed, Position mouseLocation){
+        Position notPressed = new Position(-1,-1);
+        if(mousePressed.equals(notPressed) && !tower.isPlaced()){
+            System.out.println("placing");
+            tower.setPosition(mouseLocation);
+        }
+        else if(mousePressed != notPressed){
+            System.out.println("placed");
+            getModel().getPlayer().spendMoney(tower.price());
+            tower.Place();
+            getModel().addTower(tower);
+            tower.setPosition(mousePressed);
+            buying = false;
+        }
+    }
 }
+

@@ -1,5 +1,6 @@
 package model.game.Elements.Towers;
 
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class IceTower extends Towers {
@@ -7,11 +8,12 @@ public class IceTower extends Towers {
         radius = 100;
         value = 680;
         shootingWaitTime = 500;
+        isPlaced = false;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
-        return "monkey/iceTower";
+        return "monkey/IceTowerSprite";
     }
 
 

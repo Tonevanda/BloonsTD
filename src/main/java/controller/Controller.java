@@ -14,5 +14,5 @@ public abstract class Controller<T> {
         return model;
     }
 
-    public abstract void step(Application application, Position mousePressed, long time);
+    public abstract void step(Application application, Position mousePressed, Position mouseLocation, long time);
 }

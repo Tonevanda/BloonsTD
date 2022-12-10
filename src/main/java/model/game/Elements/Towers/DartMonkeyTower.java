@@ -1,5 +1,6 @@
 package model.game.Elements.Towers;
 
+import base.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class DartMonkeyTower extends Towers {
@@ -7,11 +8,12 @@ public class DartMonkeyTower extends Towers {
         radius = 50;
         value = 100;
         shootingWaitTime = 5000;
+        isPlaced = false;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
-        return "monkey/16";
+        return "monkey/DartMonkeyTowerSprite";
     }
 
     public int price() {

@@ -3,19 +3,21 @@ package model.game.Elements.Towers;
 import base.Position;
 
 public abstract class Towers {
-    protected Position coords;
+    protected Position position;
     protected Upgrades upgrades;
     protected int radius;
     protected int value;
     protected long lastShot;
     protected int shootingWaitTime;
+    protected boolean isPlaced;
 
 
     public void setPosition(Position pos) {
-        coords = pos;
+        Position terminalPosition = new Position(pos.getX()/4, pos.getY()/4);
+        position = terminalPosition;
     }
     public Position getPosition() {
-        return coords;
+        return position;
     }
     public int getRadius(){
         return radius;
@@ -23,6 +25,12 @@ public abstract class Towers {
 
     public int getValue(){
         return value;
+    }
+    public boolean isPlaced(){
+        return isPlaced;
+    }
+    public void Place(){
+        isPlaced = true;
     }
     public Upgrades getUpgrades(){
         return upgrades;
@@ -34,15 +42,6 @@ public abstract class Towers {
         }
         return false;
     }
-
-    /*
-    public Position getRange() {
-        Position newPos = coords;
-        newPos.setX(coords.getX() + range);
-        newPos.setY(coords.getY() + range);
-        return newPos;
-    }
-    */
 
     public abstract String getFileName();
     public abstract int price();

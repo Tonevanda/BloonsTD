@@ -18,7 +18,7 @@ public class PlayController extends GameController {
     }
 
     public void step(Application application, Position mousePressed, long time){
-        if(!getModel().isAlive()){
+        if(!getModel().isAlive() || (mousePressed.getX() >=944 && mousePressed.getX() <= 1001 && mousePressed.getY() >= 22 && mousePressed.getY() <= 73)){
             application.setState(new MainMenuState(new Menu()));
         }
         else{

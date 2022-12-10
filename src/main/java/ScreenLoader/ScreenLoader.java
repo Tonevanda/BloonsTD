@@ -1,5 +1,6 @@
 package ScreenLoader;
 
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import model.game.Elements.Bloon;
 import base.Position;
@@ -15,17 +16,17 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import model.game.Elements.Towers.Towers;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class ScreenLoader {
+public class ScreenLoader{
     private Screen screen;
     private Position mousePressed = new Position(-1,-1);
     private Position mouseLocation = new Position(-1,-1);
+    private Position mouseDragged = new Position(-1,-1);
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -52,25 +53,62 @@ public class ScreenLoader {
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
 
-        ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(new MouseAdapter() {
+        ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().dispose();
+            }
+        });
+        MouseAdapter mouseAdapter = new MouseAdapter(){
+
             @Override
             public void mousePressed(MouseEvent e) {
                 mousePressed = new Position(e.getX(), e.getY());
                 System.out.println("ScreenLoader: " + mousePressed.getX() + ", " + e.getY());
             }
-        });
+
+            /*
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                super.mouseReleased(e);
+                System.out.println("released");
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                mouseMoved(e);
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                System.out.println("fodase");
+                super.mouseMoved(e);
+                Point point = MouseInfo.getPointerInfo().getLocation();
+                mouseLocation = new Position(e.getX(), e.getY());
+                System.out.println("MouseMoved: " + mouseLocation.getX() + ", " + mouseLocation.getY());
+            }*/
+
+        };
+
+        ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(mouseAdapter);
         return terminal;
     }
     public Position getMousePressed(){
+        //
         Position pos = mousePressed;
         mousePressed = new Position(-1,-1);
         return pos;
     }
     public Position getMouseLocation(){
+        TerminalPosition cursorPosition = screen.getCursorPosition();
         Point point = MouseInfo.getPointerInfo().getLocation();
-        mouseLocation = new Position(256 - (int)point.getX(), 144- (int)point.getX());
-        System.out.println("MouseLocation: " + mouseLocation.getX() + ", " + mouseLocation.getY());
+
+        System.out.println("MouseLocation: " + cursorPosition);
         return mouseLocation;
+    }
+    public Position getMouseDragged(){
+        System.out.println("getMouseDraged: " + mouseDragged.getX() + ", " + mouseDragged.getY());
+        return mouseDragged;
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {

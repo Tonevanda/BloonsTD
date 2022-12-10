@@ -27,6 +27,8 @@ public abstract class State<T> {
     public void step(Application application, ScreenLoader screen, long time) throws IOException {
         Position mousePressed = screen.getMousePressed();
         Position mouseLocation = screen.getMouseLocation();
+        Position mouseDragged = screen.getMouseDragged();
+
         controller.step(application, mousePressed, time);
         drawer.draw(screen);
     }

@@ -21,11 +21,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Enumeration;
 
 public class ScreenLoader {
     private Screen screen;
     private Position mousePressed = new Position(-1,-1);
+    private Position mouseLocation = new Position(-1,-1);
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -65,6 +65,12 @@ public class ScreenLoader {
         Position pos = mousePressed;
         mousePressed = new Position(-1,-1);
         return pos;
+    }
+    public Position getMouseLocation(){
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        mouseLocation = new Position(256 - (int)point.getX(), 144- (int)point.getX());
+        System.out.println("MouseLocation: " + mouseLocation.getX() + ", " + mouseLocation.getY());
+        return mouseLocation;
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {

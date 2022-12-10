@@ -52,6 +52,11 @@ public class Position {
         }
     }
 
+    public boolean isBetween(Position positionA, Position positionB){
+        return ((x <= Math.max(positionA.getX(), positionB.getX()) && x >= Math.min(positionA.getX(), positionB.getX()))
+                && (y <= Math.max(positionA.getY(), positionB.getY()) && y >= Math.min(positionA.getY(), positionB.getY())));
+    }
+
     public int getY() {
         return y;
     }

@@ -45,7 +45,6 @@ public class Application {
                 //System.out.println("Interrupted Exception??whatever that is");
             }
         }
-
         screen.close();
     }
 }

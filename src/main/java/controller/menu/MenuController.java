@@ -14,10 +14,10 @@ public class MenuController extends Controller<Menu> {
     }
     @Override
     public void step(Application application, Position mousePressed, long time){
-        if (mousePressed.getX()>69*4 && mousePressed.getX()<186*4 && mousePressed.getY()>73*4 && mousePressed.getY()<107*4){
+        if (mousePressed.isBetween(new Position(69*4, 73*4), new Position(186*4, 107*4))){
             application.setState(new GameState(new Play()));
         }
-        else if(mousePressed.getX() >= 373 && mousePressed.getX() <= 653 && mousePressed.getY() >= 453 && mousePressed.getY() <= 553){
+        else if(mousePressed.isBetween(new Position(373,453), new Position(653,553))){
             application.setState(null);
         }
     }

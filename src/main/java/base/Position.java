@@ -58,10 +58,13 @@ public class Position {
     }
 
     public boolean legalPosition(){
+        Position curPos = new Position(x/4,y/4);
         createPath();
-        Position curPos = new Position(x,y);
+        System.out.println("curPos: " + x + ", " + y);
         for(Position pos : path){
-            if(curPos.equals(pos)) return false;
+            Position topLeftPos = new Position(pos.getX()-15, pos.getY());
+            Position lowerRightPos = new Position(pos.getX()+14, pos.getY()+15);
+            if(curPos.isBetween(topLeftPos, lowerRightPos)) return false;
         }
         return true;
     }

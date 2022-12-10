@@ -52,7 +52,6 @@ public class ScreenLoader{
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
-
         ((AWTTerminalFrame)terminal).addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -60,11 +59,10 @@ public class ScreenLoader{
             }
         });
         MouseAdapter mouseAdapter = new MouseAdapter(){
-
             @Override
             public void mousePressed(MouseEvent e) {
                 mousePressed = new Position(e.getX(), e.getY());
-                System.out.println("ScreenLoader: " + mousePressed.getX() + ", " + e.getY());
+                //System.out.println("ScreenLoader: " + mousePressed.getX() + ", " + e.getY());
             }
 
             /*
@@ -73,32 +71,38 @@ public class ScreenLoader{
                 super.mouseReleased(e);
                 System.out.println("released");
             }
-
+            */
             @Override
             public void mouseDragged(MouseEvent e) {
+                Point p = e.getPoint();
+                // System.err.println("mouse drag to " + p);
+                System.out.println("mouse Dragged to " + p);
                 mouseMoved(e);
             }
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                System.out.println("fodase");
+                //System.out.println("fodase");
                 super.mouseMoved(e);
                 Point point = MouseInfo.getPointerInfo().getLocation();
                 mouseLocation = new Position(e.getX(), e.getY());
-                System.out.println("MouseMoved: " + mouseLocation.getX() + ", " + mouseLocation.getY());
-            }*/
+                //System.out.println("MouseMoved: " + mouseLocation.getX() + ", " + mouseLocation.getY());
+            }
 
         };
 
         ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(mouseAdapter);
+        ((AWTTerminalFrame)terminal).getComponent(0).addMouseMotionListener(mouseAdapter);
         return terminal;
     }
+
     public Position getMousePressed(){
         //
         Position pos = mousePressed;
         mousePressed = new Position(-1,-1);
         return pos;
     }
+    /*
     public Position getMouseLocation(){
         TerminalPosition cursorPosition = screen.getCursorPosition();
         Point point = MouseInfo.getPointerInfo().getLocation();
@@ -110,7 +114,7 @@ public class ScreenLoader{
         System.out.println("getMouseDraged: " + mouseDragged.getX() + ", " + mouseDragged.getY());
         return mouseDragged;
     }
-
+*/
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         assert resource != null;

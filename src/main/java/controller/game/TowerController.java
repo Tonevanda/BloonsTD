@@ -31,6 +31,7 @@ public class TowerController extends GameController{
         }
         else{
             if(getModel().getPlayer().getMoney()>placingTower.price()){
+                placingTower.select();
                 place(placingTower, mousePressed, mouseLocation);
                 getModel().setPlacingTower(placingTower);
             }
@@ -42,15 +43,13 @@ public class TowerController extends GameController{
 
     public void place(Towers tower, Position mousePressed, Position mouseLocation){
         Position notPressed = new Position(-1,-1);
-        if(mousePressed.equals(notPressed) && !tower.isPlaced()){
-            System.out.println("placing");
+        if(mousePressed.equals(notPressed) && tower.isSelected()){
             tower.setPosition(mouseLocation);
         }
         else if(mousePressed != notPressed && mousePressed.legalPosition(getModel().getTowers())){
             getModel().stopPlacingTower();
-            System.out.println("placed");
             getModel().getPlayer().spendMoney(tower.price());
-            tower.Place();
+            tower.stopSelecting();
             getModel().addTower(tower);
             tower.setPosition(mousePressed);
             buying = false;

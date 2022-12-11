@@ -9,14 +9,11 @@ public abstract class Towers {
     protected int value;
     protected long lastShot;
     protected int shootingWaitTime;
-    protected boolean isPlaced;
     protected boolean isSelected;
 
 
     public void setPosition(Position pos) {
-        System.out.println("Non Center Position: " + pos.getX() + ", " + pos.getY());
         position = new Position((pos.getX()+8)/4, (pos.getY()+8)/4);
-        System.out.println("Center Position: " + position.getX() + ", " + position.getY());
     }
 
     public Position getPosition() {
@@ -29,14 +26,14 @@ public abstract class Towers {
     public int getValue(){
         return value;
     }
-    public boolean isPlaced(){
-        return isPlaced;
-    }
     public boolean isSelected() {
         return isSelected;
     }
-    public void Place(){
-        isPlaced = true;
+    public void stopSelecting(){
+        isSelected = false;
+    }
+    public void select(){
+        isSelected = true;
     }
     public Upgrades getUpgrades(){
         return upgrades;

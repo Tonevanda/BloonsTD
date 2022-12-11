@@ -7,7 +7,7 @@ public class BombTower extends Towers {
         radius = 30;
         value = 720;
         shootingWaitTime = 7000;
-        isPlaced = false;
+        isSelected = false;
         upgrades = new Upgrades();
     }
 

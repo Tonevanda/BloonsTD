@@ -7,7 +7,7 @@ public class TackTower extends Towers {
         radius = 20;
         value = 320;
         shootingWaitTime = 7000;
-        isPlaced = false;
+        isSelected = false;
         upgrades = new Upgrades();
     }
 

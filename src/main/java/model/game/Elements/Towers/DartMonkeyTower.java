@@ -8,11 +8,12 @@ public class DartMonkeyTower extends Towers {
         radius = 50;
         value = 100;
         shootingWaitTime = 5000;
-        isPlaced = false;
+        isSelected = false;
         upgrades = new Upgrades();
     }
 
     public String getFileName(){
+        if(isSelected) return "monkey/DartMonkeyTowerSpriteRange";
         return "monkey/DartMonkeyTowerSprite";
     }
 

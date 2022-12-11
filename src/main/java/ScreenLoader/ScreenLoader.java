@@ -126,6 +126,12 @@ public class ScreenLoader{
         Color[][] color = towerImg.getColor();
         draw(16,16,tower.getPosition(), color);
     }
+    public void drawRange(Position position, int range){
+        String file = "ranges/"+range; //concept
+        Reader rangeImg = new Reader(file, range, range);
+        Color[][] color = rangeImg.getColor();
+        draw(range, range, position, color);
+    }
 
     public void drawBloon(Position pos, Bloon bloon){
         String file = bloon.getColorFile();
@@ -158,7 +164,6 @@ public class ScreenLoader{
             drawNumber(numberPosition, n);
         }
     }
-
     public void drawLives(int lives){
         for(int i = 0; i < 6; i++){
             int n = lives%10;
@@ -167,14 +172,12 @@ public class ScreenLoader{
             drawNumber(numberPosition, n);
         }
     }
-
-
-
     public void drawNumber(Position position, int number){
         Reader numberImg = new Reader("numbers/"+number, 5,7);
         Color[][] color = numberImg.getColor();
         draw(5,7,position,color);
     }
+
 
     public void clear() {
         screen.clear();

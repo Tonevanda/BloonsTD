@@ -10,6 +10,7 @@ public abstract class Towers {
     protected long lastShot;
     protected int shootingWaitTime;
     protected boolean isPlaced;
+    protected boolean isSelected;
 
 
     public void setPosition(Position pos) {
@@ -28,6 +29,9 @@ public abstract class Towers {
     }
     public boolean isPlaced(){
         return isPlaced;
+    }
+    public boolean isSelected() {
+        return isSelected;
     }
     public void Place(){
         isPlaced = true;

@@ -1,12 +1,14 @@
 package base;
 
+import model.game.Elements.Towers.Towers;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Position {
     private int y;
     private int x;
-    private List<Position> path = new ArrayList<>();
+    private final List<Position> path = new ArrayList<>();
 
     public Position(int x, int y){
         this.x = x;
@@ -57,13 +59,17 @@ public class Position {
                 && (y <= Math.max(positionA.getY(), positionB.getY()) && y >= Math.min(positionA.getY(), positionB.getY())));
     }
 
-    public boolean legalPosition(){
+    public boolean legalPosition(List<Towers> towers){
         Position curPos = new Position(x/4,y/4);
         createPath();
-        System.out.println("curPos: " + x + ", " + y);
         for(Position pos : path){
-            Position topLeftPos = new Position(pos.getX()-15, pos.getY());
+            Position topLeftPos = new Position(pos.getX()-15, pos.getY()-14);
             Position lowerRightPos = new Position(pos.getX()+14, pos.getY()+15);
+            if(curPos.isBetween(topLeftPos, lowerRightPos)) return false;
+        }
+        for(Towers tower : towers){
+            Position topLeftPos = new Position(tower.getPosition().getX()-15, tower.getPosition().getY()-14);
+            Position lowerRightPos = new Position(tower.getPosition().getX()+14, tower.getPosition().getY()+15);
             if(curPos.isBetween(topLeftPos, lowerRightPos)) return false;
         }
         return true;

@@ -36,7 +36,7 @@ public class TowerController extends GameController{
             System.out.println("placing");
             tower.setPosition(mouseLocation);
         }
-        else if(mousePressed != notPressed && mousePressed.legalPosition()){
+        else if(mousePressed != notPressed && mousePressed.legalPosition(getModel().getTowers())){
             getModel().stopPlacingTower();
             System.out.println("placed");
             getModel().getPlayer().spendMoney(tower.price());

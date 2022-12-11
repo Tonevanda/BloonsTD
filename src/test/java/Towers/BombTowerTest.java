@@ -31,14 +31,10 @@ public class BombTowerTest {
         assertEquals(upgrade, bomb.getUpgrades());
         assertEquals(720+520, bomb.getValue());
 
-        assertTrue(bomb.upgradeLeft());
+        assertFalse(bomb.upgradeLeft());
         upgrade.upgradeLeft();
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+520+640, bomb.getValue());
-
-        assertFalse(bomb.upgradeLeft());
-        assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+520+640, bomb.getValue());
+        assertEquals(720+520, bomb.getValue());
     }
     @Test
     public void upgradeRight(){
@@ -52,13 +48,9 @@ public class BombTowerTest {
         assertEquals(upgrade, bomb.getUpgrades());
         assertEquals(720+200, bomb.getValue());
 
-        assertTrue(bomb.upgradeRight());
+        assertFalse(bomb.upgradeRight());
         upgrade.upgradeRight();
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+200+300, bomb.getValue());
-
-        assertFalse(bomb.upgradeRight());
-        assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(720+200+300, bomb.getValue());
+        assertEquals(720+200, bomb.getValue());
     }
 }

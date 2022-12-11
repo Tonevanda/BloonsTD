@@ -3,8 +3,7 @@ package controller.game;
 import base.Application;
 import base.Play;
 import base.Position;
-import model.game.Elements.Towers.DartMonkeyTower;
-import model.game.Elements.Towers.Towers;
+import model.game.Elements.Towers.*;
 
 public class TowerController extends GameController{
     private boolean buying;
@@ -15,11 +14,22 @@ public class TowerController extends GameController{
     }
 
     public void step(Application application, Position mousePressed, Position mouseLocation, long time) {
-        if(mousePressed.isBetween(new Position(10,10), new Position(50,50)) && !buying){
-            buying = true;
-            placingTower = new DartMonkeyTower();
+        if(!buying) {
+            if (mousePressed.isBetween(new Position(196*4, 43*4), new Position(208*4, 56*4))) {
+                buying = true;
+                placingTower = new DartMonkeyTower();
+            } else if (mousePressed.isBetween(new Position(210*4,43*4), new Position(223*4,56*4))) {
+                buying = true;
+                placingTower = new TackTower();
+            } else if (mousePressed.isBetween(new Position(225*4,43*4), new Position(238*4,56*4))) {
+                buying = true;
+                placingTower = new IceTower();
+            } else if (mousePressed.isBetween(new Position(240*4,43*4), new Position(253*4,56*4))) {
+                buying = true;
+                placingTower = new BombTower();
+            }
         }
-        else if(buying){
+        else{
             if(getModel().getPlayer().getMoney()>placingTower.price()){
                 place(placingTower, mousePressed, mouseLocation);
                 getModel().setPlacingTower(placingTower);
@@ -46,5 +56,7 @@ public class TowerController extends GameController{
             buying = false;
         }
     }
+
+
 }
 

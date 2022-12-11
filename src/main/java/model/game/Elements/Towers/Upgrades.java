@@ -17,14 +17,14 @@ public class Upgrades {
     }
 
     public boolean upgradeLeft(){
-        if (left < 2){
+        if (left < 1){
             left++;
             return true;
         }
         return false;
     }
     public boolean upgradeRight(){
-        if(right < 2){
+        if(right < 1){
             right++;
             return true;
         }

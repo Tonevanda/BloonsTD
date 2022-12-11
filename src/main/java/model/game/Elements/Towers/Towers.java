@@ -14,9 +14,11 @@ public abstract class Towers {
 
 
     public void setPosition(Position pos) {
-        Position terminalPosition = new Position(pos.getX()/4, pos.getY()/4);
-        position = terminalPosition;
+        System.out.println("Non Center Position: " + pos.getX() + ", " + pos.getY());
+        position = new Position((pos.getX()+8)/4, (pos.getY()+8)/4);
+        System.out.println("Center Position: " + position.getX() + ", " + position.getY());
     }
+
     public Position getPosition() {
         return position;
     }

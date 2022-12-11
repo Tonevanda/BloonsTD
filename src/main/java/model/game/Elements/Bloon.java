@@ -63,10 +63,10 @@ public class Bloon{
         switch(layers){
             case 1: return "bloons/redBloonPixel";
             case 2: return "bloons/blueBloonPixel";
-            case 3: return "bloons/greenBloon";
-            case 4: return "bloons/yellowBloon";
-            case 5: return "bloons/pinkBloon";
-            case 6: return "bloons/hardBloon";
+            case 3: return "bloons/greenBloonPixel";
+            case 4: return "bloons/yellowBloonPixel";
+            case 5: return "bloons/pinkBloonPixel";
+            case 6: return "bloons/hardBloonPixel";
             default: return "";
         }
     }

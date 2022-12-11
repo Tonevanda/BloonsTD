@@ -1,7 +1,5 @@
 package ScreenLoader;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import model.game.Elements.Bloon;
 import base.Position;
 import com.googlecode.lanterna.TerminalSize;
@@ -124,13 +122,16 @@ public class ScreenLoader{
         String file = tower.getFileName();
         Reader towerImg = new Reader(file, 16, 16);
         Color[][] color = towerImg.getColor();
-        draw(16,16,tower.getPosition(), color);
+        Position centerPosition = new Position(tower.getPosition().getX()-8, tower.getPosition().getY()-8);
+        draw(16,16,centerPosition, color);
     }
     public void drawRange(Position position, int range){
+        /*
         String file = "ranges/"+range; //concept
         Reader rangeImg = new Reader(file, range, range);
         Color[][] color = rangeImg.getColor();
         draw(range, range, position, color);
+        */
     }
 
     public void drawBloon(Position pos, Bloon bloon){

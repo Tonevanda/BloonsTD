@@ -31,14 +31,10 @@ public class IceTowerTest {
         assertEquals(upgrade, bomb.getUpgrades());
         assertEquals(680+360, bomb.getValue());
 
-        assertTrue(bomb.upgradeLeft());
+        assertFalse(bomb.upgradeLeft());
         upgrade.upgradeLeft();
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(680+360+400, bomb.getValue());
-
-        assertFalse(bomb.upgradeLeft());
-        assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(680+360+400, bomb.getValue());
+        assertEquals(680+360, bomb.getValue());
     }
     @Test
     public void upgradeRight(){
@@ -52,13 +48,9 @@ public class IceTowerTest {
         assertEquals(upgrade, bomb.getUpgrades());
         assertEquals(680+240, bomb.getValue());
 
-        assertTrue(bomb.upgradeRight());
+        assertFalse(bomb.upgradeRight());
         upgrade.upgradeRight();
         assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(680+240+280, bomb.getValue());
-
-        assertFalse(bomb.upgradeRight());
-        assertEquals(upgrade, bomb.getUpgrades());
-        assertEquals(680+240+280, bomb.getValue());
+        assertEquals(680+240, bomb.getValue());
     }
 }

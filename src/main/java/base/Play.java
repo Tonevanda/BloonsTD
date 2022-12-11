@@ -159,6 +159,7 @@ public class Play {
                         System.out.println("bloon removed");
                         break;
                     }
+                    break;
                 }
             }
         }

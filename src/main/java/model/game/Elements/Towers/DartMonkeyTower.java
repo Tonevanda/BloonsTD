@@ -22,23 +22,14 @@ public class DartMonkeyTower extends Towers {
 
     public boolean upgradeLeft(){ //mais attack speed //
         if(!upgrades.upgradeLeft()) return false;
-        if(upgrades.left == 1){
-            value += 168;
-        }
-        else if(upgrades.left == 2){
-            value += 204;
-        }
+        value += 168;
         return true;
     }
     public boolean upgradeRight() { //mais range//
         if(!upgrades.upgradeRight()) return false;
-        if (upgrades.right == 1) {
-            radius = 150;
-            value += 80;
-        } else if (upgrades.right == 2) {
-            radius = 200;
-            value += 90;
-        }
+        radius = 20;
+        value += 80;
         return true;
     }
+
 }

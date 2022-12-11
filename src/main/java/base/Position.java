@@ -62,15 +62,18 @@ public class Position {
     public boolean legalPosition(List<Towers> towers){
         Position curPos = new Position(x/4,y/4);
         createPath();
+        Position topLeftPos = new Position(714/4,10/4);
+        Position bottomRightPos = new Position(1015/4,570/4);
+        if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
         for(Position pos : path){
-            Position topLeftPos = new Position(pos.getX()-15, pos.getY()-14);
-            Position lowerRightPos = new Position(pos.getX()+14, pos.getY()+15);
-            if(curPos.isBetween(topLeftPos, lowerRightPos)) return false;
+            topLeftPos = new Position(pos.getX()-15, pos.getY()-14);
+            bottomRightPos = new Position(pos.getX()+14, pos.getY()+15);
+            if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
         }
         for(Towers tower : towers){
-            Position topLeftPos = new Position(tower.getPosition().getX()-15, tower.getPosition().getY()-14);
-            Position lowerRightPos = new Position(tower.getPosition().getX()+14, tower.getPosition().getY()+15);
-            if(curPos.isBetween(topLeftPos, lowerRightPos)) return false;
+            topLeftPos = new Position(tower.getPosition().getX()-15, tower.getPosition().getY()-14);
+            bottomRightPos = new Position(tower.getPosition().getX()+14, tower.getPosition().getY()+15);
+            if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
         }
         return true;
     }

@@ -61,7 +61,7 @@ public class ScreenLoader{
             @Override
             public void mousePressed(MouseEvent e) {
                 mousePressed = new Position(e.getX(), e.getY());
-                System.out.println("mousePressed: " + mousePressed.getX() + ", " + mousePressed.getY());
+                System.out.println("mousePressed: " + mousePressed.getX()/4 + ", " + mousePressed.getY()/4);
             }
 
             @Override

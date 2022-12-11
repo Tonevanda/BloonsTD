@@ -66,13 +66,13 @@ public class Position {
         Position bottomRightPos = new Position(1015/4,570/4);
         if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
         for(Position pos : path){
-            topLeftPos = new Position(pos.getX()-8, pos.getY()-7);
-            bottomRightPos = new Position(pos.getX()+21, pos.getY()+23);
+            topLeftPos = new Position(pos.getX()-7, pos.getY()-5);
+            bottomRightPos = new Position(pos.getX()+22, pos.getY()+23);
             if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
         }
         for(Towers tower : towers){
-            topLeftPos = new Position(tower.getPosition().getX()-7, tower.getPosition().getY()-7);
-            bottomRightPos = new Position(tower.getPosition().getX()+7, tower.getPosition().getY()+7);
+            topLeftPos = new Position(tower.getPosition().getX()-15, tower.getPosition().getY()-13);
+            bottomRightPos = new Position(tower.getPosition().getX()+15, tower.getPosition().getY()+13);
             if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
         }
         return true;

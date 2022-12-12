@@ -22,7 +22,9 @@ public class DartMonkeyTower extends Towers {
         if(isSelected) return "ranges/DartMonkeyBaseRange";
         return "monkey/DartMonkeyTowerSprite";
     }
-
+    public String getBuyFileName(){
+        return "menuBuy/MenuDart";
+    }
     public int price() {
         return 250;
     }

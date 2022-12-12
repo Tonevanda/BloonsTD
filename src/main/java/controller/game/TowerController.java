@@ -76,8 +76,7 @@ public class TowerController extends GameController {
                 anySelected = true;
                 break;
             }
-            else if (tower.isSelected() && !mousePressed.equals(nullPosition)) {
-                System.out.println("select out: " + mousePressed.getX() + ", " + mousePressed.getY());
+            else if (tower.isSelected() && !mousePressed.equals(nullPosition) && !terminalPosition.sell()) {
                 tower.stopSelecting();
                 anySelected = false;
             }
@@ -85,11 +84,20 @@ public class TowerController extends GameController {
     }
 
     public void openMenu(Position mousePressed){
+        Position terminalPosition = new Position(mousePressed.getX() / 4, mousePressed.getY() / 4);
         Position leftUpgradeTop = new Position(100,200);
         Position leftUpgradeBot = new Position(200,300);
-        if(anySelected == true){
-            if(mousePressed.isBetween(leftUpgradeTop, leftUpgradeBot)){
+        if(anySelected){
+            if(terminalPosition.isBetween(leftUpgradeTop, leftUpgradeBot)){
                 selectedTower.upgradeLeft();
+            }
+            else if(terminalPosition.sell()){
+                System.out.println("Sold");
+                selectedTower.stopSelecting();
+                anySelected = false;
+                getModel().getPlayer().addMoney(selectedTower.getValue());
+                placedTowers.remove(selectedTower);
+                getModel().removeTower(selectedTower);
             }
         }
     }

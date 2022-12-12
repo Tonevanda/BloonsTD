@@ -12,8 +12,11 @@ public class IceTower extends Towers {
     }
 
     public String getFileName(){
-        if(isSelected) return "ranges/BombTowerBaseRange";
+        if(isSelected) return "ranges/IceTowerBaseRange";
         return "monkey/IceTowerSprite";
+    }
+    public String getBuyFileName(){
+        return "menuBuy/MenuIce";
     }
 
     public void select(){

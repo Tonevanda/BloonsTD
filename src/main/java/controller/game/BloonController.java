@@ -6,7 +6,7 @@ import base.Play;
 import base.Position;
 
 public class BloonController extends GameController {
-    private long bloonsToSend;
+    private int bloonsToSend;
 
     public BloonController(Play play){
         super(play);
@@ -21,7 +21,7 @@ public class BloonController extends GameController {
         for(int i = 0; i < bloonsToSend; i++){
             int numberOfBloons = getModel().getBloons().size();
             Bloon bloon = getModel().getBloons().get(i);
-            getModel().popBloon(time);
+            getModel().popBloon(time, bloonsToSend);
 
             if(bloon.canMove(time)){
                 moveBloon(bloon, bloon.getPosition().getNextPosition());

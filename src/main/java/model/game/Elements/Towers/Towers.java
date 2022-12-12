@@ -50,6 +50,7 @@ public abstract class Towers {
     }
     public abstract void select();
     public abstract String getFileName();
+    public abstract String getBuyFileName();
     public abstract int price();
     public abstract boolean upgradeLeft();
     public abstract boolean upgradeRight();

@@ -125,13 +125,22 @@ public class ScreenLoader{
         Color[][] color = towerImg.getColor();
         draw(tower.getSize(),tower.getSize(),centerPosition, color);
     }
-    public void drawRange(Position position, int range){
-        /*
-        String file = "ranges/"+range; //concept
-        Reader rangeImg = new Reader(file, range, range);
-        Color[][] color = rangeImg.getColor();
-        draw(range, range, position, color);
-        */
+    public void drawBuyMenu(Towers tower){
+        String file = "menuBuy/MenuBuy";
+        Position position = new Position(195,65);
+        Reader img = new Reader(file,57,74);
+        Color[][] color = img.getColor();
+        draw(57,74,position,color);
+        file = tower.getBuyFileName();
+        img = new Reader(file, 25,7);
+        position = new Position(195,65);
+        color = img.getColor();
+        draw(25,7,position,color);
+
+        Position rangePosition = new Position(238, 73);
+        drawNumbers(tower.getRadius(), 2, rangePosition);
+        Position sellPosition = new Position(240,130);
+        drawNumbers(tower.getValue(), 4, sellPosition);
     }
 
     public void drawBloon(Position pos, Bloon bloon){
@@ -148,28 +157,23 @@ public class ScreenLoader{
         draw(width, height, pos, color);
     }
 
-    //conceptual
     public void drawRound(int round){
-        for(int i = 0; i < 6; i++){
-            int n = round%10;
-            round /= 10;
-            Position numberPosition = new Position(247 - 4*i, 21);
-            drawNumber(numberPosition, n);
-        }
+        Position pos = new Position(247, 21);
+        drawNumbers(round, 6, pos);
     }
     public void drawMoney(int money){
-        for(int i = 0; i < 6; i++){
-            int n = money%10;
-            money /= 10;
-            Position numberPosition = new Position(247 - 4*i, 27);
-            drawNumber(numberPosition, n);
-        }
+        Position pos = new Position(247, 27);
+        drawNumbers(money, 6, pos);
     }
     public void drawLives(int lives){
-        for(int i = 0; i < 6; i++){
-            int n = lives%10;
-            lives /= 10;
-            Position numberPosition = new Position(247 - 4*i, 33);
+        Position pos = new Position(247,33);
+        drawNumbers(lives, 6, pos);
+    }
+    public void drawNumbers(int number, int size, Position position){
+        for(int i = 0; i < size; i++){
+            int n = number%10;
+            number /= 10;
+            Position numberPosition = new Position(position.getX()-4*i, position.getY());
             drawNumber(numberPosition, n);
         }
     }

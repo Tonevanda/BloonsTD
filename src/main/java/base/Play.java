@@ -138,25 +138,28 @@ public class Play {
     public void removeBloon(Bloon bloon){
         bloons.remove(bloon);
     }
+    public void removeTower(Towers tower){
+        towers.remove(tower);
+        System.out.println("Tower removed");
+    }
     public void nextRound(){
         round++;
         startRound();
     }
     public void addTower(Towers tower){
         towers.add(tower);
-        System.out.println("Tower added");
+
     }
 
-    public void popBloon(long time) {
+    public void popBloon(long time, int bloonsToSend) {
         for (Towers tower : towers) {
-            for (Bloon bloon : bloons) {
+            for(int i = 0; i < bloonsToSend;i++){
+                Bloon bloon = bloons.get(i);
                 if (bloon.getPosition().isInRange(tower.getPosition(),tower.getRadius()) && tower.canShoot(time)) {
-                    System.out.println("bloon popped");
                     bloon.pop();
-                    if (bloon.getLayers() == 0) {
-                        player.addMoney(bloon.getType()*100 + 50);
+                    if (bloon.getLayers() <= 0) {
+                        player.addMoney(bloon.getType()*50);
                         bloons.remove(bloon);
-                        System.out.println("bloon removed");
                         break;
                     }
                     break;

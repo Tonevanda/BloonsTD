@@ -18,6 +18,10 @@ public class TackTower extends Towers {
         if(isSelected)return "ranges/TackTowerBaseRange";
         return "monkey/TackTowerSprite";
     }
+    public String getBuyFileName(){
+        return "menuBuy/MenuTack";
+    }
+
     public void select(){
         size = selectedSize;
         isSelected = true;

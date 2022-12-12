@@ -18,7 +18,9 @@ public class BombTower extends Towers {
         if(isSelected) return "ranges/BombTowerBaseRange";
         return "monkey/BombTowerSprite";
     }
-
+    public String getBuyFileName(){
+        return "menuBuy/MenuBomb";
+    }
     public int price() {
         return 900;
     }

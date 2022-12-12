@@ -97,6 +97,13 @@ public class Position {
     public boolean isInRange(Position pos, int radius){
         return Math.pow((x+8) - pos.getX(), 2) + Math.pow((y+8) - pos.getY(), 2) < Math.pow(radius, 2);
     }
+    public boolean sell(){
+        Position curPos = new Position(x,y);
+        Position sellTop = new Position(201, 129);
+        Position sellBot = new Position(245,137);
+        if(curPos.isBetween(sellTop, sellBot)) return true;
+        return false;
+    }
 
     public Position getNextPosition(){
         createPath();

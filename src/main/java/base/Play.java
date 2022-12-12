@@ -46,76 +46,74 @@ public class Play {
                 break;
             }
             case 2:{
-                for(int i = 0; i<30; i++) bloons.add(new Bloon("red"));
-                break;
-            }
-            case 3:{
-                for(int i = 0; i<1; i++) bloons.add(new Bloon("red"));
+                for(int i = 0; i<10; i++) bloons.add(new Bloon("red"));
                 for(int i= 0; i<5;i++) bloons.add(new Bloon("blue"));
                 break;
             }
-            case 4:{
-                for(int i = 0; i<25;i++)bloons.add(new Bloon("blue"));
+            case 3:{
+                for(int i= 0; i<10;i++) bloons.add(new Bloon("blue"));
                 break;
             }
-            case 5:{
-                for(int i = 0; i<20; i++)bloons.add(new Bloon("blue"));
+            case 4:{
+                for(int i = 0; i<10;i++)bloons.add(new Bloon("blue"));
                 for(int i = 0; i<5; i++)bloons.add(new Bloon("green"));
                 break;
             }
+            case 5:{
+                for(int i = 0; i<15; i++)bloons.add(new Bloon("green"));
+                break;
+            }
             case 6:{
-                for(int i = 0; i < 20; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 7:{
-                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
-                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 8:{
                 for(int i = 0; i < 5; i++) bloons.add(new Bloon("blue"));
                 for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
-                for(int i = 0; i < 30; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 9:{
-                for(int i = 0; i < 40; i++) bloons.add(new Bloon("blue"));
-                for(int i = 0; i < 10; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("blue"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("yellow"));
                 for(int i = 0; i < 5; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 10:{
-                for(int i = 0; i < 30; i++) bloons.add(new Bloon("green"));
-                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
-                for(int i = 0; i < 15; i++) bloons.add(new Bloon("pink"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 11:{
-                for(int i = 0; i < 50; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
                 break;
             }
             case 12:{
-                for(int i = 0; i < 25; i++) bloons.add(new Bloon("yellow"));
-                for(int i = 0; i < 25; i++) bloons.add(new Bloon("pink"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 10; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 13:{
-                for(int i = 0; i < 50; i++) bloons.add(new Bloon("pink"));
+                for(int i = 0; i < 20; i++) bloons.add(new Bloon("pink"));
                 break;
             }
             case 14:{
-                for(int i = 0; i < 50; i++) bloons.add(new Bloon("green"));
-                for(int i = 0; i < 50; i++) bloons.add(new Bloon("yellow"));
                 for(int i = 0; i < 5; i++) bloons.add(new Bloon("hard"));
                 break;
             }
             case 15:{
-                for(int i = 0; i<10; i++) bloons.add(new Bloon("red"));
-                for(int i= 0; i<10;i++) bloons.add(new Bloon("blue"));
-                for(int i = 0; i < 10; i++) bloons.add(new Bloon("green"));
-                for(int i = 0; i < 15; i++) bloons.add(new Bloon("yellow"));
-                for(int i = 0; i < 15; i++) bloons.add(new Bloon("pink"));
-                for(int i = 0; i < 20; i++) bloons.add(new Bloon("hard"));
+                for(int i = 0; i<5; i++) bloons.add(new Bloon("red"));
+                for(int i= 0; i<5;i++) bloons.add(new Bloon("blue"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("green"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("yellow"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("pink"));
+                for(int i = 0; i < 5; i++) bloons.add(new Bloon("hard"));
                 break;
             }
         }
@@ -151,9 +149,10 @@ public class Play {
     }
 
     public void popBloon(long time, int bloonsToSend) {
+        int i = 0;
         for (Towers tower : towers) {
             if(tower.canShoot(time)){
-                for(int i = 0; i < bloonsToSend;i++) {
+                while(i < bloonsToSend) {
                     Bloon bloon = bloons.get(i);
                     if (bloon.getPosition().isInRange(tower.getPosition(), tower.getRadius())) {
                         bloon.pop(tower);
@@ -161,9 +160,17 @@ public class Play {
                             player.addMoney(bloon.getType() * 50);
                             bloons.remove(bloon);
                             bloonsToSend--;
-                            break;
+                            i = 0;
                         }
-                        if (!tower.canShootMultiple()) break;
+                        else{
+                            i++;
+                        }
+                        if (!tower.canShootMultiple()){
+                            return;
+                        }
+                    }
+                    else{
+                        i++;
                     }
                 }
             }

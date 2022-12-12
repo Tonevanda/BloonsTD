@@ -7,11 +7,13 @@ public class DartMonkeyTower extends Towers {
     public DartMonkeyTower() {
         radius = 35;
         value = 100;
-        shootingWaitTime = 5000;
+        shootingWaitTime = 4000;
         isSelected = false;
         size = 70;
         selectedSize = 70;
         upgrades = new Upgrades();
+        canPopHard = false;
+        poppingPower = 1;
     }
     public void select(){
         size = selectedSize;
@@ -29,16 +31,19 @@ public class DartMonkeyTower extends Towers {
         return 250;
     }
 
-    public boolean upgradeLeft(){ //mais attack speed
+    public boolean upgradeLeft(){
         if(!upgrades.upgradeLeft()) return false;
+        shootingWaitTime -= 2000;
         value += 168;
         return true;
     }
-    public boolean upgradeRight() { //mais range//
+    public boolean upgradeRight() {
         if(!upgrades.upgradeRight()) return false;
-        radius = 20;
+        radius += 10;
         value += 80;
         return true;
     }
-
+    public boolean canShootMultiple(){
+        return false;
+    }
 }

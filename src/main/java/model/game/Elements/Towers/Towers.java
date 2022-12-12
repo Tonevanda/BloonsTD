@@ -12,12 +12,14 @@ public abstract class Towers {
     protected boolean isSelected;
     protected int size;
     protected int selectedSize;
+    protected boolean canPopHard;
+    protected int poppingPower;
 
 
     public void setPosition(Position pos) {
         position = new Position((pos.getX()+8)/4, (pos.getY()+8)/4);
     }
-
+    public int getPoppingPower(){return poppingPower;}
     public Position getPosition() {
         return position;
     }
@@ -35,6 +37,7 @@ public abstract class Towers {
         size = 16;
         isSelected = false;
     }
+    public boolean canPopHard(){return canPopHard;}
     public Upgrades getUpgrades(){
         return upgrades;
     }
@@ -52,6 +55,8 @@ public abstract class Towers {
     public abstract String getFileName();
     public abstract String getBuyFileName();
     public abstract int price();
+    public abstract boolean canShootMultiple();
     public abstract boolean upgradeLeft();
     public abstract boolean upgradeRight();
+
 }

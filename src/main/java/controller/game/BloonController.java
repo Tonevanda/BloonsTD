@@ -35,16 +35,11 @@ public class BloonController extends GameController {
                 getModel().getPlayer().loseHearts(bloon.getLayers());
                 getModel().removeBloon(bloon);
                 bloonsToSend--;
-                System.out.println("Player Hearts: " + getModel().getPlayer().getLives());
-                System.out.println("AtEnd - bloonsToSend: "+ bloonsToSend);
             }
             else if(getModel().getBloons().size() < numberOfBloons){
                 bloonsToSend--;
-                System.out.println("Range - bloonsToSend: "+ bloonsToSend);
-                System.out.println("Range - getBloons Size: "+ getModel().getBloons().size());
             }
         }
-
 
         if(bloonsToSend==0 && getModel().hasRoundEnded()){
             getModel().nextRound();

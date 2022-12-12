@@ -11,12 +11,10 @@ import java.util.List;
 public class TowerController extends GameController {
     private boolean buying;
     private Towers selectedTower;
-    private List<Towers> placedTowers;
     private boolean anySelected;
 
     public TowerController(Play play) {
         super(play);
-        placedTowers = new ArrayList<>();
         buying = false;
         anySelected = false;
     }
@@ -41,8 +39,8 @@ public class TowerController extends GameController {
         } else {
             if (getModel().getPlayer().getMoney() >= selectedTower.price()) {
                 selectedTower.select();
-                place(selectedTower, mousePressed, mouseLocation);
                 getModel().setPlacingTower(selectedTower);
+                place(selectedTower, mousePressed, mouseLocation);
             } else {
                 buying = false;
             }
@@ -60,14 +58,14 @@ public class TowerController extends GameController {
             getModel().addTower(tower);
             tower.setPosition(mousePressed);
             buying = false;
-            placedTowers.add(tower);
         }
     }
 
     public void checkIfSelected(Position mousePressed) {
         Position nullPosition = new Position(-1, -1);
         Position terminalPosition = new Position(mousePressed.getX() / 4, mousePressed.getY() / 4);
-        for (Towers tower : placedTowers) {
+        if(buying)return;
+        for (Towers tower : getModel().getTowers()) {
             Position topLeft = new Position(tower.getPosition().getX() - 8, tower.getPosition().getY() - 8);
             Position bottomRight = new Position(tower.getPosition().getX() + 8, tower.getPosition().getY() + 6);
             if (terminalPosition.isBetween(topLeft, bottomRight) && !anySelected) {
@@ -96,7 +94,6 @@ public class TowerController extends GameController {
                 selectedTower.stopSelecting();
                 anySelected = false;
                 getModel().getPlayer().addMoney(selectedTower.getValue());
-                placedTowers.remove(selectedTower);
                 getModel().removeTower(selectedTower);
             }
         }

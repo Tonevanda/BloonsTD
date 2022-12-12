@@ -4,11 +4,13 @@ public class IceTower extends Towers {
     public IceTower(){
         radius = 30;
         value = 400;
-        shootingWaitTime = 7000;
+        shootingWaitTime = 6000;
         isSelected = false;
         upgrades = new Upgrades();
         size = 60;
         selectedSize = 60;
+        canPopHard = false;
+        poppingPower = 1;
     }
 
     public String getFileName(){
@@ -27,16 +29,20 @@ public class IceTower extends Towers {
         return 650;
     }
 
-    public boolean upgradeLeft() { //mais quantidade de slow//
+    public boolean upgradeLeft() {
         if(!upgrades.upgradeLeft()) return false;
+        canPopHard = true;
         value += 360;
         return true;
     }
 
     public boolean upgradeRight() { //mais range de slow//
         if(!upgrades.upgradeRight()) return false;
-        radius += 10;
+        radius += 15;
         value += 240;
+        return true;
+    }
+    public boolean canShootMultiple(){
         return true;
     }
 

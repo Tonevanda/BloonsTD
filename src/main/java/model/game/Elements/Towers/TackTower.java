@@ -6,11 +6,13 @@ public class TackTower extends Towers {
     public TackTower(){
         radius = 25;
         value = 320;
-        shootingWaitTime = 7000;
+        shootingWaitTime = 5000;
         isSelected = false;
         size = 50;
         selectedSize = 50;
         upgrades = new Upgrades();
+        canPopHard = false;
+        poppingPower = 1;
     }
 
 
@@ -33,6 +35,7 @@ public class TackTower extends Towers {
 
     public boolean upgradeLeft() { //mais attack speed
         if(!upgrades.upgradeLeft()) return false;
+        shootingWaitTime -= 2000;
         value += 200;
         return true;
     }
@@ -41,6 +44,9 @@ public class TackTower extends Towers {
         if(!upgrades.upgradeRight()) return false;
         radius += 20;
         value += 120;
+        return true;
+    }
+    public boolean canShootMultiple(){
         return true;
     }
 }

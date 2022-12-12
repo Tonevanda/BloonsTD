@@ -34,7 +34,7 @@ public class Play {
         placingTower.add(tower);
     }
     public void stopPlacingTower(){
-        placingTower.remove(0);
+        placingTower.clear();
     }
 
     public void bloonSender(){
@@ -148,21 +148,23 @@ public class Play {
     }
     public void addTower(Towers tower){
         towers.add(tower);
-
     }
 
     public void popBloon(long time, int bloonsToSend) {
         for (Towers tower : towers) {
-            for(int i = 0; i < bloonsToSend;i++){
-                Bloon bloon = bloons.get(i);
-                if (bloon.getPosition().isInRange(tower.getPosition(),tower.getRadius()) && tower.canShoot(time)) {
-                    bloon.pop();
-                    if (bloon.getLayers() <= 0) {
-                        player.addMoney(bloon.getType()*50);
-                        bloons.remove(bloon);
-                        break;
+            if(tower.canShoot(time)){
+                for(int i = 0; i < bloonsToSend;i++) {
+                    Bloon bloon = bloons.get(i);
+                    if (bloon.getPosition().isInRange(tower.getPosition(), tower.getRadius())) {
+                        bloon.pop(tower);
+                        if (bloon.getLayers() <= 0) {
+                            player.addMoney(bloon.getType() * 50);
+                            bloons.remove(bloon);
+                            bloonsToSend--;
+                            break;
+                        }
+                        if (!tower.canShootMultiple()) break;
                     }
-                    break;
                 }
             }
         }

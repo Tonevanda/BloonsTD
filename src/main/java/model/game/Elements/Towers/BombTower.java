@@ -4,11 +4,13 @@ public class BombTower extends Towers {
     public BombTower(){
         radius = 45;
         value = 720;
-        shootingWaitTime = 7000;
+        shootingWaitTime = 8000;
         isSelected = false;
         upgrades = new Upgrades();
         size = 90;
         selectedSize = 90;
+        canPopHard = true;
+        poppingPower = 1;
     }
     public void select(){
         size = selectedSize;
@@ -25,18 +27,21 @@ public class BombTower extends Towers {
         return 900;
     }
 
-    public boolean upgradeLeft() { //mais range de impacto da bomba
+    public boolean upgradeLeft() {
         if(!upgrades.upgradeLeft()) return false;
-        //range = 150;
+        poppingPower++;
         value += 520;
         return true;
     }
 
-    public boolean upgradeRight() { //mais range
+    public boolean upgradeRight() {
         if(!upgrades.upgradeRight()) return false;
         radius += 10;
         value += 200;
         return true;
+    }
+    public boolean canShootMultiple(){
+        return false;
     }
 
 }

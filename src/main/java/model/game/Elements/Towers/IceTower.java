@@ -10,7 +10,7 @@ public class IceTower extends Towers {
         size = 60;
         selectedSize = 60;
         canPopHard = false;
-        poppingPower = 1;
+        poppingPower = 2;
     }
 
     public String getFileName(){

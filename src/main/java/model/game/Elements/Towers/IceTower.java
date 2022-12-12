@@ -1,24 +1,27 @@
 package model.game.Elements.Towers;
 
-import base.Position;
-import com.googlecode.lanterna.graphics.TextGraphics;
-
 public class IceTower extends Towers {
     public IceTower(){
         radius = 30;
-        value = 680;
+        value = 400;
         shootingWaitTime = 7000;
         isSelected = false;
         upgrades = new Upgrades();
+        size = 60;
+        selectedSize = 60;
     }
 
     public String getFileName(){
+        if(isSelected) return "ranges/BombTowerBaseRange";
         return "monkey/IceTowerSprite";
     }
 
-
+    public void select(){
+        size = selectedSize;
+        isSelected = true;
+    }
     public int price() {
-        return 850;
+        return 650;
     }
 
     public boolean upgradeLeft() { //mais quantidade de slow//

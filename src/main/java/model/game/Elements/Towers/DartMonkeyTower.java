@@ -5,15 +5,21 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class DartMonkeyTower extends Towers {
     public DartMonkeyTower() {
-        radius = 50;
+        radius = 35;
         value = 100;
         shootingWaitTime = 5000;
         isSelected = false;
+        size = 70;
+        selectedSize = 70;
         upgrades = new Upgrades();
+    }
+    public void select(){
+        size = selectedSize;
+        isSelected = true;
     }
 
     public String getFileName(){
-        if(isSelected) return "monkey/DartMonkeyTowerSpriteRange";
+        if(isSelected) return "ranges/DartMonkeyBaseRange";
         return "monkey/DartMonkeyTowerSprite";
     }
 
@@ -21,7 +27,7 @@ public class DartMonkeyTower extends Towers {
         return 250;
     }
 
-    public boolean upgradeLeft(){ //mais attack speed //
+    public boolean upgradeLeft(){ //mais attack speed
         if(!upgrades.upgradeLeft()) return false;
         value += 168;
         return true;

@@ -10,6 +10,8 @@ public abstract class Towers {
     protected long lastShot;
     protected int shootingWaitTime;
     protected boolean isSelected;
+    protected int size;
+    protected int selectedSize;
 
 
     public void setPosition(Position pos) {
@@ -30,13 +32,14 @@ public abstract class Towers {
         return isSelected;
     }
     public void stopSelecting(){
+        size = 16;
         isSelected = false;
-    }
-    public void select(){
-        isSelected = true;
     }
     public Upgrades getUpgrades(){
         return upgrades;
+    }
+    public int getSize(){
+        return size;
     }
     public boolean canShoot(long time){
         if(time - lastShot > shootingWaitTime){
@@ -45,7 +48,7 @@ public abstract class Towers {
         }
         return false;
     }
-
+    public abstract void select();
     public abstract String getFileName();
     public abstract int price();
     public abstract boolean upgradeLeft();

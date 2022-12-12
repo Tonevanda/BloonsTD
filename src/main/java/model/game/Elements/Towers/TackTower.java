@@ -4,17 +4,24 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class TackTower extends Towers {
     public TackTower(){
-        radius = 20;
+        radius = 25;
         value = 320;
         shootingWaitTime = 7000;
         isSelected = false;
+        size = 50;
+        selectedSize = 50;
         upgrades = new Upgrades();
     }
 
+
     public String getFileName(){
+        if(isSelected)return "ranges/TackTowerBaseRange";
         return "monkey/TackTowerSprite";
     }
-
+    public void select(){
+        size = selectedSize;
+        isSelected = true;
+    }
 
     public int price() {
         return 400;

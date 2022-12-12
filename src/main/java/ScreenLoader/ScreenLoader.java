@@ -120,21 +120,10 @@ public class ScreenLoader{
 
     public void drawTower(Towers tower){
         String file = tower.getFileName();
-        int width;
-        Position centerPosition;
-        if(tower.isSelected()){
-            width = 112;
-            centerPosition = new Position(tower.getPosition().getX()-56, tower.getPosition().getY()-56);
-        }
-        else{
-            width = 16;
-            centerPosition = new Position(tower.getPosition().getX()-8, tower.getPosition().getY()-8);
-        }
-
-        Reader towerImg = new Reader(file, width, width);
+        Position centerPosition = new Position(tower.getPosition().getX()-(tower.getSize()/2), tower.getPosition().getY()- (tower.getSize()/2));
+        Reader towerImg = new Reader(file, tower.getSize(), tower.getSize());
         Color[][] color = towerImg.getColor();
-
-        draw(width,width,centerPosition, color);
+        draw(tower.getSize(),tower.getSize(),centerPosition, color);
     }
     public void drawRange(Position position, int range){
         /*

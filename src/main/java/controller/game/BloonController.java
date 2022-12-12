@@ -23,7 +23,6 @@ public class BloonController extends GameController {
             Bloon bloon = getModel().getBloons().get(i);
             getModel().popBloon(time);
 
-
             if(bloon.canMove(time)){
                 moveBloon(bloon, bloon.getPosition().getNextPosition());
             }
@@ -57,7 +56,6 @@ public class BloonController extends GameController {
     }
 
     private void moveBloon(Bloon bloon, Position position){
-        //System.out.println("Current Position: " + bloon.getPosition().getX() + ", " + bloon.getPosition().getY() + " New Position: " + position.getX() + ", " + position.getY());
         bloon.setPosition(position);
     }
 }

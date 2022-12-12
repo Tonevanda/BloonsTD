@@ -1,17 +1,21 @@
 package model.game.Elements.Towers;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-
 public class BombTower extends Towers {
     public BombTower(){
-        radius = 30;
+        radius = 45;
         value = 720;
         shootingWaitTime = 7000;
         isSelected = false;
         upgrades = new Upgrades();
+        size = 90;
+        selectedSize = 90;
     }
-
+    public void select(){
+        size = selectedSize;
+        isSelected = true;
+    }
     public String getFileName(){
+        if(isSelected) return "ranges/BombTowerBaseRange";
         return "monkey/BombTowerSprite";
     }
 

@@ -27,8 +27,9 @@ public abstract class State<T> {
     public void step(Application application, ScreenLoader screen, long time) throws IOException {
         Position mousePressed = screen.getMousePressed();
         Position mouseLocation = screen.getMouseLocation();
+        Integer keyPressed = screen.getPressedKey();
 
-        controller.step(application, mousePressed, mouseLocation, time);
+        controller.step(application, mousePressed, mouseLocation, keyPressed, time);
         drawer.draw(screen);
     }
 }

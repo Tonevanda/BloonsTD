@@ -19,11 +19,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ScreenLoader{
     private Screen screen;
     private Position mousePressed = new Position(-1,-1);
     private Position mouseLocation = new Position(-1,-1);
+    Integer pressedKey = -1;
 
     public ScreenLoader(Screen screen){
         this.screen = screen;
@@ -70,6 +73,12 @@ public class ScreenLoader{
 
         ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(mouseAdapter);
         ((AWTTerminalFrame)terminal).getComponent(0).addMouseMotionListener(mouseAdapter);
+        ((AWTTerminalFrame)terminal).getComponent(0).addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                pressedKey = e.getKeyCode();
+            }
+        });
         return terminal;
     }
 
@@ -81,6 +90,11 @@ public class ScreenLoader{
 
     public Position getMouseLocation(){
         return mouseLocation;
+    }
+    public Integer getPressedKey(){
+        Integer key = pressedKey;
+        pressedKey = -1;
+        return key;
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws IOException, FontFormatException, URISyntaxException {

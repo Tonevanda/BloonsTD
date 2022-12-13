@@ -5,6 +5,7 @@ import base.Play;
 import base.Position;
 import model.game.Elements.Towers.*;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class TowerController extends GameController {
         anySelected = false;
     }
 
-    public void step(Application application, Position mousePressed, Position mouseLocation, long time) {
-        checkIfSelected(mousePressed);
+    public void step(Application application, Position mousePressed, Position mouseLocation, Integer keyPressed, long time) {
+        checkIfSelected(mousePressed, keyPressed);
         openMenu(mousePressed);
         if (!buying) {
             if (mousePressed.isBetween(new Position(196 * 4, 43 * 4), new Position(208 * 4, 56 * 4))) {
@@ -40,18 +41,18 @@ public class TowerController extends GameController {
             if (getModel().getPlayer().getMoney() >= selectedTower.price()) {
                 selectedTower.select();
                 getModel().setPlacingTower(selectedTower);
-                place(selectedTower, mousePressed, mouseLocation);
+                place(selectedTower, mousePressed, mouseLocation, keyPressed);
             } else {
                 buying = false;
             }
         }
     }
 
-    public void place(Towers tower, Position mousePressed, Position mouseLocation) {
+    public void place(Towers tower, Position mousePressed, Position mouseLocation, Integer keyPressed) {
         Position notPressed = new Position(-1, -1);
-        if (mousePressed.equals(notPressed) && tower.isSelected()) {
+        if (mousePressed.equals(notPressed) && tower.isSelected() && keyPressed != KeyEvent.VK_ESCAPE) {
             tower.setPosition(mouseLocation);
-        } else if (mousePressed != notPressed && mousePressed.legalPosition(getModel().getTowers())) {
+        } else if (mousePressed != notPressed && mousePressed.legalPosition(getModel().getTowers()) && keyPressed != KeyEvent.VK_ESCAPE) {
             getModel().stopPlacingTower();
             getModel().getPlayer().spendMoney(tower.price());
             tower.stopSelecting();
@@ -59,9 +60,14 @@ public class TowerController extends GameController {
             tower.setPosition(mousePressed);
             buying = false;
         }
+        else if(keyPressed == KeyEvent.VK_ESCAPE){
+            getModel().stopPlacingTower();
+            tower.stopSelecting();
+            buying = false;
+        }
     }
 
-    public void checkIfSelected(Position mousePressed) {
+    public void checkIfSelected(Position mousePressed, Integer keyPressed) {
         Position nullPosition = new Position(-1, -1);
         Position terminalPosition = new Position(mousePressed.getX() / 4, mousePressed.getY() / 4);
         if(buying)return;
@@ -74,7 +80,7 @@ public class TowerController extends GameController {
                 anySelected = true;
                 break;
             }
-            else if (tower.isSelected() && !mousePressed.equals(nullPosition) && !terminalPosition.sell() && !terminalPosition.leftUpgrade() && !terminalPosition.rightUpgrade()) {
+            else if (tower.isSelected() && !mousePressed.equals(nullPosition) && !terminalPosition.sell() && !terminalPosition.leftUpgrade() && !terminalPosition.rightUpgrade() || keyPressed==KeyEvent.VK_ESCAPE) {
                 tower.stopSelecting();
                 anySelected = false;
             }

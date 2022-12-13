@@ -13,7 +13,7 @@ public class BloonController extends GameController {
         bloonsToSend = 1;
     }
 
-    public void step(Application application, Position mousePressed, Position mouseLocation, long time){
+    public void step(Application application, Position mousePressed, Position mouseLocation, Integer keyPressed, long time){
         Position farEnough = new Position(5,48);
         Position atEnd = new Position(161,-29);
 

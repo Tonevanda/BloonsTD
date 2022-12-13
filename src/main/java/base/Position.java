@@ -105,6 +105,22 @@ public class Position {
         return false;
     }
 
+    public boolean leftUpgrade(){
+        Position curPos = new Position(x,y);
+        Position leftUpgradeTop = new Position(196,82);
+        Position leftUpgradeBot = new Position(221,127);
+        if(curPos.isBetween(leftUpgradeTop,leftUpgradeBot)) return true;
+        return false;
+    }
+
+    public boolean rightUpgrade(){
+        Position curPos = new Position(x,y);
+        Position rightUpgradeTop = new Position(225,82);
+        Position rightUpgradeBot = new Position(250,127);
+        if(curPos.isBetween(rightUpgradeTop,rightUpgradeBot)) return true;
+        return false;
+    }
+
     public Position getNextPosition(){
         createPath();
         Position pos = new Position(x,y);

@@ -14,11 +14,12 @@ public class TackTower extends Towers {
         upgrades = new Upgrades();
         canPopHard = false;
         poppingPower = 1;
+        rangeFile = "ranges/TackTowerBaseRange";
     }
 
 
     public String getFileName(){
-        if(isSelected)return "ranges/TackTowerBaseRange";
+        if(isSelected) return rangeFile;
         return "monkey/TackTowerSprite";
     }
     public String getBuyFileName(){
@@ -34,16 +35,27 @@ public class TackTower extends Towers {
         return 400;
     }
 
+    public int getUpgradePrice(char side){
+        switch(side){
+            case 'L': return 300;
+            case 'R': return 200;
+        }
+        return 0;
+    }
     public boolean upgradeLeft() { //mais attack speed
         if(!upgrades.upgradeLeft()) return false;
         shootingWaitTime -= 2000;
-        value += 200;
+        value += 100;
         return true;
     }
 
+
     public boolean upgradeRight() { // mais range
         if(!upgrades.upgradeRight()) return false;
-        radius += 20;
+        selectedSize = 80;
+        size = 80;
+        rangeFile = "ranges/TackTowerUpgradedRange";
+        radius += 15;
         value += 120;
         return true;
     }

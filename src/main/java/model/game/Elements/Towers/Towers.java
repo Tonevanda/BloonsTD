@@ -17,6 +17,7 @@ public abstract class Towers {
     protected String rangeFile;
 
 
+
     public void setPosition(Position pos) {
         position = new Position((pos.getX()+8)/4, (pos.getY()+8)/4);
     }
@@ -54,6 +55,15 @@ public abstract class Towers {
         }
         return false;
     }
+
+    public boolean hasUpgraded(char side){
+        switch(side){
+            case 'L': if(upgrades.getLeft() == 1)return true;
+            case 'R': if(upgrades.getRight()==1)return true;
+        }
+        return false;
+    }
+    public abstract int getUpgradePrice(char side);
     public abstract void select();
     public abstract String getFileName();
     public abstract String getBuyFileName();

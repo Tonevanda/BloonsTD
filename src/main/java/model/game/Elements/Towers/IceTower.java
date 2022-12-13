@@ -4,7 +4,7 @@ public class IceTower extends Towers {
     public IceTower(){
         radius = 30;
         value = 400;
-        shootingWaitTime = 6000;
+        shootingWaitTime = 7000;
         isSelected = false;
         upgrades = new Upgrades();
         size = 60;
@@ -12,10 +12,11 @@ public class IceTower extends Towers {
         canPopHard = false;
         poppingPower = 2;
         lastShot = 0;
+        rangeFile = "ranges/IceTowerBaseRange";
     }
 
     public String getFileName(){
-        if(isSelected) return "ranges/IceTowerBaseRange";
+        if(isSelected) return rangeFile;
         return "monkey/IceTowerSprite";
     }
     public String getBuyFileName(){
@@ -30,6 +31,13 @@ public class IceTower extends Towers {
         return 650;
     }
 
+    public int getUpgradePrice(char side){
+        switch(side){
+            case 'L': return 500;
+            case 'R': return 350;
+        }
+        return 0;
+    }
     public boolean upgradeLeft() {
         if(!upgrades.upgradeLeft()) return false;
         canPopHard = true;
@@ -39,6 +47,9 @@ public class IceTower extends Towers {
 
     public boolean upgradeRight() { //mais range de slow//
         if(!upgrades.upgradeRight()) return false;
+        selectedSize = 70;
+        size = 70;
+        rangeFile = "ranges/IceTowerUpgradedRange";
         radius += 15;
         value += 240;
         return true;

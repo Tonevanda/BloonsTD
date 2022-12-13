@@ -12,13 +12,14 @@ public class BombTower extends Towers {
         canPopHard = true;
         poppingPower = 1;
         lastShot = 0;
+        rangeFile ="ranges/BombTowerBaseRange";
     }
     public void select(){
         size = selectedSize;
         isSelected = true;
     }
     public String getFileName(){
-        if(isSelected) return "ranges/BombTowerBaseRange";
+        if(isSelected) return rangeFile;
         return "monkey/BombTowerSprite";
     }
     public String getBuyFileName(){
@@ -26,6 +27,14 @@ public class BombTower extends Towers {
     }
     public int price() {
         return 900;
+    }
+
+    public int getUpgradePrice(char side){
+        switch(side){
+            case 'L': return 750;
+            case 'R': return 350;
+        }
+        return 0;
     }
 
     public boolean upgradeLeft() {
@@ -37,6 +46,9 @@ public class BombTower extends Towers {
 
     public boolean upgradeRight() {
         if(!upgrades.upgradeRight()) return false;
+        selectedSize = 110;
+        size = 110;
+        rangeFile = "ranges/BombTowerUpgradedRange";
         radius += 10;
         value += 200;
         return true;

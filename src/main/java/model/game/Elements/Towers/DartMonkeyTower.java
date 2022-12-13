@@ -15,6 +15,7 @@ public class DartMonkeyTower extends Towers {
         canPopHard = false;
         poppingPower = 1;
         lastShot = 0;
+        rangeFile = "ranges/DartMonkeyBaseRange";
     }
     public void select(){
         size = selectedSize;
@@ -22,7 +23,7 @@ public class DartMonkeyTower extends Towers {
     }
 
     public String getFileName(){
-        if(isSelected) return "ranges/DartMonkeyBaseRange";
+        if(isSelected) return rangeFile;
         return "monkey/DartMonkeyTowerSprite";
     }
     public String getBuyFileName(){
@@ -32,16 +33,25 @@ public class DartMonkeyTower extends Towers {
         return 250;
     }
 
+    public int getUpgradePrice(char side){
+        switch(side){
+            case 'L': return 150;
+            case 'R': return 120;
+        }
+        return 0;
+    }
+
     public boolean upgradeLeft(){
         if(!upgrades.upgradeLeft()) return false;
         shootingWaitTime -= 2000;
-        value += 168;
+        value += 100;
         return true;
     }
     public boolean upgradeRight() {
         if(!upgrades.upgradeRight()) return false;
         selectedSize = 112;
-
+        size = 112;
+        rangeFile = "ranges/DartMonkeyUpgradedRange";
         radius = 56;
         value += 80;
         return true;

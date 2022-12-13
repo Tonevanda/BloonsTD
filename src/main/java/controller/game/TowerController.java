@@ -74,7 +74,7 @@ public class TowerController extends GameController {
                 anySelected = true;
                 break;
             }
-            else if (tower.isSelected() && !mousePressed.equals(nullPosition) && !terminalPosition.sell()) {
+            else if (tower.isSelected() && !mousePressed.equals(nullPosition) && !terminalPosition.sell() && !terminalPosition.leftUpgrade() && !terminalPosition.rightUpgrade()) {
                 tower.stopSelecting();
                 anySelected = false;
             }
@@ -83,14 +83,22 @@ public class TowerController extends GameController {
 
     public void openMenu(Position mousePressed){
         Position terminalPosition = new Position(mousePressed.getX() / 4, mousePressed.getY() / 4);
-        Position leftUpgradeTop = new Position(100,200);
-        Position leftUpgradeBot = new Position(200,300);
         if(anySelected){
-            if(terminalPosition.isBetween(leftUpgradeTop, leftUpgradeBot)){
-                selectedTower.upgradeLeft();
+            if(terminalPosition.leftUpgrade() && !selectedTower.hasUpgraded('L')){
+                if(getModel().getPlayer().getMoney()>= selectedTower.getUpgradePrice('L')) {
+                    System.out.println("Upgraded left");
+                    selectedTower.upgradeLeft();
+                    getModel().getPlayer().spendMoney(selectedTower.getUpgradePrice('L'));
+                }
+            }
+            else if(terminalPosition.rightUpgrade() && !selectedTower.hasUpgraded('R')){
+                if(getModel().getPlayer().getMoney()>=selectedTower.getUpgradePrice('R')) {
+                    System.out.println("Upgraded right");
+                    selectedTower.upgradeRight();
+                    getModel().getPlayer().spendMoney(selectedTower.getUpgradePrice('R'));
+                }
             }
             else if(terminalPosition.sell()){
-                System.out.println("Sold");
                 selectedTower.stopSelecting();
                 anySelected = false;
                 getModel().getPlayer().addMoney(selectedTower.getValue());

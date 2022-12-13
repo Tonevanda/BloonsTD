@@ -149,9 +149,9 @@ public class Play {
     }
 
     public void popBloon(long time, int bloonsToSend) {
-        boolean shot = false;
         int i = 0;
         for (Towers tower : towers) {
+            boolean shot = false;
             if(tower.canShoot(time)){
                 while(i < bloonsToSend) {
                     Bloon bloon = bloons.get(i);

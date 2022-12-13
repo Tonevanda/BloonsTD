@@ -126,21 +126,41 @@ public class ScreenLoader{
         draw(tower.getSize(),tower.getSize(),centerPosition, color);
     }
     public void drawBuyMenu(Towers tower){
+        /*
         String file = "menuBuy/MenuBuy";
         Position position = new Position(195,65);
         Reader img = new Reader(file,57,74);
         Color[][] color = img.getColor();
         draw(57,74,position,color);
-        file = tower.getBuyFileName();
-        img = new Reader(file, 25,7);
-        position = new Position(195,65);
-        color = img.getColor();
-        draw(25,7,position,color);
+        */
+        String file = tower.getBuyFileName();
+        Reader img = new Reader(file, 57,74);
+        Position position = new Position(195,65);
+        Color[][] color = img.getColor();
+        draw(57,74,position,color);
 
         Position rangePosition = new Position(238, 73);
         drawNumbers(tower.getRadius(), 2, rangePosition);
         Position sellPosition = new Position(240,130);
         drawNumbers(tower.getValue(), 4, sellPosition);
+        Position upgradeLPosition = new Position(210,119);
+        drawNumbers(tower.getUpgradePrice('L'), 3, upgradeLPosition);
+        Position upgradeRPosition = new Position(240,119);
+        drawNumbers(tower.getUpgradePrice('R'), 3, upgradeRPosition);
+
+        file = "menuBuy/MaxedMenu";
+        img = new Reader(file, 26,9);
+        color = img.getColor();
+
+
+        if(tower.hasUpgraded('L')){
+            position = new Position(196,118);
+            draw(26,9,position,color);
+        }
+        if(tower.hasUpgraded('R')){
+            position = new Position(225,118);
+            draw(26,9,position,color);
+        }
     }
 
     public void drawBloon(Position pos, Bloon bloon){

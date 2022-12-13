@@ -59,7 +59,6 @@ public class ScreenLoader{
             @Override
             public void mousePressed(MouseEvent e) {
                 mousePressed = new Position(e.getX(), e.getY());
-                System.out.println("mousePressed: " + mousePressed.getX()/4 + ", " + mousePressed.getY()/4);
             }
 
             @Override
@@ -126,13 +125,6 @@ public class ScreenLoader{
         draw(tower.getSize(),tower.getSize(),centerPosition, color);
     }
     public void drawBuyMenu(Towers tower){
-        /*
-        String file = "menuBuy/MenuBuy";
-        Position position = new Position(195,65);
-        Reader img = new Reader(file,57,74);
-        Color[][] color = img.getColor();
-        draw(57,74,position,color);
-        */
         String file = tower.getBuyFileName();
         Reader img = new Reader(file, 57,74);
         Position position = new Position(195,65);
@@ -151,7 +143,6 @@ public class ScreenLoader{
         file = "menuBuy/MaxedMenu";
         img = new Reader(file, 26,9);
         color = img.getColor();
-
 
         if(tower.hasUpgraded('L')){
             position = new Position(196,118);

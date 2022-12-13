@@ -86,14 +86,12 @@ public class TowerController extends GameController {
         if(anySelected){
             if(terminalPosition.leftUpgrade() && !selectedTower.hasUpgraded('L')){
                 if(getModel().getPlayer().getMoney()>= selectedTower.getUpgradePrice('L')) {
-                    System.out.println("Upgraded left");
                     selectedTower.upgradeLeft();
                     getModel().getPlayer().spendMoney(selectedTower.getUpgradePrice('L'));
                 }
             }
             else if(terminalPosition.rightUpgrade() && !selectedTower.hasUpgraded('R')){
                 if(getModel().getPlayer().getMoney()>=selectedTower.getUpgradePrice('R')) {
-                    System.out.println("Upgraded right");
                     selectedTower.upgradeRight();
                     getModel().getPlayer().spendMoney(selectedTower.getUpgradePrice('R'));
                 }

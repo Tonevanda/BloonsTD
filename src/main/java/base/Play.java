@@ -138,7 +138,6 @@ public class Play {
     }
     public void removeTower(Towers tower){
         towers.remove(tower);
-        System.out.println("Tower removed");
     }
     public void nextRound(){
         round++;
@@ -149,8 +148,8 @@ public class Play {
     }
 
     public void popBloon(long time, int bloonsToSend) {
-        int i = 0;
         for (Towers tower : towers) {
+            int i = 0;
             boolean shot = false;
             if(tower.canShoot(time)){
                 while(i < bloonsToSend) {

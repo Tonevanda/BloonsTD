@@ -58,8 +58,14 @@ public abstract class Towers {
 
     public boolean hasUpgraded(char side){
         switch(side){
-            case 'L': if(upgrades.getLeft() == 1)return true;
-            case 'R': if(upgrades.getRight()==1)return true;
+            case 'L': if(upgrades.getLeft() == 1){
+                return true;
+            }
+            break;
+            case 'R': if(upgrades.getRight() == 1){
+                return true;
+            }
+            break;
         }
         return false;
     }

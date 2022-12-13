@@ -11,6 +11,7 @@ public class IceTower extends Towers {
         selectedSize = 60;
         canPopHard = false;
         poppingPower = 2;
+        lastShot = 0;
     }
 
     public String getFileName(){

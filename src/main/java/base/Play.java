@@ -149,12 +149,14 @@ public class Play {
     }
 
     public void popBloon(long time, int bloonsToSend) {
+        boolean shot = false;
         int i = 0;
         for (Towers tower : towers) {
             if(tower.canShoot(time)){
                 while(i < bloonsToSend) {
                     Bloon bloon = bloons.get(i);
                     if (bloon.getPosition().isInRange(tower.getPosition(), tower.getRadius())) {
+                        shot = true;
                         bloon.pop(tower);
                         if (bloon.getLayers() <= 0) {
                             player.addMoney(bloon.getType() * 50);
@@ -166,6 +168,7 @@ public class Play {
                             i++;
                         }
                         if (!tower.canShootMultiple()){
+                            tower.setLastShot(time);
                             return;
                         }
                     }
@@ -173,6 +176,9 @@ public class Play {
                         i++;
                     }
                 }
+            }
+            if(shot){
+                tower.setLastShot(time);
             }
         }
     }

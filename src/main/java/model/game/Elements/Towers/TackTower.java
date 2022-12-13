@@ -10,6 +10,7 @@ public class TackTower extends Towers {
         isSelected = false;
         size = 50;
         selectedSize = 50;
+        lastShot = 0;
         upgrades = new Upgrades();
         canPopHard = false;
         poppingPower = 1;

@@ -11,6 +11,7 @@ public class BombTower extends Towers {
         selectedSize = 90;
         canPopHard = true;
         poppingPower = 1;
+        lastShot = 0;
     }
     public void select(){
         size = selectedSize;

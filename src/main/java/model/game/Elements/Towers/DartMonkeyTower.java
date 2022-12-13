@@ -14,6 +14,7 @@ public class DartMonkeyTower extends Towers {
         upgrades = new Upgrades();
         canPopHard = false;
         poppingPower = 1;
+        lastShot = 0;
     }
     public void select(){
         size = selectedSize;
@@ -39,7 +40,9 @@ public class DartMonkeyTower extends Towers {
     }
     public boolean upgradeRight() {
         if(!upgrades.upgradeRight()) return false;
-        radius += 10;
+        selectedSize = 112;
+
+        radius = 56;
         value += 80;
         return true;
     }

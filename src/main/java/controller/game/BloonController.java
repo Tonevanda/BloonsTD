@@ -19,7 +19,6 @@ public class BloonController extends GameController {
 
 
         for(int i = 0; i < bloonsToSend; i++){
-            System.out.println(i);
             int numberOfBloons = getModel().getBloons().size();
             Bloon bloon = getModel().getBloons().get(i);
             getModel().popBloon(time, bloonsToSend);
@@ -28,7 +27,6 @@ public class BloonController extends GameController {
                 moveBloon(bloon, bloon.getPosition().getNextPosition());
             }
             if(bloon.getPosition().equals(farEnough) && i < getModel().getBloons().size()-1){
-                System.out.println("adding bloons");
                 bloonsToSend++;
             }
             if(bloon.getPosition().equals(atEnd)){

@@ -14,6 +14,7 @@ public abstract class Towers {
     protected int selectedSize;
     protected boolean canPopHard;
     protected int poppingPower;
+    protected String rangeFile;
 
 
     public void setPosition(Position pos) {
@@ -44,9 +45,11 @@ public abstract class Towers {
     public int getSize(){
         return size;
     }
+    public void setLastShot(long time){
+        lastShot = time;
+    }
     public boolean canShoot(long time){
         if(time - lastShot > shootingWaitTime){
-            lastShot = time;
             return true;
         }
         return false;

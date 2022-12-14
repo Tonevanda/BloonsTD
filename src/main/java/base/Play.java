@@ -18,7 +18,7 @@ public class Play {
         bloons = new ArrayList<>();
         towers = new ArrayList<>();
         placingTower = new ArrayList<>();
-        round = 15;
+        round = 1;
         startRound();
     }
     public int getRound(){

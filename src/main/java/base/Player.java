@@ -5,7 +5,7 @@ public class Player {
     private int lives;
 
     public Player(){
-        money = 500;
+        money = 5000;
         lives = 100;
     }
 

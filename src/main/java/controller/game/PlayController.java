@@ -18,7 +18,7 @@ public class PlayController extends GameController {
     }
 
     public void step(Application application, Position mousePressed, Position mouseLocation, Integer keyPressed, long time){
-        if(!getModel().isAlive() || mousePressed.isBetween(new Position(944,22), new Position(1001,72))){
+        if(!getModel().isAlive() || mousePressed.isBetween(new Position(944,22), new Position(1001,72)) || getModel().getRound() == 16){
             application.setState(new MainMenuState(new Menu()));
         }
         else{

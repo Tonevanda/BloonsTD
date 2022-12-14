@@ -49,7 +49,7 @@ public class BombTower extends Towers {
         selectedSize = 110;
         size = 110;
         rangeFile = "ranges/BombTowerUpgradedRange";
-        radius += 10;
+        radius = 55;
         value += 200;
         return true;
     }

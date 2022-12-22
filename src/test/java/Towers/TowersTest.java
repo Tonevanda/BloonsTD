@@ -1,7 +1,6 @@
 package Towers;
 
-import base.Position;
-import model.game.Elements.Towers.*;
+import base.model.game.Elements.Towers.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class TowersTest {
 
         for(Towers tower : towers) {
             /*
-            base.Position position = new Position(1, 1);
+            model.game.Gameplay.Position position = new Position(1, 1);
             tower.setPosition(position);
             assertEquals(position, tower.getPosition());
 

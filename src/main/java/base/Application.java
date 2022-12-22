@@ -1,9 +1,9 @@
 package base;
 
-import ScreenLoader.ScreenLoader;
-import model.menu.Menu;
-import states.MainMenuState;
-import states.State;
+import base.ScreenLoader.ScreenLoader;
+import base.model.menu.Menu;
+import base.states.MainMenuState;
+import base.states.State;
 
 import java.awt.*;
 import java.io.IOException;

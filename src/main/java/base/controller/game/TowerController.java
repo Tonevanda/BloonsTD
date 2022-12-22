@@ -1,10 +1,9 @@
-package base.model.controller.game;
+package base.controller.game;
 
 import base.Application;
 import base.model.game.Elements.Towers.*;
 import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Position;
-import base.model.game.Elements.Towers.*;
 
 import java.awt.event.KeyEvent;
 
@@ -19,9 +18,21 @@ public class TowerController extends GameController {
         anySelected = false;
     }
 
+    public boolean isBuying() {
+        return buying;
+    }
+
+    public boolean isAnySelected() {
+        return anySelected;
+    }
+
     public void step(Application application, Position mousePressed, Position mouseLocation, Integer keyPressed, long time) {
         checkIfSelected(mousePressed, keyPressed);
         openMenu(mousePressed);
+        wantsToBuy(mousePressed, mouseLocation, keyPressed);
+    }
+
+    public void wantsToBuy(Position mousePressed, Position mouseLocation, Integer keyPressed){
         if (!buying) {
             if (mousePressed.isBetween(new Position(196 * 4, 43 * 4), new Position(208 * 4, 56 * 4))) {
                 buying = true;
@@ -36,14 +47,17 @@ public class TowerController extends GameController {
                 buying = true;
                 selectedTower = new BombTower();
             }
+        } else{
+            wantsToPlace(mousePressed, mouseLocation, keyPressed);
+        }
+    }
+    public void wantsToPlace(Position mousePressed, Position mouseLocation, Integer keyPressed){
+        if (getModel().getPlayer().canAfford(selectedTower.price())) {
+            selectedTower.select();
+            getModel().setPlacingTower(selectedTower);
+            place(selectedTower, mousePressed, mouseLocation, keyPressed);
         } else {
-            if (getModel().getPlayer().getMoney() >= selectedTower.price()) {
-                selectedTower.select();
-                getModel().setPlacingTower(selectedTower);
-                place(selectedTower, mousePressed, mouseLocation, keyPressed);
-            } else {
-                buying = false;
-            }
+            buying = false;
         }
     }
 
@@ -89,14 +103,14 @@ public class TowerController extends GameController {
     public void openMenu(Position mousePressed){
         Position terminalPosition = new Position(mousePressed.getX() / 4, mousePressed.getY() / 4);
         if(anySelected){
-            if(terminalPosition.leftUpgrade() && !selectedTower.hasUpgraded('L')){
-                if(getModel().getPlayer().getMoney()>= selectedTower.getUpgradePrice('L')) {
+            if(terminalPosition.leftUpgrade() && !selectedTower.upgrades.hasUpgraded('L')){
+                if(getModel().getPlayer().canAfford(selectedTower.getUpgradePrice('L'))) {
                     selectedTower.upgradeLeft();
                     getModel().getPlayer().spendMoney(selectedTower.getUpgradePrice('L'));
                 }
             }
-            else if(terminalPosition.rightUpgrade() && !selectedTower.hasUpgraded('R')){
-                if(getModel().getPlayer().getMoney()>=selectedTower.getUpgradePrice('R')) {
+            else if(terminalPosition.rightUpgrade() && !selectedTower.upgrades.hasUpgraded('R')){
+                if(getModel().getPlayer().canAfford(selectedTower.getUpgradePrice('R'))) {
                     selectedTower.upgradeRight();
                     getModel().getPlayer().spendMoney(selectedTower.getUpgradePrice('R'));
                 }

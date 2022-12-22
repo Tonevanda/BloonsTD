@@ -3,7 +3,7 @@ package base.states;
 import base.ScreenLoader.ScreenLoader;
 import base.Application;
 import base.model.game.Gameplay.Position;
-import base.model.controller.Controller;
+import base.controller.Controller;
 import base.drawer.Drawer;
 
 import java.io.IOException;

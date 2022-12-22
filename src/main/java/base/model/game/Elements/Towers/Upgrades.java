@@ -41,4 +41,17 @@ public class Upgrades {
     }
 
 
+    public boolean hasUpgraded(char side){
+        switch(side){
+            case 'L': if(getLeft() == 1){
+                return true;
+            }
+            break;
+            case 'R': if(getRight() == 1){
+                return true;
+            }
+            break;
+        }
+        return false;
+    }
 }

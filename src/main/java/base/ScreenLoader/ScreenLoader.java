@@ -123,12 +123,11 @@ public class ScreenLoader{
     }
 
     public void drawArena(){
-        Reader arenaImg = new Reader("newMap", 256,144);
+        Reader arenaImg = new Reader("Play/newMap", 256,144);
         Color[][] color = arenaImg.getColor();
         Position pos = new Position(0,0);
         draw(256,144,pos, color);
     }
-
     public void drawTower(Towers tower){
         String file = tower.getFileName();
         Position centerPosition = new Position(tower.getPosition().getX()-(tower.getSize()/2), tower.getPosition().getY()- (tower.getSize()/2));
@@ -156,11 +155,11 @@ public class ScreenLoader{
         img = new Reader(file, 26,9);
         color = img.getColor();
 
-        if(tower.hasUpgraded('L')){
+        if(tower.upgrades.hasUpgraded('L')){
             position = new Position(196,118);
             draw(26,9,position,color);
         }
-        if(tower.hasUpgraded('R')){
+        if(tower.upgrades.hasUpgraded('R')){
             position = new Position(225,118);
             draw(26,9,position,color);
         }
@@ -174,7 +173,7 @@ public class ScreenLoader{
     }
 
     public void drawMenu(int width, int height){
-        Reader menuImg = new Reader("monkey/logoStartButton", width, height);
+        Reader menuImg = new Reader("mainMenu/logoStartButton", width, height);
         Color[][] color = menuImg.getColor();
         Position pos = new Position(0,0);
         draw(width, height, pos, color);

@@ -1,4 +1,4 @@
-package Towers;
+package game.Elements.Towers;
 
 import base.model.game.Elements.Towers.DartMonkeyTower;
 import base.model.game.Elements.Towers.Upgrades;
@@ -11,8 +11,21 @@ public class DartMonkeyTowerTest {
 
         DartMonkeyTower monkey = new DartMonkeyTower();
 
-        assertEquals(50, monkey.getRadius());
+        assertEquals(35, monkey.getRadius());
+
         assertEquals(100, monkey.getValue());
+
+        monkey.setLastShot(2000);
+        assertFalse(monkey.canShoot(3000));
+        assertTrue(monkey.canShoot(7000));
+
+        assertFalse(monkey.isSelected());
+        assertEquals(70,monkey.getSize());
+        monkey.select();
+        assertTrue(monkey.isSelected());
+        assertEquals(70,monkey.getSize());
+
+        
     }
 
     @Test

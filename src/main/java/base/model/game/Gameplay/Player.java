@@ -14,6 +14,10 @@ public class Player {
     }
     public int getLives(){return lives;}
 
+    public boolean canAfford(int cost){
+        return money >= cost;
+    }
+
     public void addMoney(int value){
         money += value;
     }
@@ -22,7 +26,7 @@ public class Player {
         money -= value;
     }
 
-    public void loseHearts(int hearts){
-        lives -= hearts;
+    public void loseLives(int lostLives){
+        lives -= lostLives;
     }
 }

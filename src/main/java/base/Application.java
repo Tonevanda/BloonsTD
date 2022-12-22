@@ -19,7 +19,7 @@ public class Application {
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
-        new Application().start() ;
+        new Application().start();
     }
 
     public void setState(State state) {this.state = state;}

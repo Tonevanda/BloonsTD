@@ -1,7 +1,7 @@
-package base.model.controller.game;
+package base.controller.game;
 
 
-import base.model.controller.Controller;
+import base.controller.Controller;
 import base.model.game.Gameplay.Play;
 
 public abstract class GameController extends Controller<Play> {

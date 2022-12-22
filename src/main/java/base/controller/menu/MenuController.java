@@ -1,7 +1,7 @@
-package base.model.controller.menu;
+package base.controller.menu;
 
 import base.Application;
-import base.model.controller.Controller;
+import base.controller.Controller;
 import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Position;
 import base.model.menu.Menu;

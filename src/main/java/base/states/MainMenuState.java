@@ -1,7 +1,7 @@
 package base.states;
 
-import base.model.controller.Controller;
-import base.model.controller.menu.MenuController;
+import base.controller.Controller;
+import base.controller.menu.MenuController;
 import base.drawer.Drawer;
 import base.drawer.menu.MainMenuDrawer;
 import base.model.menu.Menu;

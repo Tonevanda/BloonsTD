@@ -4,7 +4,7 @@ import base.model.game.Gameplay.Position;
 
 public abstract class Towers {
     protected Position position;
-    protected Upgrades upgrades;
+    public Upgrades upgrades;
     protected int radius;
     protected int value;
     protected long lastShot;
@@ -15,8 +15,6 @@ public abstract class Towers {
     protected boolean canPopHard;
     protected int poppingPower;
     protected String rangeFile;
-
-
 
     public void setPosition(Position pos) {
         position = new Position((pos.getX()+8)/4, (pos.getY()+8)/4);
@@ -56,19 +54,6 @@ public abstract class Towers {
         return false;
     }
 
-    public boolean hasUpgraded(char side){
-        switch(side){
-            case 'L': if(upgrades.getLeft() == 1){
-                return true;
-            }
-            break;
-            case 'R': if(upgrades.getRight() == 1){
-                return true;
-            }
-            break;
-        }
-        return false;
-    }
     public abstract int getUpgradePrice(char side);
     public abstract void select();
     public abstract String getFileName();

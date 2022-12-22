@@ -1,4 +1,4 @@
-package base.model.controller;
+package base.controller;
 
 import base.Application;
 import base.model.game.Gameplay.Position;

@@ -1,8 +1,8 @@
 package base.states;
 
 import base.model.game.Gameplay.Play;
-import base.model.controller.Controller;
-import base.model.controller.game.PlayController;
+import base.controller.Controller;
+import base.controller.game.PlayController;
 import base.drawer.Drawer;
 import base.drawer.game.GameDrawer;
 

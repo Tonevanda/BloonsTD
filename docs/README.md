@@ -8,8 +8,13 @@ This project was developed by João Lourenço (up202108863@fe.up.pt), Tiago Cruz
 
 ### IMPLEMENTED FEATURES
 
-- **Image loading** - Now, upon loading the game, the game loads the title-screen image.
+- **Image loading** - Upon loading the game, the game loads the title-screen image.
 - **Mouse press** - When the mouse is pressed and an action is valid (such as clicking the start game button), the game will now perform said action.
+- **Press Escape** - Upon pressing escape, the game may: 1) Close itself if you're in the main menu. 2) Stop placing a tower after you've clicked on it on the shop. 3) Stop selecting the tower you have selected at the moment. 
+- **Valid Purchase** - You will only spend your hard-earned money while placing a new monkey if and only if you actually place it on a valid position, otherwise you still have time to avoid making a bad decision!
+- **Towers** - We offer 4 different types of towers, all with their uniqueness of shooting, range and power. Some may even pop more than one layer at once!
+- **Upgrades** - Each tower has two upgrades that offer two different advantages for your monkeys for a small amount of your cash.
+- **Balloons** - We have 6 different types of "bloons", each with a different colour. But be aware, as the "hard bloon" may not be popped by all kinds of towers!
 
 ### PLANNED FEATURES
 
@@ -82,5 +87,5 @@ A way to improve the code is simply to delete the class, since that would reduce
 ### SELF-EVALUATION
 
 - João Lourenço: 33,3%
-- Tiago Cruz: 33,3%
-- Tomás Xavier: 33,4%
+- Tiago Cruz: 33,4%
+- Tomás Xavier: 33,3%

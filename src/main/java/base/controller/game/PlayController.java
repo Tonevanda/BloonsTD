@@ -1,4 +1,4 @@
-package base.model.controller.game;
+package base.controller.game;
 
 import base.Application;
 import base.model.game.Gameplay.Play;

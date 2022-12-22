@@ -18,6 +18,7 @@ public class Reader {
         this.color = imgGetter(file);
     }
 
+
     public Color[][] imgGetter(String file){
         URL resource = getClass().getResource("/" + file + ".png");
         BufferedImage image;

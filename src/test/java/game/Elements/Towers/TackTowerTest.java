@@ -1,4 +1,4 @@
-package Towers;
+package game.Elements.Towers;
 
 import base.model.game.Elements.Towers.TackTower;
 import base.model.game.Elements.Towers.Towers;

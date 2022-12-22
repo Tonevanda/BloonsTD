@@ -8,7 +8,7 @@ public class MainMenuDrawer extends Drawer {
     public MainMenuDrawer(Menu menu) {
         super(menu);
     }
-    protected void drawElements(ScreenLoader screen){
+    public void drawElements(ScreenLoader screen){
         screen.drawMenu(256,144);
     }
 }

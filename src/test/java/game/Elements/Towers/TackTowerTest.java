@@ -3,73 +3,104 @@ package game.Elements.Towers;
 import base.model.game.Elements.Towers.TackTower;
 import base.model.game.Elements.Towers.Towers;
 import base.model.game.Elements.Towers.Upgrades;
+import base.model.game.Gameplay.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TackTowerTest {
     @Test
-    public void TackTower(){
-        Towers tack = new TackTower();
-        assertEquals(80, tack.getRadius());
-        assertEquals(320, tack.getValue());
+    public void TackTower() {
+        Towers Tack = new TackTower();
+        assertEquals(25, Tack.getRadius());
+        assertEquals(320, Tack.getValue());
+        Tack.setLastShot(2000);
+        assertFalse(Tack.canShoot(6000));
+        assertTrue(Tack.canShoot(8000));
+        assertFalse(Tack.isSelected());
+        assertEquals(50, Tack.getSize());
+        Tack.select();
+        assertTrue(Tack.isSelected());
+        assertEquals(50, Tack.getSize());
+        assertFalse(Tack.canPopHard());
+        assertEquals(1, Tack.getPoppingPower());
     }
-    @Test
-    public void Position(){
-        Towers tack = new TackTower();
-        /*
-        Position position = new Position(1,1);
-        tack.setPosition(position);
-        assertEquals(position, tack.getPosition());
-
-        position = new Position(300,150);
-        assertNotEquals(position,tack.getPosition());
-
-        tack.setPosition(position);
-        assertEquals(position, tack.getPosition());
-
-         */
-    }
-
     @Test
     public void Price(){
-        Towers tack = new TackTower();
-        assertEquals(400, tack.price());
+        Towers Tack = new TackTower();
+        assertEquals(400, Tack.price());
     }
 
     @Test
     public void upgradeLeft(){
-        Towers tack = new TackTower();
+        Towers Tack = new TackTower();
         Upgrades upgrade = new Upgrades();
-        assertEquals(upgrade, tack.getUpgrades());
+        assertEquals(upgrade, Tack.getUpgrades());
 
         upgrade.upgradeLeft();
-        assertNotEquals(upgrade, tack.getUpgrades());
-        assertTrue(tack.upgradeLeft());
-        assertEquals(upgrade, tack.getUpgrades());
-        assertEquals(320+200, tack.getValue());
+        assertNotEquals(upgrade, Tack.getUpgrades());
+        assertTrue(Tack.upgradeLeft());
+        assertEquals(upgrade, Tack.getUpgrades());
+        Tack.setLastShot(2000);
+        assertFalse(Tack.canShoot(4000)); //here
+        assertTrue(Tack.canShoot(6000));
+        assertEquals(320+100, Tack.getValue());
 
-        assertFalse(tack.upgradeLeft());
+        assertFalse(Tack.upgradeLeft());
         upgrade.upgradeLeft();
-        assertEquals(upgrade, tack.getUpgrades());
-        assertEquals(320+200, tack.getValue());
+        assertEquals(upgrade, Tack.getUpgrades());
+        assertFalse(Tack.canShoot(4000));
+        assertTrue(Tack.canShoot(6000));
+        assertEquals(320+100, Tack.getValue());
     }
 
     @Test
     public void upgradeRight(){
-        Towers tack = new TackTower();
+        Towers Tack = new TackTower();
         Upgrades upgrade = new Upgrades();
-        assertEquals(upgrade, tack.getUpgrades());
+        assertEquals(upgrade, Tack.getUpgrades());
 
         upgrade.upgradeRight();
-        assertNotEquals(upgrade, tack.getUpgrades());
-        assertTrue(tack.upgradeRight());
-        assertEquals(upgrade, tack.getUpgrades());
-        assertEquals(320+120, tack.getValue());
-
-        assertFalse(tack.upgradeRight());
+        assertNotEquals(upgrade, Tack.getUpgrades());
+        assertTrue(Tack.upgradeRight());
+        assertEquals(upgrade, Tack.getUpgrades());
+        assertEquals(80, Tack.getSize());
+        assertEquals(40, Tack.getRadius()); //aqui
+        assertEquals(320+120, Tack.getValue());
+        assertFalse(Tack.upgradeRight());
         upgrade.upgradeRight();
-        assertEquals(upgrade, tack.getUpgrades());
-        assertEquals(320+120, tack.getValue());
+        assertEquals(upgrade, Tack.getUpgrades());
+        assertEquals(80, Tack.getSize());
+        assertEquals(40, Tack.getRadius());
+        assertEquals(320+120, Tack.getValue());
+    }
+    @Test
+    public void getFileName(){
+        Towers Tack = new TackTower();
+        assertEquals("monkey/TackTowerSprite", Tack.getFileName());
+    }
+    @Test
+    public void getBuyFileName(){
+        Towers Tack = new TackTower();
+        assertEquals("menuBuy/MenuTack", Tack.getBuyFileName());
+    }
+
+    @Test
+    public void getUpgradePrice(){
+        Towers Tack = new TackTower();
+        assertEquals(300, Tack.getUpgradePrice('L'));
+        assertEquals(200, Tack.getUpgradePrice('R'));
+        assertEquals(0, Tack.getUpgradePrice('M'));
+    }
+    @Test
+    public void canShootMultiple(){
+        Towers Tack = new TackTower();
+        assertTrue(Tack.canShootMultiple());
+    }
+    @Test
+    public void setPosition(){
+        Towers Tack = new TackTower();
+        Tack.setPosition(new Position(0,0));
+        assertEquals(new Position(2,2),Tack.getPosition());
     }
 }

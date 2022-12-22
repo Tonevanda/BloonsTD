@@ -45,7 +45,7 @@ public class IceTower extends Towers {
         return true;
     }
 
-    public boolean upgradeRight() { //mais range de slow//
+    public boolean upgradeRight(){
         if(!upgrades.upgradeRight()) return false;
         selectedSize = 70;
         size = 70;

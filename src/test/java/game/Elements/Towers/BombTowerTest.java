@@ -3,6 +3,7 @@ package game.Elements.Towers;
 import base.model.game.Elements.Towers.BombTower;
 import base.model.game.Elements.Towers.Towers;
 import base.model.game.Elements.Towers.Upgrades;
+import base.model.game.Gameplay.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,6 +14,20 @@ public class BombTowerTest {
         Towers bomb = new BombTower();
         assertEquals(45, bomb.getRadius());
         assertEquals(720, bomb.getValue());
+
+        bomb.setLastShot(2000);
+        assertFalse(bomb.canShoot(3000));
+        assertTrue(bomb.canShoot(11000));
+
+        assertFalse(bomb.isSelected());
+        assertEquals(90,bomb.getSize());
+        bomb.select();
+        assertTrue(bomb.isSelected());
+        assertEquals(90,bomb.getSize());
+
+        assertTrue(bomb.canPopHard());
+
+        assertEquals(1,bomb.getPoppingPower());
     }
     @Test
     public void Price(){
@@ -82,4 +97,11 @@ public class BombTowerTest {
         Towers bomb = new BombTower();
         assertFalse(bomb.canShootMultiple());
     }
+    @Test
+    public void setPosition(){
+        Towers bomb = new BombTower();
+        bomb.setPosition(new Position(0,0));
+        assertEquals(new Position(2,2),bomb.getPosition());
+    }
+
 }

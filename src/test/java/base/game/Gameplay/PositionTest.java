@@ -1,4 +1,4 @@
-package game.Gameplay;
+package base.game.Gameplay;
 import base.model.game.Gameplay.Position;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

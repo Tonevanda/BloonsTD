@@ -1,6 +1,5 @@
-package game.Gameplay;
+package base.game.Gameplay;
 
-import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

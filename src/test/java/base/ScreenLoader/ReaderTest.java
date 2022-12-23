@@ -1,4 +1,4 @@
-package ScreenLoader;
+package base.ScreenLoader;
 
 import base.ScreenLoader.Reader;
 import org.junit.jupiter.api.Test;

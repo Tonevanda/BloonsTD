@@ -1,6 +1,5 @@
-package game.Gameplay;
+package base.game.Gameplay;
 
-import base.model.game.Elements.Bloon;
 import base.model.game.Elements.Towers.Towers;
 import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Position;

@@ -1,4 +1,4 @@
-package drawer;
+package base.drawer;
 
 import base.ScreenLoader.ScreenLoader;
 import base.drawer.game.GameDrawer;

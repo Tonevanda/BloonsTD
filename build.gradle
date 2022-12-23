@@ -1,14 +1,14 @@
 plugins {
     id 'java'
     id 'application'
-    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.9.0'
 }
 
 application {
     mainClass.set("Application")
 }
 
-group 'com.Tiago27Cruz.hero'
+group 'base'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -31,5 +31,6 @@ tasks.withType(Test) {
     useJUnitPlatform()
 }
 pitest {
-    junit5PluginVersion = '0.12'
+    junit5PluginVersion = '1.0.0'
+    excludedTestClasses = ['base.ApplicationTest', 'base.controller.menu.*', 'base.controller.game.PlayControllerTest']
 }

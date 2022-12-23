@@ -1,4 +1,4 @@
-package controller;
+package base.controller.game;
 
 import base.controller.game.BloonController;
 import base.model.game.Elements.Bloon;

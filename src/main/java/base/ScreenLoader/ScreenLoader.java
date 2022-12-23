@@ -80,14 +80,24 @@ public class ScreenLoader{
         return terminal;
     }
 
+    public void setMousePressed(Position pos){
+        mousePressed = pos;
+    }
     public Position getMousePressed(){
         Position pos = mousePressed;
         mousePressed = new Position(-1,-1);
         return pos;
     }
 
+    public void setMouseLocation(Position pos){
+        mouseLocation = pos;
+    }
     public Position getMouseLocation(){
         return mouseLocation;
+    }
+
+    public void setPressedKey(int key){
+        pressedKey = key;
     }
     public Integer getPressedKey(){
         Integer key = pressedKey;

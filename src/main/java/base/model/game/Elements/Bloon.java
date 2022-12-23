@@ -21,14 +21,6 @@ public class Bloon{
             case "hard": layers = 6; type = 6; hard = true;break;
         }
     }
-/*
-    public boolean canMove(long time){
-        if(time - lastMovement > 0){
-            lastMovement=time;
-            return true;
-        }
-        return false;
-    }*/
     public void setPosition(Position newPos){
         position = newPos;
     }
@@ -67,4 +59,7 @@ public class Bloon{
         }
     }
 
+    public void moveBloon(Position position) {
+        setPosition(position);
+    }
 }

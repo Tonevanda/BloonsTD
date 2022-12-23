@@ -18,7 +18,10 @@ public class PlayController extends GameController {
     }
 
     public void step(Application application, Position mousePressed, Position mouseLocation, Integer keyPressed, long time){
-        if(!getModel().isAlive() || mousePressed.isBetween(new Position(944,22), new Position(1001,72)) || getModel().getRound() == 16){
+        boolean pressedGoBack = mousePressed.isBetween(new Position(944, 22), new Position(1001, 72));
+        boolean gameWon = getModel().getRound() == 16;
+
+        if(!getModel().isAlive() || pressedGoBack || gameWon){
             application.setState(new MainMenuState(new Menu()));
         }
         else{

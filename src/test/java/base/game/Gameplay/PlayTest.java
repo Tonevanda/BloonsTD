@@ -38,6 +38,18 @@ public class PlayTest {
         play.nextRound();
         assertEquals(35, play.getBloons().size());
         assertEquals(2, play.getBloons().get(26).getType());
+
+        play.nextRound();
+        assertEquals(50, play.getBloons().size());
+
+        play.nextRound();
+        assertEquals(65, play.getBloons().size());
+
+        play.nextRound();
+        assertEquals(90, play.getBloons().size());
+
+        play.nextRound();
+        assertEquals(50, play.getBloons().size());
     }
 
     @Test

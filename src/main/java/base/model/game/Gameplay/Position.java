@@ -64,16 +64,23 @@ public class Position {
         createPath();
         Position topLeftPos = new Position(714/4,10/4);
         Position bottomRightPos = new Position(1015/4,570/4);
-        if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
+        boolean insideBuyMenu = curPos.isBetween(topLeftPos, bottomRightPos);
+
+        if(insideBuyMenu) return false;
+
         for(Position pos : path){
             topLeftPos = new Position(pos.getX()-7, pos.getY()-5);
             bottomRightPos = new Position(pos.getX()+22, pos.getY()+23);
-            if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
+            boolean insidePath = curPos.isBetween(topLeftPos, bottomRightPos);
+
+            if(insidePath) return false;
         }
         for(Towers tower : towers){
             topLeftPos = new Position(tower.getPosition().getX()-15, tower.getPosition().getY()-13);
             bottomRightPos = new Position(tower.getPosition().getX()+15, tower.getPosition().getY()+13);
-            if(curPos.isBetween(topLeftPos, bottomRightPos)) return false;
+            boolean insideAnotherTower = curPos.isBetween(topLeftPos, bottomRightPos);
+
+            if(insideAnotherTower) return false;
         }
         return true;
     }
@@ -84,14 +91,6 @@ public class Position {
 
     public int getX() {
         return x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
     }
 
     public boolean isInRange(Position pos, int radius){

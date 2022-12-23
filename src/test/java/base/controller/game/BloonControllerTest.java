@@ -1,6 +1,5 @@
 package base.controller.game;
 
-import base.controller.game.BloonController;
 import base.model.game.Elements.Bloon;
 import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Player;
@@ -12,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class BloonControllerTest {
     BloonController bloonController;
@@ -38,7 +36,7 @@ public class BloonControllerTest {
     }
 
     @Test
-    public void sendAnotherBloonRemove(){
+    public void sendAnotherBloon(){
         Bloon bloon2= new Bloon("red");
         bloon2.setPosition(new Position(0,0));
         bloons.add(bloon2);
@@ -46,19 +44,25 @@ public class BloonControllerTest {
         Position pos = new Position(5,48);
         bloon.setPosition(pos);
         bloonController.sendAnotherBloon(bloon, 0);
-
         assertEquals(2,bloonController.getBloonsToSend());
 
-        Position atEnd = new Position(161, -29);
-        bloon2.setPosition(atEnd);
-        when(play.getPlayer()).thenReturn(mock(Player.class));
-        bloonController.checkBloonRemoved(bloon2, 2);
-
-        assertEquals(1,bloonController.getBloonsToSend());
+        bloonController.sendAnotherBloon(bloon, 2);
+        assertEquals(2,bloonController.getBloonsToSend());
     }
 
     @Test
-    public void checkEndofRound() {
+    void removeBloon(){
+        Position atEnd = new Position(161, -29);
+        bloon.setPosition(atEnd);
+        Player player = mock(Player.class);
+        when(play.getPlayer()).thenReturn(player);
+        bloonController.checkBloonRemoved(bloon, 2);
+
+        assertEquals(0,bloonController.getBloonsToSend());
+    }
+
+    @Test
+    public void checkPoppedScreenBloons() {
         Position atEnd = new Position(161, -29);
         bloon.setPosition(atEnd);
         when(play.getPlayer()).thenReturn(mock(Player.class));
@@ -67,4 +71,18 @@ public class BloonControllerTest {
         bloonController.checkEndofRound();
         assertEquals(1, bloonController.getBloonsToSend());
     }
+
+    @Test
+    public void checkEndOfRound(){
+        Position atEnd = new Position(161, -29);
+        bloon.setPosition(atEnd);
+        when(play.getPlayer()).thenReturn(mock(Player.class));
+        when(play.hasRoundEnded()).thenReturn(true);
+
+        bloonController.checkBloonRemoved(bloon, 1);
+        bloonController.checkEndofRound();
+        verify(play, times(1)).nextRound();
+        assertEquals(1, bloonController.getBloonsToSend());
+    }
 }
+

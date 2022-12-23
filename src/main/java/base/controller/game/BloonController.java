@@ -1,9 +1,9 @@
 package base.controller.game;
 
 import base.Application;
-import base.model.game.Gameplay.Position;
 import base.model.game.Elements.Bloon;
 import base.model.game.Gameplay.Play;
+import base.model.game.Gameplay.Position;
 
 public class BloonController extends GameController {
     private int bloonsToSend;
@@ -23,7 +23,8 @@ public class BloonController extends GameController {
             Bloon bloon = getModel().getBloons().get(i);
             getModel().popBloon(time, bloonsToSend);
 
-            moveBloon(bloon, bloon.getPosition().getNextPosition());
+            Position nextPosition = bloon.getPosition().getNextPosition();
+            bloon.moveBloon(nextPosition);
 
             sendAnotherBloon(bloon, i);
             checkBloonRemoved(bloon, numberOfBloons);
@@ -32,9 +33,6 @@ public class BloonController extends GameController {
 
     }
 
-    public void moveBloon(Bloon bloon, Position position) {
-        bloon.setPosition(position);
-    }
     public void sendAnotherBloon(Bloon bloon, int i){
         Position farEnough = new Position(5, 48);
         if (bloon.getPosition().equals(farEnough) && i < getModel().getBloons().size() - 1) {
@@ -43,19 +41,26 @@ public class BloonController extends GameController {
     }
     public void checkBloonRemoved(Bloon bloon, int numberOfBloons){
         Position atEnd = new Position(161, -29);
-        if (bloon.getPosition().equals(atEnd)) {
+        boolean bloonAtEnd = bloon.getPosition().equals(atEnd);
+        boolean bloonsPopped = getModel().getBloons().size() < numberOfBloons;
+
+        if (bloonAtEnd) {
             getModel().getPlayer().loseLives(bloon.getLayers());
             getModel().removeBloon(bloon);
             bloonsToSend--;
-        } else if (getModel().getBloons().size() < numberOfBloons) {
+        }
+        else if (bloonsPopped) {
             bloonsToSend -= (numberOfBloons - getModel().getBloons().size());
         }
     }
     public void checkEndofRound() {
-        if (bloonsToSend == 0 && getModel().hasRoundEnded()) {
+        boolean finishedRound = bloonsToSend == 0 && getModel().hasRoundEnded();
+        boolean poppedAllScreenBloons = bloonsToSend == 0;
+
+        if (finishedRound) {
             getModel().nextRound();
             bloonsToSend = 1;
-        } else if (bloonsToSend == 0) {
+        } else if (poppedAllScreenBloons) {
             bloonsToSend = 1;
         }
     }

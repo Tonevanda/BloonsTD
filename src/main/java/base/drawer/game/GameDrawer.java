@@ -14,8 +14,8 @@ public class GameDrawer extends Drawer<Play> {
     public void drawElements(ScreenLoader screen) {
         drawArena(screen);
         drawElements(screen, getModel().getBloons(), new BloonDrawer());
-        drawElements(screen, getModel().getTowers(), new TowersDrawer());
-        drawElements(screen, getModel().getPlacingTower(), new TowersDrawer());
+        drawElements(screen, getModel().getTowers(), new TowerDrawer());
+        drawElements(screen, getModel().getPlacingTower(), new TowerDrawer());
         screen.drawRound(getModel().getRound());
         screen.drawMoney(getModel().getPlayer().getMoney());
         screen.drawLives(getModel().getPlayer().getLives());

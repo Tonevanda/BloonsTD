@@ -24,6 +24,7 @@ public class PlayerTest {
     public void canAfford() {
         assertTrue(player.canAfford(100));
         assertFalse(player.canAfford(1000));
+        assertTrue(player.canAfford(500));
     }
 
     @Test

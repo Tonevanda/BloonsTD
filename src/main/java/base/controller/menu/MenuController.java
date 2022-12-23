@@ -16,10 +16,14 @@ public class MenuController extends Controller<Menu> {
     }
     @Override
     public void step(Application application, Position mousePressed, Position mouseLocation, Integer keyPressed, long time){
-        if (mousePressed.isBetween(new Position(69*4, 73*4), new Position(186*4, 107*4))){
+        boolean pressedPlay = mousePressed.isBetween(new Position(69 * 4, 73 * 4), new Position(186 * 4, 107 * 4));
+        boolean pressedQuit =mousePressed.isBetween(new Position(373,453), new Position(653,553));
+        boolean pressedEsc = keyPressed == KeyEvent.VK_ESCAPE;
+
+        if (pressedPlay){
             application.setState(new GameState(new Play()));
         }
-        else if(mousePressed.isBetween(new Position(373,453), new Position(653,553)) || keyPressed == KeyEvent.VK_ESCAPE){
+        else if(pressedQuit || pressedEsc){
             application.setState(null);
         }
     }

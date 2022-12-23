@@ -19,6 +19,7 @@ public class DartMonkeyTowerTest {
 
         monkey.setLastShot(2000);
         assertFalse(monkey.canShoot(5000));
+        assertFalse(monkey.canShoot(6000));
         assertTrue(monkey.canShoot(7000));
 
         assertFalse(monkey.isSelected());
@@ -86,6 +87,9 @@ public class DartMonkeyTowerTest {
     public void getFileName(){
         Tower Dart = new DartMonkeyTower();
         assertEquals("monkey/DartMonkeyTowerSprite", Dart.getFileName());
+
+        Dart.select();
+        assertEquals("ranges/DartMonkeyBaseRange", Dart.getFileName());
     }
     @Test
     public void getBuyFileName(){

@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class TowerController extends GameController {
     private boolean buying;
-    private Towers selectedTower;
+    private Tower selectedTower;
     private boolean anySelected;
 
     public TowerController(Play play) {
@@ -68,7 +68,7 @@ public class TowerController extends GameController {
         }
     }
 
-    public void place(Towers tower, Position mousePressed, Position mouseLocation, Integer keyPressed) {
+    public void place(Tower tower, Position mousePressed, Position mouseLocation, Integer keyPressed) {
         Position notPressed = new Position(-1, -1);
         boolean placing = mousePressed.equals(notPressed) && tower.isSelected() && keyPressed != KeyEvent.VK_ESCAPE;
         boolean placed = mousePressed != notPressed && mousePressed.legalPosition(getModel().getTowers()) && keyPressed != KeyEvent.VK_ESCAPE;
@@ -96,7 +96,7 @@ public class TowerController extends GameController {
         Position terminalPosition = new Position(mousePressed.getX() / 4, mousePressed.getY() / 4);
 
         if(buying)return;
-        for (Towers tower : getModel().getTowers()) {
+        for (Tower tower : getModel().getTowers()) {
             Position topLeft = new Position(tower.getPosition().getX() - 8, tower.getPosition().getY() - 8);
             Position bottomRight = new Position(tower.getPosition().getX() + 8, tower.getPosition().getY() + 6);
             boolean wantsToSelect = terminalPosition.isBetween(topLeft, bottomRight) && !anySelected;

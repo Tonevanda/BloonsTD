@@ -2,7 +2,7 @@ package base.model.game.Gameplay;
 
 
 import base.model.game.Elements.Bloon;
-import base.model.game.Elements.Towers.Towers;
+import base.model.game.Elements.Towers.Tower;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +10,8 @@ public class Play {
     private Player player;
     private int round;
     private List<Bloon> bloons;
-    private List<Towers> towers;
-    private List<Towers> placingTower;
+    private List<Tower> towers;
+    private List<Tower> placingTower;
 
     public Play(){
         player = new Player();
@@ -26,11 +26,11 @@ public class Play {
     }
 
     public List<Bloon> getBloons(){return bloons;}
-    public List<Towers> getTowers(){return towers;}
-    public List<Towers> getPlacingTower(){
+    public List<Tower> getTowers(){return towers;}
+    public List<Tower> getPlacingTower(){
         return placingTower;
     }
-    public void setPlacingTower(Towers tower){
+    public void setPlacingTower(Tower tower){
         placingTower.add(tower);
     }
     public void stopPlacingTower(){
@@ -121,19 +121,19 @@ public class Play {
     public void removeBloon(Bloon bloon){
         bloons.remove(bloon);
     }
-    public void removeTower(Towers tower){
+    public void removeTower(Tower tower){
         towers.remove(tower);
     }
     public void nextRound(){
         round++;
         startRound();
     }
-    public void addTower(Towers tower){
+    public void addTower(Tower tower){
         towers.add(tower);
     }
 
     public void popBloon(long time, int bloonsToSend) {
-        for (Towers tower : towers) {
+        for (Tower tower : towers) {
             int i = 0;
             boolean shot = false;
             if(tower.canShoot(time)){

@@ -11,7 +11,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import base.model.game.Elements.Towers.Towers;
+import base.model.game.Elements.Towers.Tower;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -138,14 +138,14 @@ public class ScreenLoader{
         Position pos = new Position(0,0);
         draw(256,144,pos, color);
     }
-    public void drawTower(Towers tower){
+    public void drawTower(Tower tower){
         String file = tower.getFileName();
         Position centerPosition = new Position(tower.getPosition().getX()-(tower.getSize()/2), tower.getPosition().getY()- (tower.getSize()/2));
         Reader towerImg = new Reader(file, tower.getSize(), tower.getSize());
         Color[][] color = towerImg.getColor();
         draw(tower.getSize(),tower.getSize(),centerPosition, color);
     }
-    public void drawBuyMenu(Towers tower){
+    public void drawBuyMenu(Tower tower){
         String file = tower.getBuyFileName();
         Reader img = new Reader(file, 57,74);
         Position position = new Position(195,65);

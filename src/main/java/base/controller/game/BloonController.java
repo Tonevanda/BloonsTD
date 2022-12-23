@@ -24,7 +24,7 @@ public class BloonController extends GameController {
             getModel().popBloon(time, bloonsToSend);
 
             Position nextPosition = bloon.getPosition().getNextPosition();
-            bloon.moveBloon(nextPosition);
+            bloon.setPosition(nextPosition);
 
             sendAnotherBloon(bloon, i);
             checkBloonRemoved(bloon, numberOfBloons);

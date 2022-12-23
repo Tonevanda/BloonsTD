@@ -3,12 +3,11 @@ package base.drawer;
 import base.ScreenLoader.ScreenLoader;
 import base.drawer.game.GameDrawer;
 import base.model.game.Elements.Bloon;
-import base.model.game.Elements.Towers.Towers;
+import base.model.game.Elements.Towers.Tower;
 import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.IOException;
@@ -44,7 +43,7 @@ public class GameDrawerTest {
 
     @Test
     void drawTowers(){
-        Towers tower = mock(Towers.class);
+        Tower tower = mock(Tower.class);
         play.addTower(tower);
         drawer.drawElements(screen);
 
@@ -63,7 +62,7 @@ public class GameDrawerTest {
 
     @Test
     void drawBuyMenu(){
-        Towers tower = mock(Towers.class);
+        Tower tower = mock(Tower.class);
         when(tower.isSelected()).thenReturn(true);
         play.addTower(tower);
         drawer.drawElements(screen);

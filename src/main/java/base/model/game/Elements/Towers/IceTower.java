@@ -1,6 +1,6 @@
 package base.model.game.Elements.Towers;
 
-public class IceTower extends Towers {
+public class IceTower extends Tower {
     public IceTower(){
         radius = 30;
         value = 400;

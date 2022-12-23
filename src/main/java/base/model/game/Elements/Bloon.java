@@ -1,13 +1,12 @@
 package base.model.game.Elements;
 
-import base.model.game.Elements.Towers.Towers;
+import base.model.game.Elements.Towers.Tower;
 import base.model.game.Gameplay.Position;
 
 public class Bloon{
     private Position position;
     private int layers;
     private int type;
-    //private long lastMovement;
     private boolean hard = false;
 
     public Bloon(String color){
@@ -35,7 +34,7 @@ public class Bloon{
     }
     public boolean isHard(){return hard;}
 
-    public void pop(Towers tower){
+    public void pop(Tower tower){
         if(hard){
             if(tower.canPopHard()){
                 layers--;
@@ -57,9 +56,5 @@ public class Bloon{
             case 6: return "bloons/hardBloonPixel";
             default: return "";
         }
-    }
-
-    public void moveBloon(Position position) {
-        setPosition(position);
     }
 }

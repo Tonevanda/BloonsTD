@@ -1,15 +1,13 @@
 package base.controller.game;
 
 import base.Application;
-import base.controller.game.TowerController;
-import base.model.game.Elements.Towers.Towers;
+import base.model.game.Elements.Towers.Tower;
 import base.model.game.Elements.Towers.Upgrades;
 import base.model.game.Gameplay.Play;
 import base.model.game.Gameplay.Player;
 import base.model.game.Gameplay.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.awt.event.KeyEvent;
@@ -23,7 +21,7 @@ import static org.mockito.Mockito.*;
 public class TowerControllerTest {
     Play play;
     TowerController towerController;
-    List<Towers> towers;
+    List<Tower> towers;
     Position position;
 
     @BeforeEach
@@ -63,7 +61,7 @@ public class TowerControllerTest {
         towerController.wantsToPlace(position,position,-1);
         assertFalse(towerController.isBuying());
         verify(play, times(1)).stopPlacingTower();
-        verify(play, times(1)).addTower(any(Towers.class));
+        verify(play, times(1)).addTower(any(Tower.class));
     }
 
     @Test
@@ -92,7 +90,7 @@ public class TowerControllerTest {
     @Test
     public void selectAndUnselect(){
         Position pos = new Position(10,10);
-        Towers tower = mock(Towers.class);
+        Tower tower = mock(Tower.class);
         when(tower.getPosition()).thenReturn(pos);
         towers.add(tower);
 
@@ -109,7 +107,7 @@ public class TowerControllerTest {
     @Test
     void OpenMenu(){
         Position pos = new Position(10,10);
-        Towers tower = mock(Towers.class);
+        Tower tower = mock(Tower.class);
         when(tower.getPosition()).thenReturn(pos);
         Upgrades upgrades = mock(Upgrades.class);
         when(tower.getUpgrades()).thenReturn(upgrades);

@@ -2,7 +2,7 @@ package base.model.game.Elements.Towers;
 
 import base.model.game.Gameplay.Position;
 
-public abstract class Towers {
+public abstract class Tower {
     protected Position position;
     public Upgrades upgrades;
     protected int radius;

@@ -1,7 +1,7 @@
 package base.game.Elements.Towers;
 
 import base.model.game.Elements.Towers.DartMonkeyTower;
-import base.model.game.Elements.Towers.Towers;
+import base.model.game.Elements.Towers.Tower;
 import base.model.game.Elements.Towers.Upgrades;
 import base.model.game.Gameplay.Position;
 import org.junit.jupiter.api.Test;
@@ -84,30 +84,30 @@ public class DartMonkeyTowerTest {
     }
     @Test
     public void getFileName(){
-        Towers Dart = new DartMonkeyTower();
+        Tower Dart = new DartMonkeyTower();
         assertEquals("monkey/DartMonkeyTowerSprite", Dart.getFileName());
     }
     @Test
     public void getBuyFileName(){
-        Towers Dart = new DartMonkeyTower();
+        Tower Dart = new DartMonkeyTower();
         assertEquals("menuBuy/MenuDart", Dart.getBuyFileName());
     }
 
     @Test
     public void getUpgradePrDart(){
-        Towers Dart = new DartMonkeyTower();
+        Tower Dart = new DartMonkeyTower();
         assertEquals(150, Dart.getUpgradePrice('L'));
         assertEquals(120, Dart.getUpgradePrice('R'));
         assertEquals(0, Dart.getUpgradePrice('M'));
     }
     @Test
     public void canShootMultiple(){
-        Towers Dart = new DartMonkeyTower();
+        Tower Dart = new DartMonkeyTower();
         assertFalse(Dart.canShootMultiple());
     }
     @Test
     public void setPosition(){
-        Towers Dart = new DartMonkeyTower();
+        Tower Dart = new DartMonkeyTower();
         Dart.setPosition(new Position(0,0));
         assertEquals(new Position(2,2),Dart.getPosition());
     }

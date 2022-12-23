@@ -9,21 +9,21 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class TowersTest {
+public class TowerTest {
 
     @Test
     public void Position(){
-        List<Towers> towers = new ArrayList<>();
-        Towers monkey = new DartMonkeyTower();
+        List<Tower> towers = new ArrayList<>();
+        Tower monkey = new DartMonkeyTower();
         towers.add(monkey);
-        Towers tack = new TackTower();
+        Tower tack = new TackTower();
         towers.add(tack);
-        Towers bomb = new BombTower();
+        Tower bomb = new BombTower();
         towers.add(bomb);
-        Towers ice = new IceTower();
+        Tower ice = new IceTower();
         towers.add(ice);
 
-        for(Towers tower : towers) {
+        for(Tower tower : towers) {
             /*
             model.game.Gameplay.Position position = new Position(1, 1);
             tower.setPosition(position);

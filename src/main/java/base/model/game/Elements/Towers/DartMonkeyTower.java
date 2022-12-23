@@ -1,6 +1,6 @@
 package base.model.game.Elements.Towers;
 
-public class DartMonkeyTower extends Towers {
+public class DartMonkeyTower extends Tower {
     public DartMonkeyTower() {
         radius = 35;
         value = 100;

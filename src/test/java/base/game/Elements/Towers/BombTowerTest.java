@@ -45,6 +45,7 @@ public class BombTowerTest {
         assertTrue(bomb.upgradeLeft());
         assertEquals(upgrade, bomb.getUpgrades());
         assertEquals(1, bomb.getUpgrades().getLeft());
+        assertEquals(2, bomb.getPoppingPower());
         assertEquals(720+520, bomb.getValue());
 
         assertFalse(bomb.upgradeLeft());
@@ -78,6 +79,9 @@ public class BombTowerTest {
     public void getFileName(){
         Tower bomb = new BombTower();
         assertEquals("monkey/BombTowerSprite", bomb.getFileName());
+
+        bomb.select();
+        assertEquals("ranges/BombTowerBaseRange", bomb.getFileName());
     }
     @Test
     public void getBuyFileName(){

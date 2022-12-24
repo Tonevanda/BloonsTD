@@ -78,6 +78,9 @@ public class IceTowerTest {
     public void getFileName(){
         Tower ice = new IceTower();
         assertEquals("monkey/IceTowerSprite", ice.getFileName());
+
+        ice.select();
+        assertEquals("ranges/IceTowerBaseRange", ice.getFileName());
     }
     @Test
     public void getBuyFileName(){

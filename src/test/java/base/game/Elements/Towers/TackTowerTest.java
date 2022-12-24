@@ -78,6 +78,9 @@ public class TackTowerTest {
     public void getFileName(){
         Tower Tack = new TackTower();
         assertEquals("monkey/TackTowerSprite", Tack.getFileName());
+
+        Tack.select();
+        assertEquals("ranges/TackTowerBaseRange", Tack.getFileName());
     }
     @Test
     public void getBuyFileName(){

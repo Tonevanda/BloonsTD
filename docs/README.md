@@ -53,19 +53,26 @@ This project was developed by [João Lourenço](https://www.github.com/Tonevanda
 
 #### TOWER
 - **Towers** - We offer 4 different types of towers, all with their uniqueness of shooting, range and power. Some may even pop more than one layer at once!
-![](towers.png)
+
+![image](towers.png)
+
 - **Upgrades** - Each tower has two upgrades that offer two different advantages for your monkeys for a small amount of your cash.
 
-![](upgrades.gif)
+![image](upgrades.gif)
 
 #### BLOON
 - **Layers** - Every bloon has at least 1 layer, however some bloons have layers on top of layers, dictated by their color, and you have to pop all layers to destroy that bloon.
-![](layers.png)
+
+![image](layers.png)
+
 - **Hard** - Some bloons are grey. This means they are hardened, so only some specific towers can damage them and pop that hard layer.
-![](noPopHard.gif)
+
+![image](noPopHard.gif)
+
 - *Hard layer not being popped by neither the DartMonkey, Ice, nor the Tack Tower*
 
-![](popHard.gif)
+![image](popHard.gif)
+
 - *Hard layer being popped by the Bomb Tower*
 
 #### INPUT
@@ -203,6 +210,7 @@ Refactoring would imply the *Inline Class* or the *Collapse Hierarchy* treatment
 ### TESTING
 
 - #### Coverage Report
+
 ![img.png](coverageReport.png)
 
 - #### Mutation Testing Report
